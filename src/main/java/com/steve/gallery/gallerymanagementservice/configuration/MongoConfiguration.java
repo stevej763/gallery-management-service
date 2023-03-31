@@ -5,7 +5,6 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
@@ -13,14 +12,26 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 @Configuration
 public class MongoConfiguration {
 
-    public static final String DATABASE_NAME = "gallery";
+    private final MongoConfigurationContext mongoConfigurationContext;
 
-    public MongoConfiguration() {
+    public MongoConfiguration(MongoConfigurationContext mongoConfigurationContext) {
+        this.mongoConfigurationContext = mongoConfigurationContext;
     }
 
     @Bean
     public MongoTemplate mongoTemplate() {
-        MongoClient mongoClient = MongoClients.create(new ConnectionString("mongodb://192.168.1.200:27017"));
-        return new MongoTemplate(mongoClient, DATABASE_NAME);
+
+        MongoClient mongoClient = createMongoClient();
+        return new MongoTemplate(mongoClient, mongoConfigurationContext.getDatabase());
+    }
+
+    private MongoClient createMongoClient() {
+        ConnectionString connectionString = createConnectionString();
+        return MongoClients.create(connectionString);
+    }
+
+    private ConnectionString createConnectionString() {
+        String connectionString = String.format("mongodb://%s:%s", mongoConfigurationContext.getHost(), mongoConfigurationContext.getPort());
+        return new ConnectionString(connectionString);
     }
 }

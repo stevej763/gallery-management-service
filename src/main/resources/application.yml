@@ -1,2 +1,9 @@
 server:
   port: 8100
+
+spring:
+  data:
+    mongodb:
+      database: gallery-management
+      host: localhost
+      port: 27017
