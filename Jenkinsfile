@@ -15,7 +15,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true install'
+                sh 'mvn -Dmaven.test.failure.ignore=true -Dspring.profiles.active=docker install'
             }
             post {
                 success {
