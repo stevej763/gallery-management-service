@@ -10,11 +10,17 @@ public class MongoConfigurationContext {
     private final String database;
     private final String host;
     private final String port;
+    private final String username;
+    private final String password;
+    private final String authDatabase;
 
-    public MongoConfigurationContext(String database, String host, String port) {
+    public MongoConfigurationContext(String database, String host, String port, String username, String password, String authDatabase) {
         this.database = database;
         this.host = host;
         this.port = port;
+        this.username = username;
+        this.password = password;
+        this.authDatabase = authDatabase;
     }
 
     public String getDatabase() {
@@ -27,5 +33,17 @@ public class MongoConfigurationContext {
 
     public String getPort() {
         return port;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getAuthDatabase() {
+        return authDatabase;
     }
 }

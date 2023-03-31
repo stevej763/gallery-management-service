@@ -4,6 +4,10 @@ server:
 spring:
   data:
     mongodb:
+      requiresAuth: true
       database: gallery-management
       host: 192.168.1.200
       port: 27017
+      username: steve
+      authentication-database: admin
+      password: password

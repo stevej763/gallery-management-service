@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/GalleryManagementServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/GalleryManagementServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +82,7 @@
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GalleryManagementServiceTest">
+  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
     <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <option name="PACKAGE_NAME" value="" />
@@ -158,9 +163,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in GalleryManagementService" />
         <item itemvalue="JUnit.GalleryManagementServiceTest" />
         <item itemvalue="JUnit.FindPhotoIntegrationTest" />
-        <item itemvalue="JUnit.All in GalleryManagementService" />
         <item itemvalue="JUnit.MongoPhotoRepositoryTest" />
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
       </list>
@@ -174,7 +179,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680296215328</updated>
-      <workItem from="1680296216720" duration="8418000" />
+      <workItem from="1680296216720" duration="10328000" />
     </task>
     <servers />
   </component>

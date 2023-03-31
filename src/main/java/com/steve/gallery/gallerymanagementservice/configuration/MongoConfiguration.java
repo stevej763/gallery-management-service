@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-@ConfigurationPropertiesScan
+@ConfigurationPropertiesScan("com.steve.gallery.gallerymanagementservice.configuration")
 @Configuration
 public class MongoConfiguration {
 
