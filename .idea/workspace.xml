@@ -5,11 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/Photo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/PhotoFinder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/PhotoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/PhotoFinderTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/GalleryManagementService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/GalleryManagementService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,10 +53,13 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService/src/main/resources",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "spring.boot"
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.steve.gallery.gallerymanagementservice" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
@@ -64,7 +70,7 @@
       <recent name="com.steve.gallery.gallerymanagementservice" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GalleryManagementServiceTest">
+  <component name="RunManager" selected="JUnit.PhotoFinderTest">
     <configuration name="GalleryManagementServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <extension name="coverage">
@@ -75,6 +81,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
       <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.GalleryManagementServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhotoFinderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.PhotoFinderTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -98,11 +119,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.PhotoFinderTest" />
       <item itemvalue="JUnit.GalleryManagementServiceTest" />
       <item itemvalue="Spring Boot.GalleryManagementService" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PhotoFinderTest" />
         <item itemvalue="JUnit.GalleryManagementServiceTest" />
         <item itemvalue="Spring Boot.GalleryManagementService" />
       </list>
@@ -116,7 +139,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680296215328</updated>
-      <workItem from="1680296216720" duration="3302000" />
+      <workItem from="1680296216720" duration="4929000" />
     </task>
     <servers />
   </component>

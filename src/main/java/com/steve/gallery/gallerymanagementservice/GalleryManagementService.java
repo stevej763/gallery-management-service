@@ -14,5 +14,4 @@ public class GalleryManagementService {
     public static void main(String[] args) {
         SpringApplication.run(GalleryManagementService.class);
     }
-
 }

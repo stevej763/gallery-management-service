@@ -20,7 +20,6 @@ public class MongoConfiguration {
 
     @Bean
     public MongoTemplate mongoTemplate() {
-
         MongoClient mongoClient = createMongoClient();
         return new MongoTemplate(mongoClient, mongoConfigurationContext.getDatabase());
     }
