@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/FindPhotoIntegrationTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/Photo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/PhotoFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFinder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/PhotoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/PhotoFinderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFinderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,10 +73,11 @@
       <recent name="com.steve.gallery.gallerymanagementservice" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.steve.gallery.gallerymanagementservice.integration" />
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
+  <component name="RunManager" selected="JUnit.FindPhotoIntegrationTest">
     <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <option name="PACKAGE_NAME" value="" />
@@ -96,13 +90,17 @@
       <module name="GalleryManagementService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.FindPhotoIntegrationTest" />
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.FindPhotoIntegrationTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <envs>
+        <env name="spring.profiles.active" value="docker" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -141,7 +139,7 @@
       <module name="GalleryManagementService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,9 +158,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.FindPhotoIntegrationTest" />
         <item itemvalue="JUnit.All in GalleryManagementService" />
         <item itemvalue="JUnit.MongoPhotoRepositoryTest" />
-        <item itemvalue="JUnit.FindPhotoIntegrationTest" />
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
         <item itemvalue="JUnit.PhotoFinderTest" />
       </list>
@@ -176,7 +174,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680296215328</updated>
-      <workItem from="1680296216720" duration="6419000" />
+      <workItem from="1680296216720" duration="8418000" />
     </task>
     <servers />
   </component>
