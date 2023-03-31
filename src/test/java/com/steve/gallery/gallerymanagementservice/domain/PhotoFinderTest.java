@@ -1,6 +1,5 @@
-package com.steve.gallery.gallerymanagementservice;
+package com.steve.gallery.gallerymanagementservice.domain;
 
-import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

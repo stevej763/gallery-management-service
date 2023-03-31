@@ -1,5 +1,4 @@
-package com.steve.gallery.gallerymanagementservice;
-
+package com.steve.gallery.gallerymanagementservice.domain;
 import java.util.List;
 
 public class PhotoFinder {
