@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.configuration;
+package com.steve.gallery.gallerymanagementservice.configuration.mongo;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
@@ -12,15 +12,17 @@ public class MongoConfigurationContext {
     private final String password;
     private final String authenticationDatabase;
     private final boolean requiresAuth;
+    private final String applicationName;
 
     public MongoConfigurationContext(
-        String database,
-        String host,
-        String port,
-        String username,
-        String password,
-        String authenticationDatabase,
-        boolean requiresAuth) {
+            String applicationName,
+            String database,
+            String host,
+            String port,
+            String username,
+            String password,
+            String authenticationDatabase,
+            boolean requiresAuth) {
         this.database = database;
         this.host = host;
         this.port = port;
@@ -28,10 +30,15 @@ public class MongoConfigurationContext {
         this.password = password;
         this.authenticationDatabase = authenticationDatabase;
         this.requiresAuth = requiresAuth;
+        this.applicationName = applicationName;
     }
 
     public String getDatabase() {
         return database;
+    }
+
+    public String getApplicationName() {
+        return applicationName;
     }
 
     public String getHost() {

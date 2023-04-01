@@ -4,6 +4,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Mongo
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactory;
+import com.steve.gallery.gallerymanagementservice.configuration.s3.S3ConfigurationContext;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;

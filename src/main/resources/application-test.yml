@@ -1,5 +1,5 @@
 server:
-  port: 8100
+  port: 8101
 
 spring:
   application:
@@ -7,7 +7,7 @@ spring:
   data:
     mongodb:
       applicationName: gallery-management-service
-      database: gallery-management
+      database: gallery-management-test
       host: localhost
       port: 27017
       requiresAuth: false

@@ -5,9 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/mongo/MongoConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/mongo/MongoConfigurationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/S3ConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/s3/S3ConfigurationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +111,7 @@
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService">
+  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
     <configuration name="AddAndRetrieveIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <extension name="coverage">
@@ -116,6 +123,33 @@
       <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database" />
       <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database.AddAndRetrieveIntegrationTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GalleryManagementServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.GalleryManagementServiceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,34 +169,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PhotoSearchingIntegrationTest.searchByIdShouldReturnPhoto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.web.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web.PhotoSearchingIntegrationTest" />
-      <option name="METHOD_NAME" value="searchByIdShouldReturnPhoto" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PhotoSearchingIntegrationTest.searchByNameShouldReturnPhoto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.web.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web.PhotoSearchingIntegrationTest" />
-      <option name="METHOD_NAME" value="searchByNameShouldReturnPhoto" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -176,7 +187,18 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="local tests" type="JUnit" factoryName="JUnit">
+      <module name="GalleryManagementService" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -190,20 +212,21 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.local tests" />
+      <item itemvalue="JUnit.All in GalleryManagementService" />
+      <item itemvalue="JUnit.GalleryManagementServiceTest" />
       <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
       <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
-      <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByNameShouldReturnPhoto" />
-      <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByIdShouldReturnPhoto" />
       <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
       <item itemvalue="Spring Boot.GalleryManagementService" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in GalleryManagementService" />
+        <item itemvalue="JUnit.GalleryManagementServiceTest" />
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
         <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
         <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
-        <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByNameShouldReturnPhoto" />
-        <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByIdShouldReturnPhoto" />
       </list>
     </recent_temporary>
   </component>
@@ -221,7 +244,7 @@
       <workItem from="1680296216720" duration="12894000" />
       <workItem from="1680309153033" duration="61000" />
       <workItem from="1680309224069" duration="13672000" />
-      <workItem from="1680357991174" duration="12497000" />
+      <workItem from="1680357991174" duration="14096000" />
     </task>
     <servers />
   </component>

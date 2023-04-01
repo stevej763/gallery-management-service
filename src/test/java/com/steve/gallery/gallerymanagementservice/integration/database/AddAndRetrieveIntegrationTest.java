@@ -55,5 +55,4 @@ public class AddAndRetrieveIntegrationTest {
         assertThat(result.getTags(), is(tags));
         assertThat(result.getCategories(), is(categories));
     }
-
 }

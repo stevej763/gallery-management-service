@@ -2,15 +2,21 @@ server:
   port: 80
 
 spring:
+  application:
+    name: gallery-management-service
   data:
     mongodb:
-      database: gallery-management
+      applicationName: gallery-management-service-ci
+      database: gallery-management-ci
       host: 192.168.1.200
       port: 27017
       requiresAuth: true
       username: steve
       password: password
       authenticationDatabase: admin
+  mvc:
+    servlet:
+      path: /api
 
 s3:
   baseUrl: http://baseUrl.example.com/
