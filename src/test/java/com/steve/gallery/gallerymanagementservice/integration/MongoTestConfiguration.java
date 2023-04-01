@@ -48,7 +48,7 @@ public class MongoTestConfiguration {
                     mongoConfigurationContext.getPassword().toCharArray());
             clientSettingsBuilder.credential(credential);
         }
-        return MongoClients.create(connectionString);
+        return MongoClients.create(clientSettingsBuilder.build());
     }
 
     private boolean mongoRequiresAuthentication() {

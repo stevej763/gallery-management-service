@@ -82,7 +82,7 @@
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GalleryManagementServiceTest">
+  <component name="RunManager" selected="JUnit.FindPhotoIntegrationTest.canReturnAListOfPhotos">
     <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <option name="PACKAGE_NAME" value="" />
@@ -178,9 +178,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GalleryManagementServiceTest" />
         <item itemvalue="JUnit.FindPhotoIntegrationTest.canReturnAListOfPhotos" />
         <item itemvalue="JUnit.FindPhotoIntegrationTest" />
+        <item itemvalue="JUnit.GalleryManagementServiceTest" />
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
         <item itemvalue="JUnit.All in GalleryManagementService" />
       </list>
