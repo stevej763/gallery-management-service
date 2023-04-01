@@ -24,9 +24,14 @@ pipeline {
             }
         }
         stage('docker-build') {
+            environment {
+                DOCKER_CREDS = credentials('docker-creds')
+            }
             steps {
                 sh 'mvn clean package -DskipTests=true -Dspring.profiles.active=docker'
-                sh "docker build -t gallery-management-service:${env.BUILD_NUMBER} ."
+                sh "docker build -t gallery-manager:0.${env.BUILD_ID} ."
+                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PWD}"
+                sh "docker push ${DOCKER_CREDS_USR}/photo-gallery:0.${env.BUILD_ID}"
             }
         }
 
