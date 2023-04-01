@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
+    <list default="true" id="c1fe2e0e-2970-414d-af16-99a197380ac4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ci-deploy.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -12,322 +14,28 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeInsightWorkspaceSettings">
-    <option name="optimizeImportsOnTheFly" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="JUnit5 Test Class" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="OptimizeOnSaveOptions">
-    <option name="myRunOnSave" value="true" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2NnO7s9VkkawboSFN3Yx9aIMsIA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="autoscrollFromSource" value="true" />
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_directory_selection": "/Users/steve/dev/youtube/backend/GalleryManagementService/src/main/java/com/steve/gallery/gallerymanagementservice/repository",
-    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "spring.configuration.checksum": "e8ddecdd8eef23b93c73641f6aa26b04"
+    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService"
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.steve.gallery.gallerymanagementservice.configuration" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.admin" />
-      <recent name="com.steve.gallery.gallerymanagementservice.domain" />
-      <recent name="com.steve.gallery.gallerymanagementservice.integration.web" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.client" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.client" />
-      <recent name="com.steve.gallery.gallerymanagementservice.domain" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="com.steve.gallery.gallerymanagementservice.domain" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.admin" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.client" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
-      <recent name="com.steve.gallery.gallerymanagementservice" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.steve.gallery.gallerymanagementservice.integration" />
-      <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
-    </key>
-  </component>
-  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
-    <configuration name="AddAndRetrieveIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.database.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database.AddAndRetrieveIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GalleryManagementServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.GalleryManagementServiceTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PhotoSearchingIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.web.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.web.PhotoSearchingIntegrationTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <module name="GalleryManagementService" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="com.steve.gallery.gallerymanagementservice in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
-      <option name="MAIN_CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="local tests" type="JUnit" factoryName="JUnit">
-      <module name="GalleryManagementService" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GalleryManagementService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <option name="ACTIVE_PROFILES" />
-      <module name="GalleryManagementService" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.steve.gallery.gallerymanagementservice.GalleryManagementService" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="JUnit.local tests" />
-      <item itemvalue="JUnit.All in GalleryManagementService" />
-      <item itemvalue="JUnit.GalleryManagementServiceTest" />
-      <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
-      <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
-      <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
-      <item itemvalue="Spring Boot.GalleryManagementService" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.All in GalleryManagementService" />
-        <item itemvalue="JUnit.GalleryManagementServiceTest" />
-        <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
-        <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
-        <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
-      </list>
-    </recent_temporary>
-  </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SpringBootOptions">
-    <option name="showAdditionalConfigNotification" value="false" />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="" />
-      <created>1680296215328</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1680296215328</updated>
-      <workItem from="1680296216720" duration="12894000" />
-      <workItem from="1680309153033" duration="61000" />
-      <workItem from="1680309224069" duration="13672000" />
-      <workItem from="1680357991174" duration="22760000" />
-    </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/FindPhotoMongoIntegrationTest.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.0.6/spring-web-6.0.6.jar!/org/springframework/web/client/RestTemplate.class</url>
-          <line>223</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="18" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepository.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResource.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadMetadataDto" memberName="tags" />
       </pinned-members>
     </pin-to-top-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
