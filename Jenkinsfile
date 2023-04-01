@@ -43,9 +43,8 @@ pipeline {
                 SSH_CREDS = credentials('ssh-creds')
             }
             steps {
-                sh "echo pwd"
                 sh """  
-                       ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:0.latest
+                       ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:0.latest"
                        chmod +x start.sh
                        ssh steve@192.168.1.200 ./start.sh
                      """
