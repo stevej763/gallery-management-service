@@ -25,7 +25,7 @@ pipeline {
         }
         stage('docker-build') {
             steps {
-                docker.build "gallery-manager:${env.BUILD_TAG}"
+                sh './start.sh'
             }
         }
 
