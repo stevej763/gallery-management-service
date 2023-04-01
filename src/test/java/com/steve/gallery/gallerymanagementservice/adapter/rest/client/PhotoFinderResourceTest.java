@@ -19,6 +19,8 @@ public class PhotoFinderResourceTest {
     private static final UUID PHOTO_ID_1 = UUID.randomUUID();
     private static final UUID PHOTO_ID_2 = UUID.randomUUID();
     private static final UUID PHOTO_ID_3 = UUID.randomUUID();
+    public static final String PHOTO_TITLE = "title";
+
     private final PhotoFinder photoFinder = mock(PhotoFinder.class);
     private final PhotoFinderResource underTest = new PhotoFinderResource(photoFinder);
 
@@ -65,11 +67,26 @@ public class PhotoFinderResourceTest {
         assertThat(result, is(expected));
     }
 
+    @Test
+    public void returnsMatchesByTitle() {
+        String photoTitle = "my photo";
+        Photo photo = aPhoto(PHOTO_ID_1);
+
+        when(photoFinder.findPhotoByTitle(photoTitle)).thenReturn(List.of(photo));
+
+        ResponseEntity<List<PhotoDto>> result = underTest.findPhotoByTitle(photoTitle);
+
+        List<PhotoDto> photoDto = List.of(aPhotoDto(PHOTO_ID_1));
+        ResponseEntity<List<PhotoDto>> expected = ResponseEntity.ok(photoDto);
+        assertThat(result, is(expected));
+
+    }
+
     private PhotoDto aPhotoDto(UUID id) {
-        return new PhotoDtoBuilder().withPhotoId(id).build();
+        return new PhotoDtoBuilder().withPhotoId(id).withTitle(PHOTO_TITLE).build();
     }
 
     private Photo aPhoto(UUID id) {
-        return new PhotoBuilder().withPhotoId(id).build();
+        return new PhotoBuilder().withPhotoId(id).withTitle(PHOTO_TITLE).build();
     }
 }

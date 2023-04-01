@@ -1,4 +1,5 @@
 package com.steve.gallery.gallerymanagementservice.domain;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -16,5 +17,9 @@ public class PhotoFinder {
 
     public Photo findPhotoById(UUID photoId) {
         return photoRepository.findById(photoId);
+    }
+
+    public List<Photo> findPhotoByTitle(String title) {
+        return photoRepository.findByTitle(title);
     }
 }

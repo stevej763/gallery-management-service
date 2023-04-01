@@ -18,7 +18,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @SpringBootTest
-public class FindPhotoIntegrationTest {
+public class FindPhotoMongoIntegrationTest {
 
     @Autowired
     MongoTemplate testMongoTemplate;

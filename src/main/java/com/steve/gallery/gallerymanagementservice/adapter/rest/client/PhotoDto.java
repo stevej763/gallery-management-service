@@ -12,13 +12,20 @@ import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 public class PhotoDto {
 
     private final UUID photoId;
+    private final String title;
 
-    public PhotoDto(@JsonProperty("photoId") UUID photoId) {
+    public PhotoDto(@JsonProperty("photoId") UUID photoId,
+                    @JsonProperty("title") String title) {
         this.photoId = photoId;
+        this.title = title;
     }
 
     public UUID getPhotoId() {
         return photoId;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     @Override

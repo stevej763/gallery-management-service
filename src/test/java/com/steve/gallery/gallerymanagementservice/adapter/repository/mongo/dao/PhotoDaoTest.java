@@ -20,20 +20,46 @@ import static org.hamcrest.core.Is.is;
 public class PhotoDaoTest {
 
     @Autowired
-    MongoTemplate testMongoTemplate;
+    MongoTemplate mongoTemplate;
 
     @AfterEach
     void tearDown() {
-        testMongoTemplate.getDb().drop();
+        mongoTemplate.getDb().drop();
     }
 
     @Test
     public void retrievesAllPhotosFromPhotosCollection() {
         Photo photo = new PhotoBuilder().build();
-        testMongoTemplate.save(photo, PHOTO_COLLECTION);
+        mongoTemplate.save(photo, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(testMongoTemplate);
+        PhotoDao underTest = new PhotoDao(mongoTemplate);
         List<Photo> result = underTest.findAllPhotos();
+
+        List<Photo> expected = List.of(photo);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void retrievesAllPhotosWithMatchingTitle() {
+        String photoTitle = "title";
+        Photo photo = new PhotoBuilder().withTitle(photoTitle).build();
+        mongoTemplate.save(photo, PHOTO_COLLECTION);
+
+        PhotoDao underTest = new PhotoDao(mongoTemplate);
+        List<Photo> result = underTest.findPhotoByTitle(photoTitle);
+
+        List<Photo> expected = List.of(photo);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void retrievesAllPhotosWithCaseInsensitivity() {
+        String photoTitle = "TiTle";
+        Photo photo = new PhotoBuilder().withTitle(photoTitle).build();
+        mongoTemplate.save(photo, PHOTO_COLLECTION);
+
+        PhotoDao underTest = new PhotoDao(mongoTemplate);
+        List<Photo> result = underTest.findPhotoByTitle("title");
 
         List<Photo> expected = List.of(photo);
         assertThat(result, is(expected));
@@ -43,9 +69,9 @@ public class PhotoDaoTest {
     public void retrievesPhotoById() {
         UUID photoId = UUID.randomUUID();
         Photo photo = new PhotoBuilder().withPhotoId(photoId).build();
-        testMongoTemplate.save(photo, PHOTO_COLLECTION);
+        mongoTemplate.save(photo, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(testMongoTemplate);
+        PhotoDao underTest = new PhotoDao(mongoTemplate);
         Photo result = underTest.findPhotoById(photoId);
         assertThat(result, is(photo));
     }

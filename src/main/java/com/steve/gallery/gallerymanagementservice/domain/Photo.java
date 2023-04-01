@@ -15,12 +15,20 @@ public class Photo {
     @Id
     private final UUID photoId;
 
-    public Photo(@JsonProperty("photoId") UUID photoId) {
+    private final String title;
+
+    public Photo(@JsonProperty("photoId") UUID photoId,
+                 @JsonProperty("title") String title) {
         this.photoId = photoId;
+        this.title = title;
     }
 
     public UUID getPhotoId() {
         return photoId;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     @Override

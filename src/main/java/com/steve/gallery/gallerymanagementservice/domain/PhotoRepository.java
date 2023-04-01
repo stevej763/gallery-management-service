@@ -8,4 +8,6 @@ public interface PhotoRepository {
     List<Photo> findAll();
 
     Photo findById(UUID photoId);
+
+    List<Photo> findByTitle(String title);
 }

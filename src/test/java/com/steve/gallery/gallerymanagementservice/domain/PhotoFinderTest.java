@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.*;
+import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -37,6 +37,21 @@ public class PhotoFinderTest {
         Photo result = underTest.findPhotoById(photoId);
 
         assertThat(result, is(photo));
+    }
+
+    @Test
+    public void shouldReturnPhotosByTitleSearch() {
+        UUID photoId = UUID.randomUUID();
+        String photoTitle = "photoTitle";
+        Photo photo = new PhotoBuilder()
+                .withTitle(photoTitle)
+                .withPhotoId(photoId)
+                .build();
+        when(photoRepository.findByTitle(photoTitle)).thenReturn(List.of(photo));
+
+        List<Photo> result = underTest.findPhotoByTitle(photoTitle);
+
+        assertThat(result, is(List.of(photo)));
     }
 
     @Test
