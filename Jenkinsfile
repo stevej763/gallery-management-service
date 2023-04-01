@@ -30,7 +30,7 @@ pipeline {
             steps {
                 sh 'mvn clean package -DskipTests=true -Dspring.profiles.active=docker'
                 sh "docker build -t gallery-manager:0.${env.BUILD_ID} ."
-                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PWD}"
+                sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
                 sh "docker push ${DOCKER_CREDS_USR}/photo-gallery:0.${env.BUILD_ID}"
             }
         }
