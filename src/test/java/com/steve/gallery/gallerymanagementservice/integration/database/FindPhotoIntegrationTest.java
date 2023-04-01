@@ -5,7 +5,6 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Photo
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
-import com.steve.gallery.gallerymanagementservice.integration.MongoTestConfiguration;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,7 @@ import java.util.UUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@SpringBootTest(classes = MongoTestConfiguration.class)
+@SpringBootTest
 public class FindPhotoIntegrationTest {
 
     @Autowired

@@ -1,6 +1,5 @@
 package com.steve.gallery.gallerymanagementservice.integration.web;
 
-import com.steve.gallery.gallerymanagementservice.GalleryManagementService;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.client.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import org.junit.jupiter.api.AfterEach;
@@ -18,9 +17,8 @@ import java.util.UUID;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao.PHOTO_COLLECTION;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
-@SpringBootTest(webEnvironment = RANDOM_PORT, classes = GalleryManagementService.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FindPhotoWebIntegrationTest {
 
     @Value(value = "${local.server.port}")
@@ -41,7 +39,6 @@ public class FindPhotoWebIntegrationTest {
     public void searchByIdShouldReturnPhoto() {
         UUID photoId = UUID.randomUUID();
         addPhotosToDb(photoId);
-
         ResponseEntity<PhotoDto> result = restTemplate.getForEntity("http://localhost:" + port + "/gallery/" + photoId, PhotoDto.class);
         assertThat(result.getBody(), is(new PhotoDto(photoId)));
         assertThat(result.getStatusCode(), is(HttpStatus.OK));
