@@ -1,7 +1,6 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.adapter.rest.client;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.data.annotation.Id;
 
 import java.util.UUID;
 
@@ -10,12 +9,11 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class Photo {
+public class PhotoDto {
 
-    @Id
     private final UUID photoId;
 
-    public Photo(@JsonProperty("photoId") UUID photoId) {
+    public PhotoDto(@JsonProperty("photoId") UUID photoId) {
         this.photoId = photoId;
     }
 
