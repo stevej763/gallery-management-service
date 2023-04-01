@@ -1,8 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.configuration;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
-import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
 @ConfigurationProperties(prefix = "spring.data.mongodb")
 public class MongoConfigurationContext {
@@ -12,15 +10,15 @@ public class MongoConfigurationContext {
     private final String port;
     private final String username;
     private final String password;
-    private final String authDatabase;
+    private final String authenticationDatabase;
 
-    public MongoConfigurationContext(String database, String host, String port, String username, String password, String authDatabase) {
+    public MongoConfigurationContext(String database, String host, String port, String username, String password, String authenticationDatabase) {
         this.database = database;
         this.host = host;
         this.port = port;
         this.username = username;
         this.password = password;
-        this.authDatabase = authDatabase;
+        this.authenticationDatabase = authenticationDatabase;
     }
 
     public String getDatabase() {
@@ -43,7 +41,7 @@ public class MongoConfigurationContext {
         return password;
     }
 
-    public String getAuthDatabase() {
-        return authDatabase;
+    public String getAuthenticationDatabase() {
+        return authenticationDatabase;
     }
 }

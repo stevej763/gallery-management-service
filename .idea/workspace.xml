@@ -5,19 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfigurationContext.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/GalleryManagementServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/GalleryManagementServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/FindPhotoIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -82,10 +82,12 @@
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
+  <component name="RunManager" selected="JUnit.GalleryManagementServiceTest">
     <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -95,7 +97,7 @@
       <module name="GalleryManagementService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.*" />
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.MongoTestConfiguration" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -104,7 +106,26 @@
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <envs>
-        <env name="spring.profiles.active" value="docker" />
+        <env name="spring.profiles.active" value="jenkins" />
+      </envs>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FindPhotoIntegrationTest.canReturnAListOfPhotos" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.MongoTestConfiguration" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.FindPhotoIntegrationTest" />
+      <option name="METHOD_NAME" value="canReturnAListOfPhotos" />
+      <option name="TEST_OBJECT" value="method" />
+      <envs>
+        <env name="spring.profiles.active" value="jenkins" />
       </envs>
       <method v="2">
         <option name="Make" enabled="true" />
@@ -120,22 +141,11 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
       <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.GalleryManagementServiceTest" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MongoPhotoRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GalleryManagementService" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo" />
-      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <envs>
+        <env name="spring.profiles.active" value="jenkins" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,30 +154,35 @@
       <module name="GalleryManagementService" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.*" />
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.MongoTestConfiguration" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <envs>
+        <env name="spring.profiles.active" value="jenkins" />
+      </envs>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="JUnit.FindPhotoIntegrationTest.canReturnAListOfPhotos" />
       <item itemvalue="JUnit.GalleryManagementServiceTest" />
       <item itemvalue="JUnit.All in GalleryManagementService" />
       <item itemvalue="JUnit.FindPhotoIntegrationTest" />
-      <item itemvalue="JUnit.MongoPhotoRepositoryTest" />
       <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in GalleryManagementService" />
         <item itemvalue="JUnit.GalleryManagementServiceTest" />
+        <item itemvalue="JUnit.FindPhotoIntegrationTest.canReturnAListOfPhotos" />
         <item itemvalue="JUnit.FindPhotoIntegrationTest" />
-        <item itemvalue="JUnit.MongoPhotoRepositoryTest" />
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
+        <item itemvalue="JUnit.All in GalleryManagementService" />
       </list>
     </recent_temporary>
   </component>
@@ -179,12 +194,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1680296215328</updated>
-      <workItem from="1680296216720" duration="10328000" />
+      <workItem from="1680296216720" duration="11006000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/MongoTestConfiguration.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/MongoConfiguration.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

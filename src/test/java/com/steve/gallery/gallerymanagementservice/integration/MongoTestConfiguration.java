@@ -6,25 +6,22 @@ import com.mongodb.MongoCredential;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.steve.gallery.gallerymanagementservice.configuration.MongoConfigurationContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
-import java.util.Objects;
 import java.util.UUID;
 
-import static com.mongodb.MongoCredential.*;
-import static java.lang.Boolean.*;
+import static com.mongodb.MongoCredential.createCredential;
+import static java.lang.Boolean.parseBoolean;
 
 @ConfigurationPropertiesScan("com.steve.gallery.gallerymanagementservice.configuration")
 @Configuration
 public class MongoTestConfiguration {
 
     private final String databaseName;
-
     private final MongoConfigurationContext mongoConfigurationContext;
     private final Environment environment;
 
@@ -47,7 +44,7 @@ public class MongoTestConfiguration {
         if (mongoRequiresAuthentication()) {
             MongoCredential credential = createCredential(
                     mongoConfigurationContext.getUsername(),
-                    mongoConfigurationContext.getAuthDatabase(),
+                    mongoConfigurationContext.getAuthenticationDatabase(),
                     mongoConfigurationContext.getPassword().toCharArray());
             clientSettingsBuilder.credential(credential);
         }
