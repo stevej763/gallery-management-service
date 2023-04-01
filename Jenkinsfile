@@ -26,7 +26,7 @@ pipeline {
         stage('docker-build') {
             steps {
                 sh 'mvn clean package -DskipTests=true -Dspring.profiles.active=docker'
-                sh "docker build -t gallery-management-service:${env.BUILD_TAG} ."
+                sh "docker build -t gallery-management-service:${env.BUILD_NUMBER} ."
             }
         }
 
