@@ -16,9 +16,9 @@ import static org.mockito.Mockito.when;
 
 public class PhotoFinderResourceTest {
 
-    public static final UUID PHOTO_ID_1 = UUID.randomUUID();
-    public static final UUID PHOTO_ID_2 = UUID.randomUUID();
-    public static final UUID PHOTO_ID_3 = UUID.randomUUID();
+    private static final UUID PHOTO_ID_1 = UUID.randomUUID();
+    private static final UUID PHOTO_ID_2 = UUID.randomUUID();
+    private static final UUID PHOTO_ID_3 = UUID.randomUUID();
     private final PhotoFinder photoFinder = mock(PhotoFinder.class);
     private final PhotoFinderResource underTest = new PhotoFinderResource(photoFinder);
 

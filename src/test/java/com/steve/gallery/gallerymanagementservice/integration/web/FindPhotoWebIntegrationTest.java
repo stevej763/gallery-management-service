@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -38,13 +39,30 @@ public class FindPhotoWebIntegrationTest {
     @Test
     public void searchByIdShouldReturnPhoto() {
         UUID photoId = UUID.randomUUID();
-        addPhotosToDb(photoId);
-        ResponseEntity<PhotoDto> result = restTemplate.getForEntity("http://localhost:" + port + "/gallery/" + photoId, PhotoDto.class);
+        addPhotoToDb(photoId);
+        ResponseEntity<PhotoDto> result = restTemplate.getForEntity(getGalleryBasePath() + "/" + photoId, PhotoDto.class);
         assertThat(result.getBody(), is(new PhotoDto(photoId)));
         assertThat(result.getStatusCode(), is(HttpStatus.OK));
     }
 
-    private void addPhotosToDb(UUID id) {
+    @Test
+    public void searchAllShouldReturnPhotos() {
+        addPhotoToDb(UUID.randomUUID());
+        addPhotoToDb(UUID.randomUUID());
+        addPhotoToDb(UUID.randomUUID());
+        ResponseEntity<PhotoDto[]> result = restTemplate.exchange(
+                getGalleryBasePath(),
+                HttpMethod.GET,
+                null,
+                PhotoDto[].class);
+        assertThat(result.getStatusCode(), is(HttpStatus.OK));
+    }
+
+    private String getGalleryBasePath() {
+        return "http://localhost:" + port + "/gallery";
+    }
+
+    private void addPhotoToDb(UUID id) {
         mongoTemplate.save(new Photo(id), PHOTO_COLLECTION);
     }
 }

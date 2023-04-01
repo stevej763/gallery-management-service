@@ -25,6 +25,7 @@ public class PhotoFinderResource {
         this.photoFinder = photoFinder;
     }
 
+    @GetMapping
     public ResponseEntity<List<PhotoDto>> photos() {
         List<Photo> photos = photoFinder.findAll();
         List<PhotoDto> photoDtoList =
