@@ -12,6 +12,7 @@ fi
 echo "starting container"
 docker run \
   --name ${CONTAINER_NAME} \
+  -d \
   -p 8300:8100 \
   -e SERVER_PORT=8100 \
   -e MONGO_PORT=27017 \
