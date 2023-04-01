@@ -46,7 +46,7 @@ pipeline {
                 sh """  
                        ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:latest"
                        chmod +x start.sh
-                       ssh steve@192.168.1.200 ./start.sh
+                       ssh steve@192.168.1.200 'bash -s' < start.sh
                      """
             }
         }
