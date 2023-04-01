@@ -34,4 +34,8 @@ public class PhotoDao {
         Query title = query(where("title").regex(caseInsensitiveSearch));
         return mongoTemplate.find(title, Photo.class, PHOTO_COLLECTION);
     }
+
+    public Photo save(Photo photo) {
+        return mongoTemplate.save(photo);
+    }
 }

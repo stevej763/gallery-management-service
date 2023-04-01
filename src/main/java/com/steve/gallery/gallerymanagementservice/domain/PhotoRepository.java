@@ -10,4 +10,6 @@ public interface PhotoRepository {
     Photo findById(UUID photoId);
 
     List<Photo> findByTitle(String title);
+
+    Photo save(Photo photo);
 }

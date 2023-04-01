@@ -1,5 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.client;
 
+import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
 import org.slf4j.Logger;
@@ -20,15 +22,20 @@ public class PhotoSearchResource {
     Logger LOGGER = LoggerFactory.getLogger(PhotoSearchResource.class);
 
     private final PhotoFinder photoFinder;
+    private final PhotoDtoFactory photoDtoFactory;
 
-    public PhotoSearchResource(PhotoFinder photoFinder) {
+    public PhotoSearchResource(PhotoFinder photoFinder, PhotoDtoFactory photoDtoFactory) {
         this.photoFinder = photoFinder;
+        this.photoDtoFactory = photoDtoFactory;
     }
 
     @GetMapping
     public ResponseEntity<List<PhotoDto>> photos() {
         List<Photo> photos = photoFinder.findAll();
-        List<PhotoDto> photoDtoList = photos.stream().map(photo -> new PhotoDto(photo.getPhotoId(), photo.getTitle())).toList();
+        List<PhotoDto> photoDtoList = photos
+                .stream()
+                .map(photoDtoFactory::convert)
+                .toList();
         return ResponseEntity.ok(photoDtoList);
     }
 
@@ -39,16 +46,17 @@ public class PhotoSearchResource {
             LOGGER.error("Search made for invalid id={}", photoId);
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(new PhotoDto(photo.getPhotoId(), photo.getTitle()));
+        PhotoDto photoDto = photoDtoFactory.convert(photo);
+        return ResponseEntity.ok(photoDto);
     }
 
     @GetMapping("/search")
     public ResponseEntity<List<PhotoDto>> findPhotoByTitle(@RequestParam("title") String title) {
         List<Photo> photos = photoFinder.findPhotoByTitle(title);
-        List<PhotoDto> photoDtoList = photos.stream().map(photo -> new PhotoDtoBuilder()
-                .withPhotoId(photo.getPhotoId())
-                .withTitle(photo.getTitle())
-                .build()).toList();
+        List<PhotoDto> photoDtoList = photos
+                .stream()
+                .map(photoDtoFactory::convert)
+                .toList();
         return ResponseEntity.ok(photoDtoList);
     }
 }

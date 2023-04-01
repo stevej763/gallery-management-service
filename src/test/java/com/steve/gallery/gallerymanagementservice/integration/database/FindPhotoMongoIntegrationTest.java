@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,7 +26,11 @@ public class FindPhotoMongoIntegrationTest {
     MongoTemplate testMongoTemplate;
 
     private static final UUID PHOTO_ID = UUID.randomUUID();
-    private static final Photo PHOTO = new PhotoBuilder().withPhotoId(PHOTO_ID).build();
+    private static final Photo PHOTO = new PhotoBuilder()
+            .withPhotoId(PHOTO_ID)
+            .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .build();
 
     @AfterEach
     void tearDown() {

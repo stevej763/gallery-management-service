@@ -28,4 +28,9 @@ public class MongoPhotoRepository implements PhotoRepository {
     public List<Photo> findByTitle(String title) {
         return photoDao.findPhotoByTitle(title);
     }
+
+    @Override
+    public Photo save(Photo photo) {
+        return photoDao.save(photo);
+    }
 }

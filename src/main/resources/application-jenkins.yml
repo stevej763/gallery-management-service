@@ -11,3 +11,6 @@ spring:
       username: steve
       password: password
       authenticationDatabase: admin
+
+s3:
+  baseUrl: http://baseUrl.example.com/

@@ -50,4 +50,15 @@ public class MongoPhotoRepositoryTest {
 
         assertThat(result, is(photo));
     }
+
+    @Test
+    public void shouldSavePhoto() {
+        UUID photoId = UUID.randomUUID();
+        Photo photo = new PhotoBuilder().withPhotoId(photoId).build();
+        when(photoDao.save(photo)).thenReturn(photo);
+
+        Photo result = underTest.save(photo);
+
+        assertThat(result, is(photo));
+    }
 }
