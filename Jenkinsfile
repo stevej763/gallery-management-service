@@ -31,8 +31,10 @@ pipeline {
                 sh 'mvn clean package -DskipTests=true -Dspring.profiles.active=docker'
                 sh "docker build -t gallery-manager:0.${env.BUILD_ID} ."
                 sh "docker tag gallery-manager:0.${env.BUILD_ID} ${DOCKER_CREDS_USR}/gallery-manager:0.${env.BUILD_ID}"
+                sh "docker tag gallery-manager:0.${env.BUILD_ID} ${DOCKER_CREDS_USR}/gallery-manager:latest"
                 sh "docker login -u ${DOCKER_CREDS_USR} -p ${DOCKER_CREDS_PSW}"
                 sh "docker push ${DOCKER_CREDS_USR}/gallery-manager:0.${env.BUILD_ID}"
+                sh "docker push ${DOCKER_CREDS_USR}/gallery-manager:latest"
             }
         }
 
@@ -42,8 +44,10 @@ pipeline {
             }
             steps {
                 sh "echo pwd"
-                sh """
-                        ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:0.${env.BUILD_ID}"
+                sh """  
+                       ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:0.latest
+                       chmod +x start.sh
+                       ssh steve@192.168.1.200 ./start.sh
                      """
             }
         }
