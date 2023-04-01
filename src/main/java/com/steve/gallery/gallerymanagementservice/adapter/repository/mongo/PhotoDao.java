@@ -36,6 +36,6 @@ public class PhotoDao {
     }
 
     public Photo save(Photo photo) {
-        return mongoTemplate.save(photo);
+        return mongoTemplate.save(photo, PHOTO_COLLECTION);
     }
 }

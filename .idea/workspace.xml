@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f1a357c-2f3c-4c31-af12-6f9bab9a12b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/PhotoDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/PhotoDtoBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/PhotoDtoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadMetadataDtoBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/S3ConfigurationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/DtoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResourceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadMetadataDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoDtoBuilder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/Photo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/Photo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/dao/PhotoDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/dao/PhotoDaoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/FindPhotoMongoIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/FindPhotoMongoIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,10 +105,17 @@
     </key>
   </component>
   <component name="RunManager" selected="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService">
-    <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AddAndRetrieveIntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GalleryManagementService" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.integration.database.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.integration.database.AddAndRetrieveIntegrationTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -212,7 +190,7 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.All in GalleryManagementService" />
+      <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
       <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
       <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByNameShouldReturnPhoto" />
       <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByIdShouldReturnPhoto" />
@@ -222,10 +200,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
+        <item itemvalue="JUnit.AddAndRetrieveIntegrationTest" />
         <item itemvalue="JUnit.PhotoSearchingIntegrationTest" />
         <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByNameShouldReturnPhoto" />
         <item itemvalue="JUnit.PhotoSearchingIntegrationTest.searchByIdShouldReturnPhoto" />
-        <item itemvalue="JUnit.All in GalleryManagementService" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +221,7 @@
       <workItem from="1680296216720" duration="12894000" />
       <workItem from="1680309153033" duration="61000" />
       <workItem from="1680309224069" duration="13672000" />
-      <workItem from="1680357991174" duration="11342000" />
+      <workItem from="1680357991174" duration="12497000" />
     </task>
     <servers />
   </component>
@@ -262,11 +240,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java</url>
           <line>28</line>
           <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResource.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/6.0.6/spring-web-6.0.6.jar!/org/springframework/web/client/RestTemplate.class</url>
@@ -297,6 +270,16 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/MongoPhotoRepository.java</url>
           <line>33</line>
           <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/client/PhotoSearchResource.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/repository/mongo/PhotoDao.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
