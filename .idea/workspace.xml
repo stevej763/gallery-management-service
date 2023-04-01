@@ -60,7 +60,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "last_directory_selection": "/Users/steve/dev/youtube/backend/GalleryManagementService/src/main/java/com/steve/gallery/gallerymanagementservice/repository",
-    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService/src/main/resources",
+    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -81,6 +81,7 @@
       <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
@@ -236,7 +237,7 @@
       <workItem from="1680296216720" duration="12894000" />
       <workItem from="1680309153033" duration="61000" />
       <workItem from="1680309224069" duration="13672000" />
-      <workItem from="1680357991174" duration="16775000" />
+      <workItem from="1680357991174" duration="19024000" />
     </task>
     <servers />
   </component>

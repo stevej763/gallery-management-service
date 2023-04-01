@@ -15,17 +15,16 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'mvn -Dmaven.test.failure.ignore=true -Dspring.profiles.active=jenkins install'
+                sh 'mvn -Dspring.profiles.active=jenkins test'
             }
             post {
-                success {
-                    junit 'target/surefire-reports/**/*.xml'
-                }
+                junit 'target/surefire-reports/**/*.xml'
             }
         }
         stage('docker-build') {
             steps {
-                sh './start.sh'
+                sh 'mvn clean package -DskipTests=true -Dspring.profiles.active=docker'
+                sh "docker build -t gallery-management-service:${env.BUILD_TAG} ."
             }
         }
 
