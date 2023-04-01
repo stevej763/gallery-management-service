@@ -11,14 +11,23 @@ public class MongoConfigurationContext {
     private final String username;
     private final String password;
     private final String authenticationDatabase;
+    private final boolean requiresAuth;
 
-    public MongoConfigurationContext(String database, String host, String port, String username, String password, String authenticationDatabase) {
+    public MongoConfigurationContext(
+        String database,
+        String host,
+        String port,
+        String username,
+        String password,
+        String authenticationDatabase,
+        boolean requiresAuth) {
         this.database = database;
         this.host = host;
         this.port = port;
         this.username = username;
         this.password = password;
         this.authenticationDatabase = authenticationDatabase;
+        this.requiresAuth = requiresAuth;
     }
 
     public String getDatabase() {
@@ -43,5 +52,9 @@ public class MongoConfigurationContext {
 
     public String getAuthenticationDatabase() {
         return authenticationDatabase;
+    }
+
+    public boolean isRequiresAuth() {
+        return requiresAuth;
     }
 }

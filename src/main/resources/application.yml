@@ -4,7 +4,7 @@ server:
 spring:
   data:
     mongodb:
-      requiresAuth: false
       database: gallery-management
       host: localhost
       port: 27017
+      requiresAuth: false

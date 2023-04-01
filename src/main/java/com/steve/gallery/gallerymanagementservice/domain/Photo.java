@@ -1,29 +1,38 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
-import org.apache.commons.lang3.builder.EqualsBuilder;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
-import static org.apache.commons.lang3.builder.ToStringBuilder.*;
+import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.UUID;
+import org.springframework.data.annotation.Id;
 
 public class Photo {
 
-    @Override
-    public int hashCode() {
-        return reflectionHashCode(this);
-    }
+  @Id private final UUID photoId;
 
-    @Override
-    public boolean equals(Object obj) {
-        return reflectionEquals(this, obj);
-    }
+  public Photo(@JsonProperty("photoId") UUID photoId) {
+    this.photoId = photoId;
+  }
 
-    @Override
-    public String toString() {
-        return reflectionToString(this, SHORT_PREFIX_STYLE);
-    }
+  public UUID getPhotoId() {
+    return photoId;
+  }
+
+  @Override
+  public int hashCode() {
+    return reflectionHashCode(this);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    return reflectionEquals(this, obj);
+  }
+
+  @Override
+  public String toString() {
+    return reflectionToString(this, SHORT_PREFIX_STYLE);
+  }
 }

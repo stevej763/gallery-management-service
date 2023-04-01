@@ -3,6 +3,7 @@ package com.steve.gallery.gallerymanagementservice.integration;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
 import org.hamcrest.core.Is;
 import org.junit.jupiter.api.AfterEach;
@@ -21,7 +22,7 @@ public class FindPhotoIntegrationTest {
     @Autowired
     MongoTemplate testMongoTemplate;
 
-    private static final Photo PHOTO = new Photo();
+    private static final Photo PHOTO = new PhotoBuilder().build();
 
     @AfterEach
     void tearDown() {
