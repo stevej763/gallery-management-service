@@ -1,6 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.integration;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
 import org.hamcrest.core.Is;
@@ -30,7 +31,8 @@ public class FindPhotoIntegrationTest {
     @Test
     public void canReturnAListOfPhotos() {
         addPhotosToDb();
-        MongoPhotoRepository photoRepository = new MongoPhotoRepository(testMongoTemplate);
+        PhotoDao photoDao = new PhotoDao(testMongoTemplate);
+        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
         List<Photo> result = photoFinder.findAll();
