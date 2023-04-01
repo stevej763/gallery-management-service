@@ -8,3 +8,6 @@ spring:
       host: localhost
       port: 27017
       requiresAuth: false
+  mvc:
+    servlet:
+      path: /api

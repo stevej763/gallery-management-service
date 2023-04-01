@@ -14,7 +14,7 @@ import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class PhotoFinderResourceTest {
+public class PhotoSearchResourceTest {
 
     private static final UUID PHOTO_ID_1 = UUID.randomUUID();
     private static final UUID PHOTO_ID_2 = UUID.randomUUID();
@@ -22,7 +22,7 @@ public class PhotoFinderResourceTest {
     public static final String PHOTO_TITLE = "title";
 
     private final PhotoFinder photoFinder = mock(PhotoFinder.class);
-    private final PhotoFinderResource underTest = new PhotoFinderResource(photoFinder);
+    private final PhotoSearchResource underTest = new PhotoSearchResource(photoFinder);
 
     @Test
     public void canReturnAllPhotos() {

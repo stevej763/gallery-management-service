@@ -10,15 +10,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
-@RestController
-@RequestMapping("/api/v1/gallery")
-public class PhotoFinderResource {
+import static org.springframework.http.MediaType.ALL_VALUE;
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-    Logger LOGGER = LoggerFactory.getLogger(PhotoFinderResource.class);
+@RestController
+@RequestMapping(value = "/v1/gallery", produces = APPLICATION_JSON_VALUE, consumes = ALL_VALUE)
+public class PhotoSearchResource {
+
+    Logger LOGGER = LoggerFactory.getLogger(PhotoSearchResource.class);
 
     private final PhotoFinder photoFinder;
 
-    public PhotoFinderResource(PhotoFinder photoFinder) {
+    public PhotoSearchResource(PhotoFinder photoFinder) {
         this.photoFinder = photoFinder;
     }
 
@@ -29,7 +32,7 @@ public class PhotoFinderResource {
         return ResponseEntity.ok(photoDtoList);
     }
 
-    @GetMapping("/{photoId}")
+    @GetMapping(value = "/{photoId}")
     public ResponseEntity<PhotoDto> findPhotoById(@PathVariable("photoId") UUID photoId) {
         Photo photo = photoFinder.findPhotoById(photoId);
         if (photo == null) {
