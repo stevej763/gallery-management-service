@@ -3,29 +3,40 @@ package com.steve.gallery.gallerymanagementservice.domain;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
+
 import static com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder.aPhotoDto;
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PhotoCreationServiceTest {
 
     private final PhotoRepository photoRepository = mock(PhotoRepository.class);
     private final PhotoFactory photoFactory = mock(PhotoFactory.class);
     private final DtoFactory photoDtoFactory = mock(DtoFactory.class);
+    private final UploadResource uploadResource = mock(UploadResource.class);
 
-    private final PhotoCreationService underTest = new PhotoCreationService(photoRepository, photoFactory, photoDtoFactory);
+    private final PhotoCreationService underTest = new PhotoCreationService(photoRepository, photoFactory, photoDtoFactory, uploadResource);
 
     @Test
     public void processesPhotoUpload() {
         Photo photo = aPhoto().build();
         PhotoDto photoDto = aPhotoDto().build();
-        PhotoUploadRequest photoUploadRequest = new PhotoUploadRequest("title", "description", emptyList(), emptyList());
+        File photoFile = mock(File.class);
+        PhotoUploadRequest photoUploadRequest = new PhotoUploadRequestBuilder()
+                .withTitle("title")
+                .withDescription("description")
+                .withTags(emptyList())
+                .withCategories(emptyList())
+                .withPhoto(photoFile)
+                .build();
 
-        when(photoFactory.convert(photoUploadRequest)).thenReturn(photo);
+        UploadedPhoto uploadedPhoto = new UploadedPhotoBuilder().build();
+        when(uploadResource.upload(photoUploadRequest)).thenReturn(uploadedPhoto);
+        when(photoFactory.convert(uploadedPhoto)).thenReturn(photo);
         when(photoRepository.save(photo)).thenReturn(photo);
         when(photoDtoFactory.convert(photo)).thenReturn(photoDto);
 

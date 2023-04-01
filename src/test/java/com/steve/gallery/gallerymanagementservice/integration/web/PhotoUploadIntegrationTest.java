@@ -1,7 +1,10 @@
 package com.steve.gallery.gallerymanagementservice.integration.web;
 
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.DeleteBucketRequest;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +16,12 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -34,6 +39,8 @@ import static org.springframework.http.MediaType.MULTIPART_FORM_DATA;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PhotoUploadIntegrationTest {
 
+    public static String BUCKET_NAME = "gallery";
+
     @Value(value = "${local.server.port}")
     private int port;
 
@@ -41,26 +48,39 @@ public class PhotoUploadIntegrationTest {
     private MongoTemplate mongoTemplate;
 
     @Autowired
+    private AmazonS3 s3Client;
+
+    @Autowired
     private TestRestTemplate restTemplate;
 
     @AfterEach
     void tearDown() {
         mongoTemplate.getDb().drop();
+        s3Client.listObjects(BUCKET_NAME)
+                .getObjectSummaries()
+                .forEach(s3ObjectSummary -> s3Client.deleteObject(BUCKET_NAME, s3ObjectSummary.getKey()));
+    }
+
+    @BeforeEach
+    void setUp() {
+        mongoTemplate.getDb().drop();
     }
 
     @Test
     public void canUploadANewPhoto() throws IOException {
-        Path tempFile = Files.createTempFile("test-file", ".jpeg");
-        Files.write(tempFile, "Test file content".getBytes());
-        File file = tempFile.toFile();
+        MockMultipartFile uploadedFile = new MockMultipartFile("test", "originalFileName", "jpeg", "content".getBytes());
+
+        File photo = new File(uploadedFile.getOriginalFilename());
+        FileOutputStream fileOutputStream = new FileOutputStream(photo);
+        fileOutputStream.write(uploadedFile.getBytes());
+        fileOutputStream.close();
+        photo.deleteOnExit();
 
         String photoTitle = "title";
         String photoDescription = "description";
-        List<String> tags = List.of("tag1", "tag2", "tag3");
-        List<String> categories = List.of("category1", "category2");
 
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("file", new FileSystemResource(file));
+        body.add("file", new FileSystemResource(photo));
         body.add("title", photoTitle);
         body.add("description", photoDescription);
         body.add("tags", "tag1, tag2, tag3");
@@ -71,23 +91,10 @@ public class PhotoUploadIntegrationTest {
 
         ResponseEntity<PhotoDto> response = restTemplate.exchange(getAdminBasePath() + "/upload", POST, request, PhotoDto.class);
 
-        PhotoDto photoDto = aPhotoDto()
-                .withPhotoId(UUID.randomUUID())
-                .withTitle("title")
-                .withDescription("description")
-                .withTags(tags)
-                .withCategories(categories)
-                .withOriginalImageUrl("url")
-                .withUploadId(UUID.randomUUID())
-                .withModifiedAt(LocalDateTime.now())
-                .withCreatedAt(LocalDateTime.now())
-                .build();
-
         assertThat(response.getBody(), isA(PhotoDto.class));
         assertThat(response.getBody().getTitle(), is("title"));
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
     }
-
 
     private String getAdminBasePath() {
         return "http://localhost:" + port + "/api/v1/admin";

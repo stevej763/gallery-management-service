@@ -18,5 +18,12 @@ spring:
     servlet:
       path: /api
 
-s3:
-  baseUrl: ${S3_BASE_URL}
+cloud:
+  aws:
+    s3:
+      endpoint: http://192.168.1.200:9000
+      bucketName: "gallery"
+      region:
+    credentials:
+      accessKey: steve
+      secretKey: password

@@ -5,31 +5,207 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1fe2e0e-2970-414d-af16-99a197380ac4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ci-deploy.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/_template__of_JUnit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/AwsAuthenticationContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/S3Configuration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequestBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadedPhoto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadedPhotoBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/s3/S3ConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/S3ConfigurationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResourceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "/Users/steve/dev/youtube/backend/GalleryManagementService",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.steve.gallery.gallerymanagementservice.domain" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.steve.gallery.gallerymanagementservice.adapter.s3" />
+      <recent name="com.steve.gallery.gallerymanagementservice.adapter.rest.admin" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.All in GalleryManagementService">
+    <configuration name="All in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea -Dspring.profiles.active=test" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhotoManagementResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoManagementResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PhotoUploadRequestFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="S3UploadResourceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.adapter.s3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.s3" />
+      <option name="MAIN_CLASS_NAME" value="com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResourceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.steve.gallery.gallerymanagementservice in GalleryManagementService" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GalleryManagementService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.steve.gallery.gallerymanagementservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.steve.gallery.gallerymanagementservice" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GalleryManagementService" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="GalleryManagementService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.steve.gallery.gallerymanagementservice.GalleryManagementService" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="GalleryManagementService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.All in GalleryManagementService" />
+      <item itemvalue="JUnit.PhotoManagementResourceTest" />
+      <item itemvalue="JUnit.PhotoUploadRequestFactoryTest" />
+      <item itemvalue="JUnit.S3UploadResourceTest" />
+      <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
+      <item itemvalue="Spring Boot.GalleryManagementService" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in GalleryManagementService" />
+        <item itemvalue="JUnit.S3UploadResourceTest" />
+        <item itemvalue="JUnit.PhotoUploadRequestFactoryTest" />
+        <item itemvalue="JUnit.PhotoManagementResourceTest" />
+        <item itemvalue="JUnit.com.steve.gallery.gallerymanagementservice in GalleryManagementService" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:com.amazonaws:aws-java-sdk-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:com.amazonaws:aws-java-sdk-s3" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

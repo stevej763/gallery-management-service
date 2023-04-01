@@ -22,7 +22,12 @@ public class PhotoFactoryTest {
         PhotoFactory underTest = new PhotoFactory();
 
         Photo aPhoto = createAPhoto();
-        PhotoUploadRequest photoUploadRequest = new PhotoUploadRequest(TITLE, DESCRIPTION, TAGS, CATEGORIES);
+        PhotoUploadRequest photoUploadRequest = new PhotoUploadRequestBuilder()
+                .withTitle(TITLE)
+                .withDescription(DESCRIPTION)
+                .withTags(TAGS)
+                .withCategories(CATEGORIES)
+                .build();
 
         Photo result = underTest.convert(photoUploadRequest);
 

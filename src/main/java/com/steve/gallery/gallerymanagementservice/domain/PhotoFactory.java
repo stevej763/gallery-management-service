@@ -12,4 +12,15 @@ public class PhotoFactory {
                 .withCategories(photoUploadRequest.getCategories())
                 .build();
     }
+
+    public Photo convert(UploadedPhoto upload) {
+        return new PhotoBuilder()
+                .withPhotoId(UUID.randomUUID())
+                .withTitle(upload.getTitle())
+                .withDescription(upload.getDescription())
+                .withTags(upload.getTags())
+                .withCategories(upload.getCategories())
+                .withUploadId(upload.getUploadId())
+                .build();
+    }
 }
