@@ -1,0 +1,22 @@
+server:
+  port: ${SERVER_PORT}
+
+spring:
+  application:
+    name: gallery-management-service
+  data:
+    mongodb:
+      applicationName: gallery-management-service
+      database: ${DATABASE_NAME}
+      host: ${MONGO_HOST}
+      port: ${MONGO_PORT}
+      requiresAuth: ${MONGO_REQUIRES_AUTH}
+      username: ${MONGO_USER}
+      password: ${MONGO_PASSWORD}
+      authenticationDatabase: ${MONGO_AUTH_DB}
+  mvc:
+    servlet:
+      path: /api
+
+s3:
+  baseUrl: ${S3_BASE_URL}
