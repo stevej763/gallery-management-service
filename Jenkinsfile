@@ -36,5 +36,19 @@ pipeline {
             }
         }
 
+        stage('deploy to test') {
+            environment {
+                SSH_CREDS = credentials('ssh-creds')
+            }
+            steps {
+                sshagent(credentials: ['ssh-creds']) {
+                    sh "echo pwd"
+                    sh """
+                        ssh steve@192.168.1.200 "docker pull steve763/gallery-manager:0.${env.BUILD_ID}"
+                     """
+                }
+            }
+        }
+
     }
 }
