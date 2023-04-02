@@ -10,5 +10,6 @@ spring:
       scheme: http
       host: 192.168.1.200
       port: 8250
+      enabled: true
   config:
     import: vault://
