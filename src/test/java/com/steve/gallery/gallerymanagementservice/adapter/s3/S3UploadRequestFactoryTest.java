@@ -1,19 +1,18 @@
 package com.steve.gallery.gallerymanagementservice.adapter.s3;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import org.hamcrest.core.Is;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
 
-import java.io.*;
-import java.util.UUID;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder.aPhotoUploadRequest;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.notNullValue;
-import static org.hamcrest.core.Is.*;
+import static org.hamcrest.core.Is.is;
 
 public class S3UploadRequestFactoryTest {
 

@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1fe2e0e-2970-414d-af16-99a197380ac4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
