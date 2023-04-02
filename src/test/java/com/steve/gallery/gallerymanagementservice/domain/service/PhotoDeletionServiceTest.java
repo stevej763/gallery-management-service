@@ -14,11 +14,10 @@ public class PhotoDeletionServiceTest {
 
     private final PhotoRepository photoRepository = mock(PhotoRepository.class);
     private final DeletionResource deletionResource = mock(DeletionResource.class);
+    private final PhotoDeletionService underTest = new PhotoDeletionService(photoRepository, deletionResource);
 
     @Test
     public void shouldDeletePhoto() {
-        PhotoDeletionService underTest = new PhotoDeletionService(photoRepository, deletionResource);
-
         UUID photoId = UUID.randomUUID();
         UUID uploadId = UUID.randomUUID();
         Photo photo = aPhoto()
@@ -38,9 +37,20 @@ public class PhotoDeletionServiceTest {
     }
 
     @Test
-    public void shouldReturnResponseWhenErrorDeletingRecordFromDatabase() {
-        PhotoDeletionService underTest = new PhotoDeletionService(photoRepository, deletionResource);
+    public void shouldReturnErrorWhenPhotoDoesNotExist() {
+        UUID photoId = UUID.randomUUID();
 
+        when(photoRepository.findById(photoId)).thenReturn(null);
+        PhotoDeletionResponse result = underTest.deletePhoto(photoId);
+
+        PhotoDeletionResponse expected = new PhotoDeletionResponse(photoId, false, false);
+        verify(photoRepository, never()).delete(photoId);
+        verifyNoInteractions(deletionResource);
+        assertThat(result, is(expected));
+    }
+
+    @Test
+    public void shouldReturnResponseWhenErrorDeletingRecordFromDatabase() {
         UUID photoId = UUID.randomUUID();
         UUID uploadId = UUID.randomUUID();
         Photo photo = aPhoto()
@@ -61,8 +71,6 @@ public class PhotoDeletionServiceTest {
 
     @Test
     public void shouldReturnResponseWhenErrorDeletingFile() {
-        PhotoDeletionService underTest = new PhotoDeletionService(photoRepository, deletionResource);
-
         UUID photoId = UUID.randomUUID();
         UUID uploadId = UUID.randomUUID();
         Photo photo = aPhoto()
@@ -80,5 +88,4 @@ public class PhotoDeletionServiceTest {
         verify(deletionResource).deleteFile(uploadId);
         assertThat(result, is(expected));
     }
-
 }

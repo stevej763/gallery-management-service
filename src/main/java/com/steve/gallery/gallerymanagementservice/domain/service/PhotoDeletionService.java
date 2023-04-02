@@ -19,6 +19,9 @@ public class PhotoDeletionService {
 
     public PhotoDeletionResponse deletePhoto(UUID photoId) {
         Photo photo = photoRepository.findById(photoId);
+        if (photo == null) {
+            return new PhotoDeletionResponse(photoId, false, false);
+        }
         boolean recordDeleted = photoRepository.delete(photoId);
         boolean fileDeleted = deletionResource.deleteFile(photo.getUploadId());
         return new PhotoDeletionResponse(photoId, recordDeleted, fileDeleted);
