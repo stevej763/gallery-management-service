@@ -10,6 +10,7 @@ import com.steve.gallery.gallerymanagementservice.domain.UploadedPhotoBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.UUID;
 
@@ -19,23 +20,35 @@ public class S3UploadResource implements UploadResource {
 
     private final AmazonS3 s3Client;
     private final String bucketName;
+    private final S3UploadRequestFactory s3UploadRequestFactory;
 
-    public S3UploadResource(AmazonS3 s3Client, String bucketName) {
+    public S3UploadResource(AmazonS3 s3Client, String bucketName, S3UploadRequestFactory s3UploadRequestFactory) {
         this.s3Client = s3Client;
         this.bucketName = bucketName;
+        this.s3UploadRequestFactory = s3UploadRequestFactory;
     }
 
     @Override
     public UploadedPhoto upload(PhotoUploadRequest photoUploadRequest) {
-        UUID uploadId = UUID.randomUUID();
-        PutObjectRequest putObjectRequest = new PutObjectRequest(bucketName, uploadId.toString(), photoUploadRequest.getPhoto());
-        PutObjectResult putObjectResult = s3Client.putObject(putObjectRequest);
-        URL fileUploadUrl = s3Client.getUrl(bucketName, uploadId.toString());
+        try {
+            S3UploadRequest s3UploadRequest = s3UploadRequestFactory.create(bucketName, photoUploadRequest);
+            String uploadIdAsString = s3UploadRequest.getUploadIdAsString();
+            PutObjectRequest putObjectRequest = s3UploadRequest.getPutObjectRequest();
 
-        LOGGER.info("photo uploaded result={} url={} uploadId={}", putObjectResult, fileUploadUrl, uploadId);
+            PutObjectResult putObjectResult = s3Client.putObject(putObjectRequest);
+            URL fileUploadUrl = s3Client.getUrl(bucketName, uploadIdAsString);
 
+            LOGGER.info("photo uploaded result={} url={} uploadId={}", putObjectResult, fileUploadUrl, uploadIdAsString);
+            return createUploadedPhoto(photoUploadRequest, s3UploadRequest);
+        } catch (Exception e) {
+            LOGGER.error("Failed to upload", e);
+            throw new S3FileUploadException("File failed preparation for upload, or upload failed", e);
+        }
+    }
+
+    private UploadedPhoto createUploadedPhoto(PhotoUploadRequest photoUploadRequest, S3UploadRequest s3UploadRequest) {
         return new UploadedPhotoBuilder()
-                .withUploadId(uploadId)
+                .withUploadId(s3UploadRequest.getUploadId())
                 .withTitle(photoUploadRequest.getTitle())
                 .withDescription(photoUploadRequest.getDescription())
                 .withTags(photoUploadRequest.getTags())

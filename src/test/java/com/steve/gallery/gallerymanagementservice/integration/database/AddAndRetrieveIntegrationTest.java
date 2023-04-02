@@ -5,6 +5,7 @@ import com.amazonaws.services.s3.model.DeleteBucketRequest;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
 import com.steve.gallery.gallerymanagementservice.domain.*;
 import org.junit.jupiter.api.AfterEach;
@@ -16,7 +17,6 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -65,11 +65,12 @@ public class AddAndRetrieveIntegrationTest {
         fileOutputStream.close();
         photo.deleteOnExit();
 
+        S3UploadRequestFactory s3UploadRequestFactory = new S3UploadRequestFactory();
         PhotoCreationService photoCreationService = new PhotoCreationService(
                 photoRepository,
                 new PhotoFactory(),
                 new PhotoDtoFactory("baseUrl"),
-                new S3UploadResource(s3Client, BUCKET_NAME));
+                new S3UploadResource(s3Client, BUCKET_NAME, s3UploadRequestFactory));
 
         String title = "title";
         String description = "description";

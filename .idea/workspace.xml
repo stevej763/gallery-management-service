@@ -5,34 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1fe2e0e-2970-414d-af16-99a197380ac4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/_template__of_JUnit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/AwsAuthenticationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/S3Configuration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequestBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadedPhoto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadedPhotoBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactoryTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3FileUploadException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequestFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequestFactoryTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoUploadRequestFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/s3/S3ConfigurationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/aws/S3ConfigurationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/PhotoUploadRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/rest/admin/PhotoManagementResourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoCreationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/domain/PhotoFactoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,6 +50,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.steve.gallery.gallerymanagementservice.adapter.s3" />
       <recent name="com.steve.gallery.gallerymanagementservice.domain" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
