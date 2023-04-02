@@ -5,16 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1fe2e0e-2970-414d-af16-99a197380ac4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3FileUploadException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequestFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadRequestFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/configuration/ResourceConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/steve/gallery/gallerymanagementservice/domain/UploadResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/adapter/s3/S3UploadResourceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/database/AddAndRetrieveIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
