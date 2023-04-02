@@ -38,4 +38,10 @@ public class MongoPhotoRepository implements PhotoRepository {
     public boolean delete(UUID photoId) {
         return photoDao.delete(photoId);
     }
+
+    @Override
+    public Photo updateTitle(Photo photo) {
+        photoDao.updateFieldForId(photo.getPhotoId(), "title", photo.getTitle());
+        return photoDao.findPhotoById(photo.getPhotoId());
+    }
 }

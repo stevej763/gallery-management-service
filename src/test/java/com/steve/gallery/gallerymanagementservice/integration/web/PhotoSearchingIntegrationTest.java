@@ -4,13 +4,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,24 +18,9 @@ import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PhotoSearchingIntegrationTest {
+public class PhotoSearchingIntegrationTest extends BaseWebIntegrationTest {
 
     public static final UUID PHOTO_ID = UUID.randomUUID();
-
-    @Value(value = "${local.server.port}")
-    private int port;
-
-    @Autowired
-    private MongoTemplate mongoTemplate;
-
-    @Autowired
-    private TestRestTemplate restTemplate;
-
-    @AfterEach
-    public void tearDown() {
-        mongoTemplate.getDb().drop();
-    }
 
     @Test
     public void searchByIdShouldReturnPhoto() {
@@ -114,9 +93,5 @@ public class PhotoSearchingIntegrationTest {
                 .withPhotoId(photoId)
                 .withTitle(photoTitle)
                 .build();
-    }
-
-    private String getGalleryBasePath() {
-        return "http://localhost:" + port + "/api/v1/gallery";
     }
 }

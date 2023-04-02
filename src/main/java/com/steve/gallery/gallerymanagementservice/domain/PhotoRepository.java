@@ -14,4 +14,6 @@ public interface PhotoRepository {
     Photo save(Photo photo);
 
     boolean delete(UUID photoId);
+
+    Photo updateTitle(Photo result);
 }

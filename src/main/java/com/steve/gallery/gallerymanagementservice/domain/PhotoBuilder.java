@@ -19,6 +19,19 @@ public class PhotoBuilder {
         return new PhotoBuilder();
     }
 
+    public PhotoBuilder() {
+    }
+
+    public PhotoBuilder(Photo photo) {
+        this.photoId = photo.getPhotoId();
+        this.title = photo.getTitle();
+        this.description = photo.getDescription();
+        this.tags = photo.getTags();
+        this.categories = photo.getCategories();
+        this.uploadId = photo.getUploadId();
+        this.createdAt = photo.getCreatedAt();
+    }
+
     public PhotoBuilder withPhotoId(UUID photoId) {
         this.photoId = photoId;
         return this;

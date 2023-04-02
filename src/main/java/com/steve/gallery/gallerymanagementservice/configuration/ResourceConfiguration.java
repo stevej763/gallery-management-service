@@ -5,16 +5,17 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Mongo
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.s3.S3DeletionResource;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
 import com.steve.gallery.gallerymanagementservice.configuration.aws.S3ConfigurationContext;
-import com.steve.gallery.gallerymanagementservice.adapter.s3.S3DeletionResource;
 import com.steve.gallery.gallerymanagementservice.domain.DeletionResource;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDetailsEditor;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,6 +50,11 @@ public class ResourceConfiguration {
     @Bean
     PhotoFinder photoFinder() {
         return new PhotoFinder(mongoPhotoRepository());
+    }
+
+    @Bean
+    PhotoDetailsEditor photoDetailsEditor() {
+        return new PhotoDetailsEditor(photoFinder(), mongoPhotoRepository());
     }
 
     @Bean

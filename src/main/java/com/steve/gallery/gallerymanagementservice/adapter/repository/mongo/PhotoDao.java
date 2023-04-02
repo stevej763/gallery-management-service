@@ -1,20 +1,19 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.client.result.UpdateResult;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.*;
-import static org.springframework.data.mongodb.core.query.Criteria.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
-import static org.springframework.data.mongodb.core.query.Query.*;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 public class PhotoDao {
@@ -45,8 +44,21 @@ public class PhotoDao {
     }
 
     public boolean delete(UUID photoId) {
-        Query record = query(where("photoId").is(photoId));
+        Query record = findByPhotoId(photoId);
         DeleteResult deleteResult = mongoTemplate.remove(record, Photo.class, PHOTO_COLLECTION);
         return deleteResult.getDeletedCount() == 1;
+    }
+
+    public boolean updateFieldForId(UUID photoId, String field, String value) {
+        Update update = new Update()
+                .set(field, value)
+                .set("modifiedAt", LocalDateTime.now());
+        Query query = findByPhotoId(photoId);
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, Photo.class, PHOTO_COLLECTION);
+        return updateResult.getModifiedCount() == 1;
+    }
+
+    private Query findByPhotoId(UUID photoId) {
+        return query(where("photoId").is(photoId));
     }
 }

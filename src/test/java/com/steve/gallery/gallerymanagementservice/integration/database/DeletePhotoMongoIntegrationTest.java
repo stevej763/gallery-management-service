@@ -1,7 +1,5 @@
 package com.steve.gallery.gallerymanagementservice.integration.database;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.DeleteBucketRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
@@ -11,12 +9,7 @@ import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.File;
@@ -30,16 +23,7 @@ import java.util.UUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@SpringBootTest
-public class DeletePhotoMongoIntegrationTest {
-
-    public static final String BUCKET_NAME = UUID.randomUUID().toString();
-
-    @Autowired
-    MongoTemplate mongoTemplate;
-
-    @Autowired
-    AmazonS3 s3Client;
+public class DeletePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     private static final UUID PHOTO_ID = UUID.randomUUID();
     private static final UUID UPLOAD_ID = UUID.randomUUID();
@@ -49,20 +33,6 @@ public class DeletePhotoMongoIntegrationTest {
             .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .build();
-
-    @BeforeEach
-    void setUp() {
-        s3Client.createBucket(BUCKET_NAME);
-    }
-
-    @AfterEach
-    void tearDown() {
-        mongoTemplate.getDb().drop();
-        s3Client.listObjects(BUCKET_NAME)
-                .getObjectSummaries()
-                .forEach(s3ObjectSummary -> s3Client.deleteObject(BUCKET_NAME, s3ObjectSummary.getKey()));
-        s3Client.deleteBucket(new DeleteBucketRequest(BUCKET_NAME));
-    }
 
     @Test
     public void canDeleteUploadedPhoto() throws IOException {
@@ -76,13 +46,10 @@ public class DeletePhotoMongoIntegrationTest {
     }
 
     private void prepareTestPhoto() throws IOException {
-        savePhotoToDatabase();
+        savePhotoToDatabase(PHOTO);
         createFileInBucket();
     }
 
-    private void savePhotoToDatabase() {
-        mongoTemplate.save(PHOTO, "photos");
-    }
 
     private void createFileInBucket() throws IOException {
         File file = aFile();

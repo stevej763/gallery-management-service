@@ -71,4 +71,16 @@ public class MongoPhotoRepositoryTest {
 
         assertThat(result, is(true));
     }
+
+    @Test
+    public void shouldUpdatePhotoTitle() {
+        UUID photoId = UUID.randomUUID();
+        Photo photo = new PhotoBuilder().withPhotoId(photoId).build();
+        when(photoDao.updateFieldForId(photo.getPhotoId(), "title", photo.getTitle())).thenReturn(true);
+        when(photoDao.findPhotoById(photoId)).thenReturn(photo);
+
+        Photo result = underTest.updateTitle(photo);
+
+        assertThat(result, is(photo));
+    }
 }

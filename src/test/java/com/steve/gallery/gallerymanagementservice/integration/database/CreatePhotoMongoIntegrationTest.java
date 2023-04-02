@@ -1,21 +1,17 @@
 package com.steve.gallery.gallerymanagementservice.integration.database;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.DeleteBucketRequest;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.File;
@@ -27,31 +23,7 @@ import java.util.UUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@SpringBootTest
-public class CreatePhotoMongoIntegrationTest {
-
-    public static final String BUCKET_NAME = UUID.randomUUID().toString();
-
-    @Autowired
-    MongoTemplate mongoTemplate;
-
-    @Autowired
-    AmazonS3 s3Client;
-
-    @AfterEach
-    void tearDown() {
-        mongoTemplate.getDb().drop();
-        s3Client.listObjects(BUCKET_NAME)
-                .getObjectSummaries()
-                .forEach(s3ObjectSummary -> s3Client.deleteObject(BUCKET_NAME, s3ObjectSummary.getKey()));
-        s3Client.deleteBucket(new DeleteBucketRequest(BUCKET_NAME));
-    }
-
-    @BeforeEach
-    void setUp() {
-        s3Client.createBucket(BUCKET_NAME);
-        mongoTemplate.getDb().drop();
-    }
+public class CreatePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     @Test
     public void canCreateAPhotoThenRetrieveItFromTheDatabase() throws IOException {

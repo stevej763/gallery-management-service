@@ -5,11 +5,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Photo
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
@@ -19,11 +15,7 @@ import java.util.UUID;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
-@SpringBootTest
-public class FindPhotoMongoIntegrationTest {
-
-    @Autowired
-    MongoTemplate testMongoTemplate;
+public class FindPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     private static final UUID PHOTO_ID = UUID.randomUUID();
     private static final Photo PHOTO = new PhotoBuilder()
@@ -32,15 +24,11 @@ public class FindPhotoMongoIntegrationTest {
             .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .build();
 
-    @AfterEach
-    void tearDown() {
-        testMongoTemplate.getDb().drop();
-    }
 
     @Test
     public void canReturnAListOfPhotos() {
-        addPhotosToDb();
-        PhotoDao photoDao = new PhotoDao(testMongoTemplate);
+        savePhotoToDatabase(PHOTO);
+        PhotoDao photoDao = new PhotoDao(mongoTemplate);
         MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
@@ -52,8 +40,8 @@ public class FindPhotoMongoIntegrationTest {
 
     @Test
     public void canReturnAPhotoById() {
-        addPhotosToDb();
-        PhotoDao photoDao = new PhotoDao(testMongoTemplate);
+        savePhotoToDatabase(PHOTO);
+        PhotoDao photoDao = new PhotoDao(mongoTemplate);
         MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
@@ -62,7 +50,4 @@ public class FindPhotoMongoIntegrationTest {
         assertThat(result, is(PHOTO));
     }
 
-    private void addPhotosToDb() {
-        testMongoTemplate.save(PHOTO, "photos");
-    }
 }
