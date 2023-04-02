@@ -40,7 +40,7 @@ public class ResourceConfiguration {
 
     @Bean
     PhotoDtoFactory photoDtoFactory() {
-        return new PhotoDtoFactory(s3Configuration.getEndpoint());
+        return new PhotoDtoFactory(s3Configuration.getEndpoint() + "/" + s3Configuration.getBucketName());
     }
 
     @Bean
