@@ -4,12 +4,12 @@ spring:
       kv:
         default-context:
         profile-separator: /
-        backend: gallery
+        backend: ${VAULT_BACKEND}
         enabled: true
-      token: password
-      scheme: http
-      host: 192.168.1.200
-      port: 8250
+      token: ${VAULT_TOKEN}
+      scheme: ${VAULT_HTTP_SCHEME}
+      host: ${VAULT_HOST}
+      port: ${VAULT_PORT}
       enabled: true
   config:
     import: vault://
