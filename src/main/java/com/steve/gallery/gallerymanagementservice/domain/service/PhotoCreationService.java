@@ -2,8 +2,12 @@ package com.steve.gallery.gallerymanagementservice.domain.service;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.domain.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PhotoCreationService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhotoCreationService.class);
 
     private final PhotoRepository photoRepository;
     private final PhotoFactory photoFactory;
@@ -25,6 +29,8 @@ public class PhotoCreationService {
         UploadedPhoto upload = uploadResource.upload(photoUploadRequest);
         Photo photo = photoFactory.convert(upload);
         Photo savedPhoto = photoRepository.save(photo);
-        return photoDtoFactory.convert(savedPhoto);
+        PhotoDto photoDto = photoDtoFactory.convert(savedPhoto);
+        LOGGER.info("photo creation request successful photoId={} uploadId={}", photoDto.getPhotoId(), photoDto.getUploadId());
+        return photoDto;
     }
 }

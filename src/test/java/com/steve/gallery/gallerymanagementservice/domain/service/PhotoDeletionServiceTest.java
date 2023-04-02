@@ -61,6 +61,7 @@ public class PhotoDeletionServiceTest {
         when(photoRepository.findById(photoId)).thenReturn(photo).thenReturn(photo);
         when(photoRepository.delete(photoId)).thenReturn(false);
         when(deletionResource.deleteFile(uploadId)).thenReturn(true);
+
         PhotoDeletionResponse result = underTest.deletePhoto(photoId);
 
         PhotoDeletionResponse expected = new PhotoDeletionResponse(photoId, false, true);

@@ -1,8 +1,8 @@
 package com.steve.gallery.gallerymanagementservice.adapter.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectResult;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import com.steve.gallery.gallerymanagementservice.domain.UploadResource;
 import com.steve.gallery.gallerymanagementservice.domain.UploadedPhoto;
@@ -10,9 +10,7 @@ import com.steve.gallery.gallerymanagementservice.domain.UploadedPhotoBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileNotFoundException;
 import java.net.URL;
-import java.util.UUID;
 
 public class S3UploadResource implements UploadResource {
 
@@ -35,15 +33,23 @@ public class S3UploadResource implements UploadResource {
             String uploadIdAsString = s3UploadRequest.getUploadIdAsString();
             PutObjectRequest putObjectRequest = s3UploadRequest.getPutObjectRequest();
 
-            PutObjectResult putObjectResult = s3Client.putObject(putObjectRequest);
+            s3Client.putObject(putObjectRequest);
             URL fileUploadUrl = s3Client.getUrl(bucketName, uploadIdAsString);
 
-            LOGGER.info("photo uploaded result={} url={} uploadId={}", putObjectResult, fileUploadUrl, uploadIdAsString);
+            ObjectMetadata resultMetadata = putObjectRequest.getMetadata();
+            LOGGER.info("photo upload successful url={} uploadId={} contentLength={} contentType={}",
+                        fileUploadUrl, uploadIdAsString, resultMetadata.getContentLength(), resultMetadata.getContentType());
+            deleteLocalCopyOfFile(photoUploadRequest);
             return createUploadedPhoto(photoUploadRequest, s3UploadRequest);
         } catch (Exception e) {
             LOGGER.error("Failed to upload", e);
             throw new S3FileUploadException("File failed preparation for upload, or upload failed", e);
         }
+    }
+
+    private void deleteLocalCopyOfFile(PhotoUploadRequest photoUploadRequest) {
+        boolean deleted = photoUploadRequest.getPhoto().delete();
+        LOGGER.info("deleted local copy of photo success={}", deleted);
     }
 
     private UploadedPhoto createUploadedPhoto(PhotoUploadRequest photoUploadRequest, S3UploadRequest s3UploadRequest) {

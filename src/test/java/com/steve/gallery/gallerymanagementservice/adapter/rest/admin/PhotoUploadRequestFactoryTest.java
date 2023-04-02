@@ -5,20 +5,19 @@ import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuild
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PhotoUploadRequestFactoryTest {
 
+    private final PhotoUploadRequestFactory underTest = new PhotoUploadRequestFactory();
+
     @Test
     public void shouldConvertToAPhotoUploadRequest() throws IOException {
-        PhotoUploadRequestFactory underTest = new PhotoUploadRequestFactory();
-
         MockMultipartFile uploadedFile = new MockMultipartFile("test", "originalFileName", "jpeg", "content".getBytes());
         String title = "test";
         String description = "description";
@@ -36,6 +35,18 @@ public class PhotoUploadRequestFactoryTest {
                 .withPhoto(photo)
                 .build();
         assertThat(result, is(expected));
+    }
+
+    @Test
+    public void shouldThrowWhenOriginalFileNameIsNull() {
+        String title = "test";
+        MockMultipartFile uploadedFile = new MockMultipartFile(title, title.getBytes());
+        String description = "description";
+        List<String> tags = List.of("tag");
+        List<String> categories = List.of("category");
+        PhotoUploadMetadataDto photoUploadMetadataDto = new PhotoUploadMetadataDto(title, description, tags, categories);
+
+        assertThrows(IOException.class, () -> underTest.createPhotoUploadRequest(uploadedFile, photoUploadMetadataDto));
     }
 
     private File createFileFrom(MockMultipartFile uploadedFile) throws IOException {

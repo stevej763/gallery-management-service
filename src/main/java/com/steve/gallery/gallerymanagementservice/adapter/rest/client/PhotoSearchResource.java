@@ -19,7 +19,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping(value = "/v1/gallery", produces = APPLICATION_JSON_VALUE, consumes = ALL_VALUE)
 public class PhotoSearchResource {
 
-    Logger LOGGER = LoggerFactory.getLogger(PhotoSearchResource.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(PhotoSearchResource.class);
 
     private final PhotoFinder photoFinder;
     private final PhotoDtoFactory photoDtoFactory;
