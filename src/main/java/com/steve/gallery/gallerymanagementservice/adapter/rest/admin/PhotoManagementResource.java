@@ -1,19 +1,22 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoDeletionResponseDto.fileDeletionFailed;
+import static com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoDeletionResponseDto.recordDeletionFailed;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
@@ -25,10 +28,15 @@ public class PhotoManagementResource {
 
     private final PhotoCreationService photoCreationService;
     private final PhotoUploadRequestFactory photoUploadRequestFactory;
+    private final PhotoDeletionService photoDeletionService;
 
-    public PhotoManagementResource(PhotoCreationService photoCreationService, PhotoUploadRequestFactory photoUploadRequestFactory) {
+    public PhotoManagementResource(
+            PhotoCreationService photoCreationService,
+            PhotoUploadRequestFactory photoUploadRequestFactory,
+            PhotoDeletionService photoDeletionService) {
         this.photoCreationService = photoCreationService;
         this.photoUploadRequestFactory = photoUploadRequestFactory;
+        this.photoDeletionService = photoDeletionService;
     }
 
     @PostMapping(value = "/upload", consumes = MULTIPART_FORM_DATA_VALUE)
@@ -41,5 +49,20 @@ public class PhotoManagementResource {
             LOGGER.error("error reading uploaded file", e);
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @DeleteMapping(value = "/delete/{photoId}", consumes = MediaType.ALL_VALUE, produces = APPLICATION_JSON_VALUE)
+    public ResponseEntity<PhotoDeletionResponseDto> delete(@PathVariable("photoId") UUID photoId) {
+        PhotoDeletionResponse photoDeletionResponse = photoDeletionService.deletePhoto(photoId);
+        if (photoDeletionResponse.totalFailure()) {
+            return ResponseEntity.ok(new PhotoDeletionResponseDto(false, "failed to delete record and file"));
+        }
+        if (!photoDeletionResponse.isFileDeleted()) {
+            return ResponseEntity.ok(fileDeletionFailed());
+        }
+        if (!photoDeletionResponse.isRecordDeleted()) {
+            return ResponseEntity.ok(recordDeletionFailed());
+        }
+        return ResponseEntity.ok(new PhotoDeletionResponseDto(photoDeletionResponse.isSuccess()));
     }
 }

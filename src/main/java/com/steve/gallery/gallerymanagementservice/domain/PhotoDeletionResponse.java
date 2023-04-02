@@ -31,6 +31,10 @@ public class PhotoDeletionResponse {
         return fileDeleted;
     }
 
+    public boolean isSuccess() {
+        return recordDeleted && fileDeleted;
+    }
+
     @Override
     public int hashCode() {
         return reflectionHashCode(this);
@@ -44,5 +48,9 @@ public class PhotoDeletionResponse {
     @Override
     public String toString() {
         return reflectionToString(this, SHORT_PREFIX_STYLE);
+    }
+
+    public boolean totalFailure() {
+        return !recordDeleted && !fileDeleted;
     }
 }

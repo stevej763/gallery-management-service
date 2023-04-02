@@ -1,7 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.integration.web;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.DeleteBucketRequest;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,13 +22,7 @@ import org.springframework.util.MultiValueMap;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder.aPhotoDto;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.Is.isA;
@@ -68,32 +61,39 @@ public class PhotoUploadIntegrationTest {
 
     @Test
     public void canUploadANewPhoto() throws IOException {
-        MockMultipartFile uploadedFile = new MockMultipartFile("test", "originalFileName", "jpeg", "content".getBytes());
-
-        File photo = new File(uploadedFile.getOriginalFilename());
-        FileOutputStream fileOutputStream = new FileOutputStream(photo);
-        fileOutputStream.write(uploadedFile.getBytes());
-        fileOutputStream.close();
-        photo.deleteOnExit();
-
         String photoTitle = "title";
-        String photoDescription = "description";
+        File photo = aFile();
 
-        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
-        body.add("file", new FileSystemResource(photo));
-        body.add("title", photoTitle);
-        body.add("description", photoDescription);
-        body.add("tags", "tag1, tag2, tag3");
-        body.add("categories", "category1, category2");
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MULTIPART_FORM_DATA);
-        HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<>(body, headers);
+        HttpEntity<MultiValueMap<String, Object>> request = createRequest(photo, photoTitle);
 
         ResponseEntity<PhotoDto> response = restTemplate.exchange(getAdminBasePath() + "/upload", POST, request, PhotoDto.class);
+
+        photo.deleteOnExit();
 
         assertThat(response.getBody(), isA(PhotoDto.class));
         assertThat(response.getBody().getTitle(), is("title"));
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
+    }
+
+    private HttpEntity<MultiValueMap<String, Object>> createRequest(File photo, String photoTitle) {
+        MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
+        body.add("file", new FileSystemResource(photo));
+        body.add("title", photoTitle);
+        body.add("description", "description");
+        body.add("tags", "tag1, tag2, tag3");
+        body.add("categories", "category1, category2");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MULTIPART_FORM_DATA);
+        return new HttpEntity<>(body, headers);
+    }
+
+    private File aFile() throws IOException {
+        MockMultipartFile uploadedFile = new MockMultipartFile("test", "originalFileName", "jpeg", "content".getBytes());
+        File photo = new File(uploadedFile.getOriginalFilename());
+        FileOutputStream fileOutputStream = new FileOutputStream(photo);
+        fileOutputStream.write(uploadedFile.getBytes());
+        fileOutputStream.close();
+        return photo;
     }
 
     private String getAdminBasePath() {
