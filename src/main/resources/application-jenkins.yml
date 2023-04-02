@@ -1,33 +1,14 @@
-server:
-  port: 80
-
 spring:
-  application:
-    name: gallery-management-service
-  data:
-    mongodb:
-      applicationName: gallery-management-service-ci
-      database: gallery-management-ci
+  cloud:
+    vault:
+      kv:
+        default-context:
+        profile-separator: /
+        backend: gallery
+        enabled: true
+      token: password
+      scheme: http
       host: 192.168.1.200
-      port: 27017
-      requiresAuth: true
-      username: steve
-      password: password
-      authenticationDatabase: admin
-  mvc:
-    servlet:
-      path: /api
-  servlet:
-    multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
-
-cloud:
-  aws:
-    s3:
-      endpoint: http://192.168.1.200:9000
-      bucketName: "gallery-jenkins"
-      region:
-    credentials:
-      accessKey: steve
-      secretKey: password
+      port: 8250
+  config:
+    import: vault://

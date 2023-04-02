@@ -1,5 +1,5 @@
 server:
-  port: 8101
+  port: 8100
 
 spring:
   application:
@@ -11,9 +11,6 @@ spring:
       host: localhost
       port: 27017
       requiresAuth: false
-      username:
-      password:
-      authenticationDatabase:
   mvc:
     servlet:
       path: /api
