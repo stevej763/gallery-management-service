@@ -28,7 +28,6 @@ import static org.hamcrest.core.Is.is;
 public class PhotoSearchingIntegrationTest {
 
     public static final UUID PHOTO_ID = UUID.randomUUID();
-    public static final String PHOTO_TITLE = "title";
 
     @Value(value = "${local.server.port}")
     private int port;

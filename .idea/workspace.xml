@@ -8,7 +8,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-docker.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-jenkins.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoSearchingIntegrationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/steve/gallery/gallerymanagementservice/integration/web/PhotoUploadIntegrationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +31,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {

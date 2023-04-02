@@ -39,7 +39,7 @@ import static org.springframework.http.MediaType.MULTIPART_FORM_DATA;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PhotoUploadIntegrationTest {
 
-    public static String BUCKET_NAME = "gallery";
+    public static String BUCKET_NAME = "gallery-test";
 
     @Value(value = "${local.server.port}")
     private int port;
