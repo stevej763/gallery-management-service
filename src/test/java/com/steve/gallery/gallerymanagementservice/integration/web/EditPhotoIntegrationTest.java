@@ -46,7 +46,7 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
 
 
         String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/title";
-        TitleEditRequestDto request = new TitleEditRequestDto(PHOTO_ID, myNewTitle);
+        TitleEditRequestDto request = new TitleEditRequestDto(myNewTitle);
 
         ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);
 

@@ -12,6 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/v1/admin/edit")
 public class PhotoDetailsModificationResource {
@@ -25,16 +27,18 @@ public class PhotoDetailsModificationResource {
     }
 
     @PostMapping(value = "{photoId}/title", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PhotoDto> editTitle(@RequestBody TitleEditRequestDto titleEditRequestDto) {
-        TitleEditRequest titleEditRequest = new TitleEditRequest(titleEditRequestDto.getPhotoId(), titleEditRequestDto.getTitleChange());
+    public ResponseEntity<PhotoDto> editTitle(@PathVariable("photoId") UUID photoId,
+                                              @RequestBody TitleEditRequestDto titleEditRequestDto) {
+        TitleEditRequest titleEditRequest = new TitleEditRequest(photoId, titleEditRequestDto.getTitleChange());
         Photo photo = photoDetailsEditor.editTitle(titleEditRequest);
         PhotoDto photoDto = photoDtoFactory.convert(photo);
         return ResponseEntity.ok(photoDto);
     }
 
     @PostMapping(value = "{photoId}/description", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PhotoDto> editDescription(@RequestBody DescriptionEditRequestDto descriptionEditRequestDto) {
-        DescriptionEditRequest editRequest = new DescriptionEditRequest(descriptionEditRequestDto.getPhotoId(), descriptionEditRequestDto.getDescriptionChange());
+    public ResponseEntity<PhotoDto> editDescription(@PathVariable("photoId") UUID photoId,
+                                                    @RequestBody DescriptionEditRequestDto descriptionEditRequestDto) {
+        DescriptionEditRequest editRequest = new DescriptionEditRequest(photoId, descriptionEditRequestDto.getDescriptionChange());
         Photo photo = photoDetailsEditor.editDescription(editRequest);
         PhotoDto photoDto = photoDtoFactory.convert(photo);
         return ResponseEntity.ok(photoDto);

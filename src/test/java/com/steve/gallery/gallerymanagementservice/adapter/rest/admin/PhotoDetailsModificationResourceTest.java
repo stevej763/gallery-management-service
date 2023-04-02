@@ -30,7 +30,7 @@ public class PhotoDetailsModificationResourceTest {
         PhotoDetailsModificationResource underTest = new PhotoDetailsModificationResource(photoDetailsEditor, photoDtoFactory);
 
         UUID photoId = UUID.randomUUID();
-        TitleEditRequestDto titleEditRequestDto = new TitleEditRequestDto(photoId, "title");
+        TitleEditRequestDto titleEditRequestDto = new TitleEditRequestDto("title");
 
         PhotoDto aPhotoDto = aPhotoDto().build();
         Photo aPhoto = aPhoto().build();
@@ -38,7 +38,7 @@ public class PhotoDetailsModificationResourceTest {
         when(photoDetailsEditor.editTitle(titleEditRequest)).thenReturn(aPhoto);
         when(photoDtoFactory.convert(aPhoto)).thenReturn(aPhotoDto);
 
-        ResponseEntity<PhotoDto> result = underTest.editTitle(titleEditRequestDto);
+        ResponseEntity<PhotoDto> result = underTest.editTitle(photoId, titleEditRequestDto);
 
         assertThat(result, is(ResponseEntity.ok(aPhotoDto)));
     }
@@ -48,7 +48,7 @@ public class PhotoDetailsModificationResourceTest {
         PhotoDetailsModificationResource underTest = new PhotoDetailsModificationResource(photoDetailsEditor, photoDtoFactory);
 
         UUID photoId = UUID.randomUUID();
-        DescriptionEditRequestDto descriptionEditRequestDto = new DescriptionEditRequestDto(photoId, "description");
+        DescriptionEditRequestDto descriptionEditRequestDto = new DescriptionEditRequestDto("description");
 
         PhotoDto aPhotoDto = aPhotoDto().build();
         Photo aPhoto = aPhoto().build();
@@ -56,7 +56,7 @@ public class PhotoDetailsModificationResourceTest {
         when(photoDetailsEditor.editDescription(editRequest)).thenReturn(aPhoto);
         when(photoDtoFactory.convert(aPhoto)).thenReturn(aPhotoDto);
 
-        ResponseEntity<PhotoDto> result = underTest.editDescription(descriptionEditRequestDto);
+        ResponseEntity<PhotoDto> result = underTest.editDescription(photoId, descriptionEditRequestDto);
 
         assertThat(result, is(ResponseEntity.ok(aPhotoDto)));
     }
