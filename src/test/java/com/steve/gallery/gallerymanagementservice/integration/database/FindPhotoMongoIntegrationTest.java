@@ -1,9 +1,9 @@
 package com.steve.gallery.gallerymanagementservice.integration.database;
 
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 
@@ -18,6 +18,11 @@ import static org.hamcrest.core.Is.is;
 public class FindPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     private static final UUID PHOTO_ID = UUID.randomUUID();
+    private static final PhotoMetadata PHOTO_METADATA = new PhotoMetadataBuilder()
+            .withPhotoId(PHOTO_ID)
+            .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .build();
     private static final Photo PHOTO = new PhotoBuilder()
             .withPhotoId(PHOTO_ID)
             .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
@@ -27,9 +32,9 @@ public class FindPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     @Test
     public void canReturnAListOfPhotos() {
-        savePhotoToDatabase(PHOTO);
+        savePhotoToDatabase(PHOTO_METADATA);
         PhotoDao photoDao = new PhotoDao(mongoTemplate);
-        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
+        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao, new PhotoFactory(), new PhotoMetadataFactory());
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
         List<Photo> result = photoFinder.findAll();
@@ -40,9 +45,9 @@ public class FindPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
 
     @Test
     public void canReturnAPhotoById() {
-        savePhotoToDatabase(PHOTO);
+        savePhotoToDatabase(PHOTO_METADATA);
         PhotoDao photoDao = new PhotoDao(mongoTemplate);
-        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
+        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao, new PhotoFactory(), new PhotoMetadataFactory());
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
         Photo result = photoFinder.findPhotoById(PHOTO_ID);

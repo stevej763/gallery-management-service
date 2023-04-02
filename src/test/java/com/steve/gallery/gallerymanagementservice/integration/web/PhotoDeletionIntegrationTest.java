@@ -1,8 +1,8 @@
 package com.steve.gallery.gallerymanagementservice.integration.web;
 
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoDeletionResponseDto;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class PhotoDeletionIntegrationTest extends BaseWebIntegrationTest {
 
     private static final UUID PHOTO_ID = UUID.randomUUID();
     private static final UUID UPLOAD_ID = UUID.randomUUID();
-    private static final Photo PHOTO = new PhotoBuilder()
+    private static final PhotoMetadata PHOTO_METADATA = new PhotoMetadataBuilder()
             .withPhotoId(PHOTO_ID)
             .withUploadId(UPLOAD_ID)
             .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
@@ -39,7 +39,7 @@ public class PhotoDeletionIntegrationTest extends BaseWebIntegrationTest {
     }
 
     private void prepareTestPhoto() throws IOException {
-        savePhotoToDatabase(PHOTO);
+        savePhotoToDatabase(PHOTO_METADATA);
         createFileInBucket(UPLOAD_ID);
     }
 }

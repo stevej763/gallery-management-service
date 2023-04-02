@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
+package com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,22 +9,23 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class TitleEditRequestDto {
+public class DescriptionEditRequestDto {
 
     private final UUID photoId;
-    private final String title;
+    private final String descriptionChange;
 
-    public TitleEditRequestDto(@JsonProperty("photoId") UUID photoId, @JsonProperty("titleChange") String titleChange) {
+    public DescriptionEditRequestDto(@JsonProperty("photoId") UUID photoId,
+                                     @JsonProperty("descriptionChange") String descriptionChange) {
         this.photoId = photoId;
-        this.title = titleChange;
+        this.descriptionChange = descriptionChange;
     }
 
     public UUID getPhotoId() {
         return photoId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getDescriptionChange() {
+        return descriptionChange;
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.steve.gallery.gallerymanagementservice.integration.web;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +18,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
+
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao.PHOTO_COLLECTION;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class BaseWebIntegrationTest {
@@ -70,8 +72,8 @@ public abstract class BaseWebIntegrationTest {
         return photo;
     }
 
-    protected void savePhotoToDatabase(Photo photo) {
-        mongoTemplate.save(photo, "photos");
+    protected void savePhotoToDatabase(PhotoMetadata photoMetadata) {
+        mongoTemplate.save(photoMetadata, PHOTO_COLLECTION);
     }
 
     protected String getGalleryBasePath() {

@@ -1,11 +1,11 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
+import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
 import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
@@ -23,29 +23,42 @@ public class PhotoDetailsEditorTest {
         UUID photoId = UUID.randomUUID();
         PhotoDetailsEditor underTest = new PhotoDetailsEditor(photoFinder, photoRepository);
 
-        LocalDateTime createdAt = LocalDateTime.now();
-        LocalDateTime modifiedAt = LocalDateTime.now().minusDays(1);
+        Photo original = createAPhoto(photoId, "original", "test");
+        Photo updated = createAPhoto(photoId, "new title", "test");
 
-        Photo original = aPhoto()
-                .withPhotoId(photoId)
-                .withTitle("original")
-                .withCreatedAt(createdAt)
-                .withModifiedAt(createdAt)
-                .build();
-        Photo updated = aPhoto()
-                .withPhotoId(photoId)
-                .withTitle("new title")
-                .withCreatedAt(createdAt)
-                .withModifiedAt(modifiedAt)
-                .build();
-
+        TitleEditRequest editRequest = new TitleEditRequest(photoId, "new title");
         when(photoFinder.findPhotoById(photoId)).thenReturn(original);
-        when(photoRepository.updateTitle(any(Photo.class))).thenReturn(updated);
+        when(photoRepository.updateTitle(editRequest)).thenReturn(updated);
 
-        Photo result = underTest.editTitle(new TitleEditRequest(photoId, "new title"));
+        Photo result = underTest.editTitle(editRequest);
 
-        verify(photoRepository).updateTitle(any(Photo.class));
-        verify(photoRepository, never()).updateTitle(original);
+        verify(photoRepository).updateTitle(editRequest);
         assertThat(result, is(updated));
+    }
+
+    @Test
+    public void canEditPhotoDescription() {
+        UUID photoId = UUID.randomUUID();
+        PhotoDetailsEditor underTest = new PhotoDetailsEditor(photoFinder, photoRepository);
+
+        Photo original = createAPhoto(photoId, "original", "original");
+        Photo updated = createAPhoto(photoId, "original", "new description");
+
+        DescriptionEditRequest editRequest = new DescriptionEditRequest(photoId, "new description");
+        when(photoFinder.findPhotoById(photoId)).thenReturn(original);
+        when(photoRepository.updateDescription(editRequest)).thenReturn(updated);
+
+        Photo result = underTest.editDescription(editRequest);
+
+        verify(photoRepository).updateDescription(editRequest);
+        assertThat(result, is(updated));
+    }
+
+    private Photo createAPhoto(UUID photoId, String original, String description) {
+        return aPhoto()
+                .withPhotoId(photoId)
+                .withTitle(original)
+                .withDescription(description)
+                .build();
     }
 }

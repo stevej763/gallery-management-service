@@ -1,9 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
-import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +21,15 @@ public class PhotoDetailsEditor {
         Photo updatedPhoto = updatePhoto(titleEditRequest.getTitleChange(), originalPhoto);
         LOGGER.info("photo title updated photoId={} from={} to={}",
                     updatedPhoto.getPhotoId(), originalPhoto.getTitle(), updatedPhoto.getTitle());
-        return photoRepository.updateTitle(updatedPhoto);
+        return photoRepository.updateTitle(titleEditRequest);
+    }
+
+    public Photo editDescription(DescriptionEditRequest descriptionEditRequest) {
+        Photo originalPhoto = photoFinder.findPhotoById(descriptionEditRequest.getPhotoId());
+        Photo updatedPhoto = photoRepository.updateDescription(descriptionEditRequest);
+        LOGGER.info("photo description updated photoId={} from={} to={}",
+                    updatedPhoto.getPhotoId(), originalPhoto.getDescription(), updatedPhoto.getDescription());
+        return updatedPhoto;
     }
 
     private Photo updatePhoto(String modifiedTitle, Photo originalPhoto) {

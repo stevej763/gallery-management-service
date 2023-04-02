@@ -2,6 +2,9 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.DescriptionEditRequestDto;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TitleEditRequestDto;
+import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDetailsEditor;
@@ -23,7 +26,16 @@ public class PhotoDetailsModificationResource {
 
     @PostMapping(value = "{photoId}/title", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<PhotoDto> editTitle(@RequestBody TitleEditRequestDto titleEditRequestDto) {
-        Photo photo = photoDetailsEditor.editTitle(new TitleEditRequest(titleEditRequestDto.getPhotoId(), titleEditRequestDto.getTitle()));
+        TitleEditRequest titleEditRequest = new TitleEditRequest(titleEditRequestDto.getPhotoId(), titleEditRequestDto.getTitleChange());
+        Photo photo = photoDetailsEditor.editTitle(titleEditRequest);
+        PhotoDto photoDto = photoDtoFactory.convert(photo);
+        return ResponseEntity.ok(photoDto);
+    }
+
+    @PostMapping(value = "{photoId}/description", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PhotoDto> editDescription(@RequestBody DescriptionEditRequestDto descriptionEditRequestDto) {
+        DescriptionEditRequest editRequest = new DescriptionEditRequest(descriptionEditRequestDto.getPhotoId(), descriptionEditRequestDto.getDescriptionChange());
+        Photo photo = photoDetailsEditor.editDescription(editRequest);
         PhotoDto photoDto = photoDtoFactory.convert(photo);
         return ResponseEntity.ok(photoDto);
     }

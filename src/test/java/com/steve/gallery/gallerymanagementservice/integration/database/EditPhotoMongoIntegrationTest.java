@@ -2,7 +2,10 @@ package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataFactory;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDetailsEditor;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
@@ -11,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder.aPhotoMetadata;
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
 import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
@@ -25,7 +29,7 @@ public class EditPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
     @Test
     public void canEditPhotoTitle() {
         LocalDateTime originalTime = LocalDateTime.now().truncatedTo(SECONDS);
-        Photo originalRecord = aPhoto()
+        PhotoMetadata originalRecord = aPhotoMetadata()
                 .withPhotoId(PHOTO_ID)
                 .withTitle("originalTitle")
                 .withCreatedAt(originalTime)
@@ -33,7 +37,7 @@ public class EditPhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
                 .build();
         savePhotoToDatabase(originalRecord);
 
-        MongoPhotoRepository photoRepository = new MongoPhotoRepository(new PhotoDao(mongoTemplate));
+        MongoPhotoRepository photoRepository = new MongoPhotoRepository(new PhotoDao(mongoTemplate), new PhotoFactory(), new PhotoMetadataFactory());
         PhotoDetailsEditor photoDetailsEditor = new PhotoDetailsEditor(new PhotoFinder(photoRepository), photoRepository);
 
         String updatedTitle = "newTitle";

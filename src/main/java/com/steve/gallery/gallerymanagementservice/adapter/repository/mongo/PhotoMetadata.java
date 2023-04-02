@@ -1,4 +1,7 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,9 +12,20 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class Photo {
+public class PhotoMetadata {
 
+    public static final String PHOTO_ID = "photoId";
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String TAGS = "tags";
+    public static final String CATEGORIES = "categories";
+    public static final String UPLOAD_ID = "uploadId";
+    public static final String CREATED_AT = "createdAt";
+    public static final String MODIFIED_AT = "modifiedAt";
+
+    @Id
     private final UUID photoId;
+
     private final String title;
     private final String description;
     private final List<String> tags;
@@ -20,14 +34,14 @@ public class Photo {
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
 
-    public Photo(UUID photoId,
-                  String title,
-                 String description,
-                 List<String> tags,
-                 List<String> categories,
-                 UUID uploadId,
-                 LocalDateTime createdAt,
-                 LocalDateTime modifiedAt) {
+    public PhotoMetadata(@JsonProperty(PHOTO_ID) UUID photoId,
+                         @JsonProperty(TITLE) String title,
+                         @JsonProperty(DESCRIPTION) String description,
+                         @JsonProperty(TAGS) List<String> tags,
+                         @JsonProperty(CATEGORIES) List<String> categories,
+                         @JsonProperty(UPLOAD_ID) UUID uploadId,
+                         @JsonProperty(CREATED_AT) LocalDateTime createdAt,
+                         @JsonProperty(MODIFIED_AT) LocalDateTime modifiedAt) {
         this.photoId = photoId;
         this.title = title;
         this.description = description;

@@ -2,6 +2,7 @@ package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
@@ -28,7 +29,7 @@ public class CreatePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
     @Test
     public void canCreateAPhotoThenRetrieveItFromTheDatabase() throws IOException {
         PhotoDao photoDao = new PhotoDao(mongoTemplate);
-        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao);
+        MongoPhotoRepository photoRepository = new MongoPhotoRepository(photoDao, new PhotoFactory(), new PhotoMetadataFactory());
         PhotoFinder photoFinder = new PhotoFinder(photoRepository);
 
         MockMultipartFile uploadedFile = new MockMultipartFile("test", "originalFileName", "jpeg", "content".getBytes());

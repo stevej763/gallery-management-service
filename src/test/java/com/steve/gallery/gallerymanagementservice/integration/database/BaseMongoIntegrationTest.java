@@ -2,7 +2,7 @@ package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteBucketRequest;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +37,8 @@ public abstract class BaseMongoIntegrationTest {
         mongoTemplate.getDb().drop();
     }
 
-    protected void savePhotoToDatabase(Photo photo) {
-        mongoTemplate.save(photo, "photos");
+    protected void savePhotoToDatabase(PhotoMetadata photoMetadata) {
+        mongoTemplate.save(photoMetadata, "photoMetadata");
     }
 
 }

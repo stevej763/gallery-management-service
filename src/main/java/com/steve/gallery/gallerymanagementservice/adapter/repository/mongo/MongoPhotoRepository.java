@@ -1,37 +1,48 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.*;
 
 import java.util.List;
 import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.DESCRIPTION;
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.TITLE;
+
 public class MongoPhotoRepository implements PhotoRepository {
 
     private final PhotoDao photoDao;
+    private final PhotoFactory photoFactory;
+    private final PhotoMetadataFactory photoMetadataFactory;
 
-    public MongoPhotoRepository(PhotoDao photoDao) {
+    public MongoPhotoRepository(PhotoDao photoDao, PhotoFactory photoFactory, PhotoMetadataFactory photoMetadataFactory) {
         this.photoDao = photoDao;
+        this.photoFactory = photoFactory;
+        this.photoMetadataFactory = photoMetadataFactory;
     }
 
     @Override
     public List<Photo> findAll() {
-        return photoDao.findAllPhotos();
+        List<PhotoMetadata> allPhotos = photoDao.findAllPhotos();
+        return allPhotos.stream().map(photoFactory::convert).toList();
     }
 
     @Override
     public Photo findById(UUID photoId) {
-        return photoDao.findPhotoById(photoId);
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(photoId);
+        return photoFactory.convert(photoMetadata);
     }
 
     @Override
     public List<Photo> findByTitle(String title) {
-        return photoDao.findPhotoByTitle(title);
+        List<PhotoMetadata> photoByTitle = photoDao.findPhotoByTitle(title);
+        return photoByTitle.stream().map(photoFactory::convert).toList();
     }
 
     @Override
     public Photo save(Photo photo) {
-        return photoDao.save(photo);
+        PhotoMetadata photoMetadata = photoMetadataFactory.convert(photo);
+        PhotoMetadata savedPhoto = photoDao.save(photoMetadata);
+        return photoFactory.convert(savedPhoto);
     }
 
     @Override
@@ -40,8 +51,16 @@ public class MongoPhotoRepository implements PhotoRepository {
     }
 
     @Override
-    public Photo updateTitle(Photo photo) {
-        photoDao.updateFieldForId(photo.getPhotoId(), "title", photo.getTitle());
-        return photoDao.findPhotoById(photo.getPhotoId());
+    public Photo updateTitle(TitleEditRequest request) {
+        photoDao.updateFieldForId(request.getPhotoId(), TITLE, request.getTitleChange());
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
+        return photoFactory.convert(photoMetadata);
+    }
+
+    @Override
+    public Photo updateDescription(DescriptionEditRequest request) {
+        photoDao.updateFieldForId(request.getPhotoId(), DESCRIPTION, request.getDescriptionChange());
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
+        return photoFactory.convert(photoMetadata);
     }
 }

@@ -15,5 +15,7 @@ public interface PhotoRepository {
 
     boolean delete(UUID photoId);
 
-    Photo updateTitle(Photo result);
+    Photo updateTitle(TitleEditRequest result);
+
+    Photo updateDescription(DescriptionEditRequest photo);
 }

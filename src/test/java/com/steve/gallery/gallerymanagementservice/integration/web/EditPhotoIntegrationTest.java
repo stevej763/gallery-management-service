@@ -1,7 +1,10 @@
 package com.steve.gallery.gallerymanagementservice.integration.web;
 
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
-import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.TitleEditRequestDto;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TitleEditRequestDto;
+import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import org.junit.jupiter.api.Test;
@@ -28,10 +31,18 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
             .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .build();
 
+    private static final PhotoMetadata PHOTO_METADATA = new PhotoMetadataBuilder()
+            .withTitle(TITLE)
+            .withPhotoId(PHOTO_ID)
+            .withUploadId(UPLOAD_ID)
+            .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .build();
+
     @Test
     public void canEditTitle() {
         String myNewTitle = "my new title";
-        savePhotoToDatabase(PHOTO);
+        savePhotoToDatabase(PHOTO_METADATA);
 
 
         String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/title";
@@ -41,6 +52,22 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
 
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
         assertThat(response.getBody().getTitle(), is(myNewTitle));
+        assertThat(response.getBody().getPhotoId(), is(PHOTO_ID));
+    }
+
+    @Test
+    public void canEditDescription() {
+        String descriptionChange = "change";
+        savePhotoToDatabase(PHOTO_METADATA);
+
+
+        String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/description";
+        DescriptionEditRequest request = new DescriptionEditRequest(PHOTO_ID, descriptionChange);
+
+        ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);
+
+        assertThat(response.getStatusCode(), is(HttpStatus.OK));
+        assertThat(response.getBody().getDescription(), is(descriptionChange));
         assertThat(response.getBody().getPhotoId(), is(PHOTO_ID));
     }
 }

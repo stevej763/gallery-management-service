@@ -2,12 +2,12 @@ package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3DeletionResource;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
@@ -33,11 +33,17 @@ public class DeletePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
             .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
             .build();
+    private static final PhotoMetadata PHOTO_METADATA = new PhotoMetadataBuilder()
+            .withPhotoId(PHOTO_ID)
+            .withUploadId(UPLOAD_ID)
+            .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+            .build();
 
     @Test
     public void canDeleteUploadedPhoto() throws IOException {
         prepareTestPhoto();
-        MongoPhotoRepository mongoPhotoRepository = new MongoPhotoRepository(new PhotoDao(mongoTemplate));
+        MongoPhotoRepository mongoPhotoRepository = new MongoPhotoRepository(new PhotoDao(mongoTemplate), new PhotoFactory(), new PhotoMetadataFactory());
         S3DeletionResource deletionResource = new S3DeletionResource(s3Client, BUCKET_NAME);
         PhotoDeletionService photoDeletionService = new PhotoDeletionService(mongoPhotoRepository, deletionResource);
 
@@ -46,7 +52,7 @@ public class DeletePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
     }
 
     private void prepareTestPhoto() throws IOException {
-        savePhotoToDatabase(PHOTO);
+        savePhotoToDatabase(PHOTO_METADATA);
         createFileInBucket();
     }
 

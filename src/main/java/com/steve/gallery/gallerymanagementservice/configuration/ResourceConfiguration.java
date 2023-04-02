@@ -3,6 +3,7 @@ package com.steve.gallery.gallerymanagementservice.configuration;
 import com.amazonaws.services.s3.AmazonS3;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3DeletionResource;
@@ -59,9 +60,13 @@ public class ResourceConfiguration {
 
     @Bean
     PhotoCreationService photoCreationService() {
-        PhotoFactory photoFactory = new PhotoFactory();
         S3UploadResource uploadResource = new S3UploadResource(s3Client, s3Configuration.getBucketName(), new S3UploadRequestFactory());
-        return new PhotoCreationService(mongoPhotoRepository(), photoFactory, photoDtoFactory(), uploadResource);
+        return new PhotoCreationService(mongoPhotoRepository(), photoFactory(), photoDtoFactory(), uploadResource);
+    }
+
+    @Bean
+    PhotoFactory photoFactory() {
+        return new PhotoFactory();
     }
 
     @Bean
@@ -73,6 +78,6 @@ public class ResourceConfiguration {
     @Bean
     PhotoRepository mongoPhotoRepository() {
         PhotoDao photoDao = new PhotoDao(mongoTemplate);
-        return new MongoPhotoRepository(photoDao);
+        return new MongoPhotoRepository(photoDao, photoFactory(), new PhotoMetadataFactory());
     }
 }
