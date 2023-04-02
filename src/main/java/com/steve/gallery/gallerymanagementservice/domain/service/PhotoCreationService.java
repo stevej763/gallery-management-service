@@ -1,6 +1,7 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.service;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.domain.*;
 
 public class PhotoCreationService {
 

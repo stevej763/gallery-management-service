@@ -4,7 +4,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Mongo
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -5,7 +5,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 

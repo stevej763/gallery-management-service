@@ -1,5 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

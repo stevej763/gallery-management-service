@@ -61,4 +61,14 @@ public class MongoPhotoRepositoryTest {
 
         assertThat(result, is(photo));
     }
+
+    @Test
+    public void shouldDeletePhoto() {
+        UUID photoId = UUID.randomUUID();
+        when(photoDao.delete(photoId)).thenReturn(true);
+
+        boolean result = underTest.delete(photoId);
+
+        assertThat(result, is(true));
+    }
 }

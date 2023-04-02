@@ -3,7 +3,7 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.client;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFinder;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;

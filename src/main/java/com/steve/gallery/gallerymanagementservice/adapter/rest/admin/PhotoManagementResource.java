@@ -1,8 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
-import com.steve.gallery.gallerymanagementservice.adapter.rest.client.PhotoSearchResource;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

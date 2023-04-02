@@ -8,8 +8,7 @@ import org.springframework.cloud.vault.config.VaultAutoConfiguration;
 
 @SpringBootApplication(exclude = {
         MongoAutoConfiguration.class,
-        MongoDataAutoConfiguration.class,
-        VaultAutoConfiguration.class
+        MongoDataAutoConfiguration.class
 })
 public class GalleryManagementService {
 

@@ -12,4 +12,6 @@ public interface PhotoRepository {
     List<Photo> findByTitle(String title);
 
     Photo save(Photo photo);
+
+    boolean delete(UUID photoId);
 }

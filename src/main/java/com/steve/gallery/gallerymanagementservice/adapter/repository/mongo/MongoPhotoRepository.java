@@ -33,4 +33,9 @@ public class MongoPhotoRepository implements PhotoRepository {
     public Photo save(Photo photo) {
         return photoDao.save(photo);
     }
+
+    @Override
+    public boolean delete(UUID photoId) {
+        return photoDao.delete(photoId);
+    }
 }

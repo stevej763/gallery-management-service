@@ -1,6 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

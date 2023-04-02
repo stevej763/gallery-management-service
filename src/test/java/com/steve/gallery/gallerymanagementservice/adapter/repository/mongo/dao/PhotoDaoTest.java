@@ -4,6 +4,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Photo
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,10 +25,16 @@ public class PhotoDaoTest {
 
     @Autowired
     MongoTemplate mongoTemplate;
+    private PhotoDao underTest;
 
     @AfterEach
     void tearDown() {
         mongoTemplate.getDb().drop();
+    }
+
+    @BeforeEach
+    void setUp() {
+        underTest = new PhotoDao(mongoTemplate);
     }
 
     @Test
@@ -39,7 +46,6 @@ public class PhotoDaoTest {
         mongoTemplate.save(photo2, PHOTO_COLLECTION);
         mongoTemplate.save(photo3, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(mongoTemplate);
         List<Photo> result = underTest.findAllPhotos();
 
         List<Photo> expected = List.of(photo1, photo2, photo3);
@@ -63,7 +69,6 @@ public class PhotoDaoTest {
                 .build();
         mongoTemplate.save(photo, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(mongoTemplate);
         List<Photo> result = underTest.findPhotoByTitle(photoTitle);
 
         List<Photo> expected = List.of(photo);
@@ -80,7 +85,6 @@ public class PhotoDaoTest {
                 .build();
         mongoTemplate.save(photo, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(mongoTemplate);
         List<Photo> result = underTest.findPhotoByTitle("title");
 
         List<Photo> expected = List.of(photo);
@@ -97,18 +101,30 @@ public class PhotoDaoTest {
                 .build();
         mongoTemplate.save(photo, PHOTO_COLLECTION);
 
-        PhotoDao underTest = new PhotoDao(mongoTemplate);
         Photo result = underTest.findPhotoById(photoId);
         assertThat(result, is(photo));
     }
 
     @Test
-    public void savesPhoto() {
+    public void canSavePhoto() {
         UUID photoId = UUID.randomUUID();
         Photo photo = new PhotoBuilder().withPhotoId(photoId).build();
 
-        PhotoDao underTest = new PhotoDao(mongoTemplate);
         Photo result = underTest.save(photo);
         assertThat(result, is(photo));
+    }
+
+    @Test
+    public void canDeletePhoto() {
+        UUID photoId = UUID.randomUUID();
+        Photo photo = new PhotoBuilder()
+                .withPhotoId(photoId)
+                .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+                .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+                .build();
+        mongoTemplate.save(photo, PHOTO_COLLECTION);
+
+        boolean result = underTest.delete(photoId);
+        assertThat(result, is(true));
     }
 }

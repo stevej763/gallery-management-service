@@ -1,7 +1,10 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
+import com.mongodb.client.result.DeleteResult;
 import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.util.List;
@@ -9,7 +12,9 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 
 import static java.util.regex.Pattern.*;
+import static org.springframework.data.mongodb.core.query.Criteria.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Query.*;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 public class PhotoDao {
@@ -37,5 +42,11 @@ public class PhotoDao {
 
     public Photo save(Photo photo) {
         return mongoTemplate.save(photo, PHOTO_COLLECTION);
+    }
+
+    public boolean delete(UUID photoId) {
+        Query record = query(where("photoId").is(photoId));
+        DeleteResult deleteResult = mongoTemplate.remove(record, Photo.class, PHOTO_COLLECTION);
+        return deleteResult.getDeletedCount() == 1;
     }
 }

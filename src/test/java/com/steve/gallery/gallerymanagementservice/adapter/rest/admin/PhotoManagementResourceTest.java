@@ -1,7 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
 import org.junit.jupiter.api.Test;

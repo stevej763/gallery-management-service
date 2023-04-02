@@ -8,6 +8,8 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
 import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +28,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @SpringBootTest
-public class AddAndRetrieveIntegrationTest {
+public class CreatePhotoMongoIntegrationTest {
 
     public static final String BUCKET_NAME = UUID.randomUUID().toString();
 
