@@ -72,6 +72,23 @@ public class PhotoDetailsEditorTest {
     }
 
     @Test
+    public void doNotAttemptToAddTagIfItAlreadyExists() {
+        UUID photoId = UUID.randomUUID();
+        PhotoDetailsEditor underTest = new PhotoDetailsEditor(photoFinder, photoRepository);
+
+        String tag = "tag";
+        Photo original = createAPhoto(photoId, "original", "original", List.of(tag));
+
+        TagRequest editRequest = new TagRequest(photoId, tag);
+        when(photoFinder.findPhotoById(photoId)).thenReturn(original);
+
+        Photo result = underTest.addTag(editRequest);
+
+        verifyNoInteractions(photoRepository);
+        assertThat(result, is(original));
+    }
+
+    @Test
     public void canRemoveTagFromPhoto() {
         UUID photoId = UUID.randomUUID();
         PhotoDetailsEditor underTest = new PhotoDetailsEditor(photoFinder, photoRepository);
