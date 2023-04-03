@@ -24,6 +24,7 @@ public class PhotoDaoTest {
 
     private static final String PHOTO_TITLE = "photoTitle";
     private static final UUID PHOTO_ID = UUID.randomUUID();
+    public static final List<String> TAGS = List.of("string");
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -41,9 +42,9 @@ public class PhotoDaoTest {
 
     @Test
     public void retrievesAllPhotosFromPhotosCollection() {
-        PhotoMetadata photo1 = createPhotoMetadata(UUID.randomUUID(), "title1");
-        PhotoMetadata photo2 = createPhotoMetadata(UUID.randomUUID(), "title2");
-        PhotoMetadata photo3 = createPhotoMetadata(UUID.randomUUID(), "title3");
+        PhotoMetadata photo1 = createPhotoMetadata(UUID.randomUUID(), "title1", TAGS);
+        PhotoMetadata photo2 = createPhotoMetadata(UUID.randomUUID(), "title2", TAGS);
+        PhotoMetadata photo3 = createPhotoMetadata(UUID.randomUUID(), "title3", TAGS);
         mongoTemplate.save(photo1, PHOTO_COLLECTION);
         mongoTemplate.save(photo2, PHOTO_COLLECTION);
         mongoTemplate.save(photo3, PHOTO_COLLECTION);
@@ -68,7 +69,7 @@ public class PhotoDaoTest {
     @Test
     public void retrievesAllPhotosWithCaseInsensitivity() {
         String photoTitle = "TiTle";
-        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, photoTitle);
+        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, photoTitle, TAGS);
         mongoTemplate.save(photo, PHOTO_COLLECTION);
 
         List<PhotoMetadata> result = underTest.findPhotoByTitle("title");
@@ -88,7 +89,7 @@ public class PhotoDaoTest {
 
     @Test
     public void canSavePhoto() {
-        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE);
+        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE, TAGS);
 
         PhotoMetadata result = underTest.save(photo);
         assertThat(result, is(photo));
@@ -96,7 +97,7 @@ public class PhotoDaoTest {
 
     @Test
     public void canDeletePhoto() {
-        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE);
+        PhotoMetadata photo = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE, TAGS);
         mongoTemplate.save(photo, PHOTO_COLLECTION);
 
         boolean result = underTest.delete(PHOTO_ID);
@@ -105,22 +106,41 @@ public class PhotoDaoTest {
 
     @Test
     public void canUpdatePhoto() {
-        PhotoMetadata currentPhoto = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE);
+        PhotoMetadata currentPhoto = createPhotoMetadata(PHOTO_ID, PHOTO_TITLE, TAGS);
         mongoTemplate.save(currentPhoto, PHOTO_COLLECTION);
 
         boolean result = underTest.updateFieldForId(PHOTO_ID, "title", "updated value");
         assertThat(result, is(true));
     }
 
+    @Test
+    public void canPushValueIntoArray() {
+        PhotoMetadata currentPhoto = createPhotoMetadata();
+        mongoTemplate.save(currentPhoto);
+
+        boolean result = underTest.push(PHOTO_ID, PhotoMetadata.TAGS, "new tag");
+        assertThat(result, is(true));
+    }
+
+    @Test
+    public void canPullValueOutOfArray() {
+        PhotoMetadata currentPhoto = createPhotoMetadata();
+        mongoTemplate.save(currentPhoto);
+
+        boolean result = underTest.pull(PHOTO_ID, PhotoMetadata.TAGS, "new tag");
+        assertThat(result, is(true));
+    }
+
     private PhotoMetadata createPhotoMetadata() {
-        return createPhotoMetadata(PHOTO_ID, PHOTO_TITLE);
+        return createPhotoMetadata(PHOTO_ID, PHOTO_TITLE, TAGS);
     }
 
 
-    private PhotoMetadata createPhotoMetadata(UUID photoId, String photoTitle) {
+    private PhotoMetadata createPhotoMetadata(UUID photoId, String photoTitle, List<String> tags) {
         return new PhotoMetadataBuilder()
                 .withTitle(photoTitle)
                 .withPhotoId(photoId)
+                .withTags(tags)
                 .withCreatedAt(LocalDateTime.now().truncatedTo(SECONDS))
                 .withModifiedAt(LocalDateTime.now().truncatedTo(SECONDS))
                 .build();

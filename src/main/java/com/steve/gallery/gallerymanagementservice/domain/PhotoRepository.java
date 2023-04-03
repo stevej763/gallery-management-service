@@ -18,4 +18,8 @@ public interface PhotoRepository {
     Photo updateTitle(TitleEditRequest result);
 
     Photo updateDescription(DescriptionEditRequest photo);
+
+    Photo addTag(TagRequest tagRequest);
+
+    Photo removeTag(TagRequest tagRequest);
 }

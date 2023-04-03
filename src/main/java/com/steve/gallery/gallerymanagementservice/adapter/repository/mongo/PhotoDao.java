@@ -55,6 +55,24 @@ public class PhotoDao {
         return updateResult.getModifiedCount() == 1;
     }
 
+    public boolean push(UUID photoId, String field, String value) {
+        Update update = new Update()
+                .push(field, value)
+                .set(PhotoMetadata.MODIFIED_AT, LocalDateTime.now());
+        Query query = findByPhotoId(photoId);
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, PhotoMetadata.class, PHOTO_COLLECTION);
+        return updateResult.getModifiedCount() == 1;
+    }
+
+    public boolean pull(UUID photoId, String field, String value) {
+        Update update = new Update()
+                .pull(field, value)
+                .set(PhotoMetadata.MODIFIED_AT, LocalDateTime.now());
+        Query query = findByPhotoId(photoId);
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, PhotoMetadata.class, PHOTO_COLLECTION);
+        return updateResult.getModifiedCount() == 1;
+    }
+
     private Update createUpdateMap(String field, String value) {
         return new Update()
                 .set(field, value)

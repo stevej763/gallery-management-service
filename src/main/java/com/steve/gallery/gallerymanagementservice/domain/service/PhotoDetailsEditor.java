@@ -32,6 +32,29 @@ public class PhotoDetailsEditor {
         return updatedPhoto;
     }
 
+    public Photo addTag(TagRequest tagRequest) {
+        Photo originalPhoto = photoFinder.findPhotoById(tagRequest.getPhotoId());
+        Photo updatedPhoto = photoRepository.addTag(tagRequest);
+        LOGGER.info("photo tags updated photoId={} from={} to={}",
+                    updatedPhoto.getPhotoId(), originalPhoto.getTags(), updatedPhoto.getTags());
+        return updatedPhoto;
+    }
+
+    public Photo removeTag(TagRequest request) {
+        Photo originalPhoto = photoFinder.findPhotoById(request.getPhotoId());
+        boolean tagIsPresent = originalPhoto.getTags().contains(request.getTagName());
+        if (tagIsPresent) {
+            Photo updatedPhoto = photoRepository.removeTag(request);
+            LOGGER.info("photo tags updated photoId={} from={} to={}",
+                        updatedPhoto.getPhotoId(), originalPhoto.getTags(), updatedPhoto.getTags());
+            return updatedPhoto;
+        }
+
+        LOGGER.info("tag request ignored, no matching tag on photoId={} tagRequest={}",
+                    originalPhoto.getPhotoId(), request.getTagName());
+        return originalPhoto;
+    }
+
     private Photo updatePhoto(String modifiedTitle, Photo originalPhoto) {
         return new PhotoBuilder(originalPhoto)
                 .withTitle(modifiedTitle)

@@ -5,8 +5,7 @@ import com.steve.gallery.gallerymanagementservice.domain.*;
 import java.util.List;
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.DESCRIPTION;
-import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.TITLE;
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.*;
 
 public class MongoPhotoRepository implements PhotoRepository {
 
@@ -60,6 +59,20 @@ public class MongoPhotoRepository implements PhotoRepository {
     @Override
     public Photo updateDescription(DescriptionEditRequest request) {
         photoDao.updateFieldForId(request.getPhotoId(), DESCRIPTION, request.getDescriptionChange());
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
+        return photoFactory.convert(photoMetadata);
+    }
+
+    @Override
+    public Photo addTag(TagRequest request) {
+        photoDao.push(request.getPhotoId(), TAGS, request.getTagName());
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
+        return photoFactory.convert(photoMetadata);
+    }
+
+    @Override
+    public Photo removeTag(TagRequest request) {
+        photoDao.pull(request.getPhotoId(), TAGS, request.getTagName());
         PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
         return photoFactory.convert(photoMetadata);
     }

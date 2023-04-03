@@ -1,14 +1,12 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.TAGS;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder.aPhotoMetadata;
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -122,6 +120,38 @@ public class MongoPhotoRepositoryTest {
         when(photoFactory.convert(photoMetadata)).thenReturn(photo);
 
         Photo result = underTest.updateDescription(new DescriptionEditRequest(photoId, descriptionUpdate));
+
+        assertThat(result, is(photo));
+    }
+
+    @Test
+    public void shouldAddTag() {
+        UUID photoId = UUID.randomUUID();
+        PhotoMetadata photoMetadata = createPhotoMetadata(photoId);
+        Photo photo = aPhoto().build();
+
+        String tagToAdd = "tag1";
+        when(photoDao.push(photo.getPhotoId(), TAGS, tagToAdd)).thenReturn(true);
+        when(photoDao.findPhotoById(photoId)).thenReturn(photoMetadata);
+        when(photoFactory.convert(photoMetadata)).thenReturn(photo);
+
+        Photo result = underTest.addTag(new TagRequest(photoId, tagToAdd));
+
+        assertThat(result, is(photo));
+    }
+
+    @Test
+    public void shouldRemoveTag() {
+        UUID photoId = UUID.randomUUID();
+        PhotoMetadata photoMetadata = createPhotoMetadata(photoId);
+        Photo photo = aPhoto().build();
+
+        String tagToRemove = "tag1";
+        when(photoDao.pull(photo.getPhotoId(), TAGS, tagToRemove)).thenReturn(true);
+        when(photoDao.findPhotoById(photoId)).thenReturn(photoMetadata);
+        when(photoFactory.convert(photoMetadata)).thenReturn(photo);
+
+        Photo result = underTest.removeTag(new TagRequest(photoId, tagToRemove));
 
         assertThat(result, is(photo));
     }
