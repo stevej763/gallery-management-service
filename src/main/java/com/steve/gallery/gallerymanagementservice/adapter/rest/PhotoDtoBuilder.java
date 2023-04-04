@@ -7,7 +7,7 @@ import java.util.UUID;
 public class PhotoDtoBuilder {
 
     private UUID photoId = UUID.randomUUID();
-    private String title = "untitled";
+    private String title;
     private String description;
     private List<String> tags;
     private List<String> categories;

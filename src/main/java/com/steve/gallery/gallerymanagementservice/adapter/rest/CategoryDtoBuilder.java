@@ -1,11 +1,14 @@
-package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
+package com.steve.gallery.gallerymanagementservice.adapter.rest;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class CategoryDtoBuilder {
-    private UUID categoryId;
+    private UUID categoryId = UUID.randomUUID();
     private String title;
     private String subtitle;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime modifiedAt = LocalDateTime.now();
 
     public static CategoryDtoBuilder aCategoryDtoBuilder() {
         return new CategoryDtoBuilder();
@@ -26,7 +29,17 @@ public class CategoryDtoBuilder {
         return this;
     }
 
+    public CategoryDtoBuilder withCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public CategoryDtoBuilder withModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+
     public CategoryDto build() {
-        return new CategoryDto(categoryId, title, subtitle);
+        return new CategoryDto(categoryId, title, subtitle, createdAt, modifiedAt);
     }
 }

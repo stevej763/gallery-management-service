@@ -1,5 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class CategoryBuilder {
@@ -7,6 +8,8 @@ public class CategoryBuilder {
     private UUID categoryId = UUID.randomUUID();
     private String title;
     private String subtitle;
+    private LocalDateTime createdAt = LocalDateTime.now();
+    private LocalDateTime modifiedAt = LocalDateTime.now();
 
     public static CategoryBuilder aCategory() {
         return new CategoryBuilder();
@@ -27,8 +30,17 @@ public class CategoryBuilder {
         return this;
     }
 
-    public Category build() {
-        return new Category(categoryId, title, subtitle);
+    public CategoryBuilder withCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
     }
 
+    public CategoryBuilder withModifiedAt(LocalDateTime modifiedAt) {
+        this.modifiedAt = modifiedAt;
+        return this;
+    }
+
+    public Category build() {
+        return new Category(categoryId, title, subtitle, createdAt, modifiedAt);
+    }
 }

@@ -1,5 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
@@ -12,13 +13,15 @@ public class Category {
     private final UUID categoryId;
     private final String title;
     private final String subtitle;
+    private final LocalDateTime createdAt;
+    private final LocalDateTime modifiedAt;
 
-
-    public Category(UUID categoryId, String title, String subtitle) {
-
+    public Category(UUID categoryId, String title, String subtitle, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.categoryId = categoryId;
         this.title = title;
         this.subtitle = subtitle;
+        this.createdAt = createdAt;
+        this.modifiedAt = modifiedAt;
     }
 
     public UUID getCategoryId() {
@@ -31,6 +34,14 @@ public class Category {
 
     public String getSubtitle() {
         return subtitle;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getModifiedAt() {
+        return modifiedAt;
     }
 
     @Override

@@ -10,17 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryDao.CATEGORY_COLLECTION;
+import static java.time.temporal.ChronoUnit.SECONDS;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 @SpringBootTest
 public class CategoryDaoTest{
-
-    private static final UUID CATEGORY_ID = UUID.randomUUID();
 
     @Autowired
     MongoTemplate mongoTemplate;
@@ -39,9 +38,9 @@ public class CategoryDaoTest{
 
     @Test
     public void retrievesAllPhotosFromPhotosCollection() {
-        CategoryMetadata category1 = new CategoryMetadataBuilder().build();
-        CategoryMetadata category2 = new CategoryMetadataBuilder().build();
-        CategoryMetadata category3 = new CategoryMetadataBuilder().build();
+        CategoryMetadata category1 = createCategoryMetadata();
+        CategoryMetadata category2 = createCategoryMetadata();
+        CategoryMetadata category3 = createCategoryMetadata();
         mongoTemplate.save(category1, CATEGORY_COLLECTION);
         mongoTemplate.save(category2, CATEGORY_COLLECTION);
         mongoTemplate.save(category3, CATEGORY_COLLECTION);
@@ -50,5 +49,12 @@ public class CategoryDaoTest{
 
         List<CategoryMetadata> expected = List.of(category1, category2, category3);
         assertThat(result, is(expected));
+    }
+
+    private CategoryMetadata createCategoryMetadata() {
+        return new CategoryMetadataBuilder()
+                .withCreatedAt(LocalDateTime.now().truncatedTo(SECONDS))
+                .withModifiedAt(LocalDateTime.now().truncatedTo(SECONDS))
+                .build();
     }
 }

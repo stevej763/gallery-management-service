@@ -5,6 +5,8 @@ import com.steve.gallery.gallerymanagementservice.domain.Category;
 import com.steve.gallery.gallerymanagementservice.domain.service.CategoryFinder;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +48,8 @@ public class FindCategoryMongoIntegrationTest extends BaseMongoIntegrationTest {
                 .withCategoryId(categoryId)
                 .withTitle("my category")
                 .withSubtitle("a nice description of the category")
+                .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+                .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
                 .build();
     }
 
@@ -54,6 +58,8 @@ public class FindCategoryMongoIntegrationTest extends BaseMongoIntegrationTest {
                 .withCategoryId(categoryId)
                 .withTitle("my category")
                 .withSubtitle("a nice description of the category")
+                .withModifiedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
+                .withCreatedAt(LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS))
                 .build();
     }
 }

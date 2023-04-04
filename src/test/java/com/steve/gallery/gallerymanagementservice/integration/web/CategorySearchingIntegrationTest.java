@@ -2,8 +2,8 @@ package com.steve.gallery.gallerymanagementservice.integration.web;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadata;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadataBuilder;
-import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.CategoryDto;
-import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.CategoryDtoBuilder;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDto;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDtoBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
