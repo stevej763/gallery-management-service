@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
+package com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;

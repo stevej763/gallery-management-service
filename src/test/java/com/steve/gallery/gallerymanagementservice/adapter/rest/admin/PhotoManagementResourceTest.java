@@ -1,6 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.PhotoManagementResource;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;

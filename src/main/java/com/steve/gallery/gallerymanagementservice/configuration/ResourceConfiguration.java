@@ -1,22 +1,19 @@
 package com.steve.gallery.gallerymanagementservice.configuration;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.MongoPhotoRepository;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao;
-import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.client.CategoryDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3DeletionResource;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
 import com.steve.gallery.gallerymanagementservice.configuration.aws.S3ConfigurationContext;
+import com.steve.gallery.gallerymanagementservice.domain.CategoryRepository;
 import com.steve.gallery.gallerymanagementservice.domain.DeletionResource;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDetailsEditor;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
+import com.steve.gallery.gallerymanagementservice.domain.service.*;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -49,8 +46,19 @@ public class ResourceConfiguration {
     }
 
     @Bean
+    CategoryDtoFactory categoryDtoFactory() {
+        return new CategoryDtoFactory();
+    }
+
+
+    @Bean
     PhotoFinder photoFinder() {
         return new PhotoFinder(mongoPhotoRepository());
+    }
+
+    @Bean
+    CategoryFinder categoryFinder() {
+        return new CategoryFinder(mongoCategoryRepository());
     }
 
     @Bean
@@ -79,5 +87,11 @@ public class ResourceConfiguration {
     PhotoRepository mongoPhotoRepository() {
         PhotoDao photoDao = new PhotoDao(mongoTemplate);
         return new MongoPhotoRepository(photoDao, photoFactory(), new PhotoMetadataFactory());
+    }
+
+    @Bean
+    CategoryRepository mongoCategoryRepository() {
+        CategoryDao categoryRepository = new CategoryDao(mongoTemplate);
+        return new MongoCategoryRepository(categoryRepository, new CategoryFactory());
     }
 }

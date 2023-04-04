@@ -24,7 +24,7 @@ public class PhotoSearchingIntegrationTest extends BaseWebIntegrationTest {
 
     @Test
     public void searchByIdShouldReturnPhoto() {
-        PhotoMetadata photo = aPhoto(PHOTO_TITLE, PHOTO_ID);
+        PhotoMetadata photo = aPhotoMetadata(PHOTO_TITLE, PHOTO_ID);
         savePhotoToDatabase(photo);
 
         ResponseEntity<PhotoDto> result = restTemplate.getForEntity(getGalleryBasePath() + "/" + PHOTO_ID, PhotoDto.class);
@@ -36,7 +36,7 @@ public class PhotoSearchingIntegrationTest extends BaseWebIntegrationTest {
     @Test
     public void searchByNameShouldReturnPhoto() {
         String photoTitle = "my photo";
-        PhotoMetadata photo = aPhoto(photoTitle, PHOTO_ID);
+        PhotoMetadata photo = aPhotoMetadata(photoTitle, PHOTO_ID);
         savePhotoToDatabase(photo);
 
         ResponseEntity<PhotoDto[]> result = restTemplate.getForEntity(getGalleryBasePath() + "/search?title=" + photoTitle, PhotoDto[].class);
@@ -56,9 +56,9 @@ public class PhotoSearchingIntegrationTest extends BaseWebIntegrationTest {
         UUID photoId1 = UUID.randomUUID();
         UUID photoId2 = UUID.randomUUID();
         UUID photoId3 = UUID.randomUUID();
-        savePhotoToDatabase(aPhoto(photo1, photoId1));
-        savePhotoToDatabase(aPhoto(photo2, photoId2));
-        savePhotoToDatabase(aPhoto(photo3, photoId3));
+        savePhotoToDatabase(aPhotoMetadata(photo1, photoId1));
+        savePhotoToDatabase(aPhotoMetadata(photo2, photoId2));
+        savePhotoToDatabase(aPhotoMetadata(photo3, photoId3));
         ResponseEntity<PhotoDto[]> result = restTemplate.exchange(
                 getGalleryBasePath(),
                 HttpMethod.GET,
@@ -84,7 +84,7 @@ public class PhotoSearchingIntegrationTest extends BaseWebIntegrationTest {
                 .build();
     }
 
-    private PhotoMetadata aPhoto(String photoTitle, UUID photoId) {
+    private PhotoMetadata aPhotoMetadata(String photoTitle, UUID photoId) {
         return new PhotoMetadataBuilder()
                 .withPhotoId(photoId)
                 .withTitle(photoTitle)

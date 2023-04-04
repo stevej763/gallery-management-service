@@ -2,6 +2,8 @@ package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteBucketRequest;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryDao;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadata;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.util.UUID;
+
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao.PHOTO_COLLECTION;
 
 @SpringBootTest
 public abstract class BaseMongoIntegrationTest {
@@ -38,7 +42,11 @@ public abstract class BaseMongoIntegrationTest {
     }
 
     protected void savePhotoToDatabase(PhotoMetadata photoMetadata) {
-        mongoTemplate.save(photoMetadata, "photoMetadata");
+        mongoTemplate.save(photoMetadata, PHOTO_COLLECTION);
+    }
+
+    protected void saveCategoryToDatabase(CategoryMetadata categoryMetadata) {
+        mongoTemplate.save(categoryMetadata, CategoryDao.CATEGORY_COLLECTION);
     }
 
 }

@@ -3,6 +3,7 @@ package com.steve.gallery.gallerymanagementservice.integration.web;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
+import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadata;
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryDao.CATEGORY_COLLECTION;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoDao.PHOTO_COLLECTION;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -76,8 +78,16 @@ public abstract class BaseWebIntegrationTest {
         mongoTemplate.save(photoMetadata, PHOTO_COLLECTION);
     }
 
+    protected void saveCategoryToDatabase(CategoryMetadata photoMetadata) {
+        mongoTemplate.save(photoMetadata, CATEGORY_COLLECTION);
+    }
+
     protected String getGalleryBasePath() {
         return "http://localhost:" + port + "/api/v1/gallery";
+    }
+
+    protected String getCategoryBasePath() {
+        return "http://localhost:" + port + "/api/v1/category";
     }
 
     protected String getAdminBasePath() {

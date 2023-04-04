@@ -2,6 +2,7 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
+import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.PhotoDetailsModificationResource;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TagRequestDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.DescriptionEditRequestDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TitleEditRequestDto;
