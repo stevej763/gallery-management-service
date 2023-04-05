@@ -41,7 +41,7 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
         savePhotoToDatabase(PHOTO_METADATA);
 
 
-        String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/title";
+        String url = getGalleryAdminBasePath() + "/edit/" + PHOTO_ID + "/title";
         TitleEditRequestDto request = new TitleEditRequestDto(myNewTitle);
 
         ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);
@@ -57,7 +57,7 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
         savePhotoToDatabase(PHOTO_METADATA);
 
 
-        String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/description";
+        String url = getGalleryAdminBasePath() + "/edit/" + PHOTO_ID + "/description";
         DescriptionEditRequest request = new DescriptionEditRequest(PHOTO_ID, descriptionChange);
 
         ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);
@@ -72,7 +72,7 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
         String appendedTag = "appended tag";
         savePhotoToDatabase(PHOTO_METADATA);
 
-        String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/tag/add";
+        String url = getGalleryAdminBasePath() + "/edit/" + PHOTO_ID + "/tag/add";
         TagRequestDto request = new TagRequestDto(appendedTag);
 
         ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);
@@ -86,7 +86,7 @@ public class EditPhotoIntegrationTest extends BaseWebIntegrationTest {
     public void canRemoveTags() {
         savePhotoToDatabase(PHOTO_METADATA);
 
-        String url = getAdminBasePath() + "/edit/" + PHOTO_ID + "/tag/delete";
+        String url = getGalleryAdminBasePath() + "/edit/" + PHOTO_ID + "/tag/delete";
         TagRequestDto request = new TagRequestDto(ORIGINAL_TAG);
 
         ResponseEntity<PhotoDto> response = restTemplate.postForEntity(url, request, PhotoDto.class);

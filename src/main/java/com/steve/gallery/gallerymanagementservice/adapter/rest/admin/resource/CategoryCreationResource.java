@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/v1/category")
+@RequestMapping("/v1/category/admin/")
 public class CategoryCreationResource {
 
     private final CategoryCreator categoryCreator;

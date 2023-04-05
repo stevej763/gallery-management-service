@@ -24,7 +24,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 @RestController
-@RequestMapping(value = "/v1/admin", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/v1/gallery/admin/", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 public class PhotoManagementResource {
 
     Logger LOGGER = LoggerFactory.getLogger(PhotoManagementResource.class);

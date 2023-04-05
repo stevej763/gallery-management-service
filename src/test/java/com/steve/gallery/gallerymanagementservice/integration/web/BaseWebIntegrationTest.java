@@ -90,7 +90,11 @@ public abstract class BaseWebIntegrationTest {
         return "http://localhost:" + port + "/api/v1/category";
     }
 
-    protected String getAdminBasePath() {
-        return "http://localhost:" + port + "/api/v1/admin";
+    protected String getGalleryAdminBasePath() {
+        return "http://localhost:" + port + "/api/v1/gallery/admin";
+    }
+
+    protected String getCategoryAdminBasePath() {
+        return "http://localhost:" + port + "/api/v1/category/admin";
     }
 }

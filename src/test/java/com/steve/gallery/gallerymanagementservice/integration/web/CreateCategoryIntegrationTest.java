@@ -16,7 +16,7 @@ public class CreateCategoryIntegrationTest extends BaseWebIntegrationTest {
         String categoryTitle = "title";
         String categorySubtitle = "subtitle";
 
-        String url = getCategoryBasePath() + "/create";
+        String url = getCategoryAdminBasePath() + "/create";
         CategoryCreationRequestDto request = new CategoryCreationRequestDto(categoryTitle, categorySubtitle);
 
         ResponseEntity<CategoryDto> response = restTemplate.postForEntity(url, request, CategoryDto.class);

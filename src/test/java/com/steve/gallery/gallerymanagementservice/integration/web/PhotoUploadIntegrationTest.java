@@ -28,7 +28,7 @@ public class PhotoUploadIntegrationTest extends BaseWebIntegrationTest {
 
         HttpEntity<MultiValueMap<String, Object>> request = createRequest(photo, photoTitle);
 
-        ResponseEntity<PhotoDto> response = restTemplate.exchange(getAdminBasePath() + "/upload", POST, request, PhotoDto.class);
+        ResponseEntity<PhotoDto> response = restTemplate.exchange(getGalleryAdminBasePath() + "/upload", POST, request, PhotoDto.class);
 
         photo.deleteOnExit();
 

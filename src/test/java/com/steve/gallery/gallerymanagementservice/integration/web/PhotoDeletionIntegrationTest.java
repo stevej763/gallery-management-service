@@ -31,7 +31,7 @@ public class PhotoDeletionIntegrationTest extends BaseWebIntegrationTest {
     public void canDeleteAPhoto() throws IOException {
         prepareTestPhoto();
 
-        String deletionUrl = getAdminBasePath() + "/delete/" + PHOTO_ID;
+        String deletionUrl = getGalleryAdminBasePath() + "/delete/" + PHOTO_ID;
         ResponseEntity<PhotoDeletionResponseDto> response = restTemplate.exchange(deletionUrl, DELETE, null, PhotoDeletionResponseDto.class);
 
         assertThat(response.getStatusCode(), is(HttpStatus.OK));
