@@ -62,6 +62,11 @@ public class ResourceConfiguration {
     }
 
     @Bean
+    CategoryCreator categoryCreator() {
+        return new CategoryCreator(mongoCategoryRepository(), categoryFactory());
+    }
+
+    @Bean
     PhotoDetailsEditor photoDetailsEditor() {
         return new PhotoDetailsEditor(photoFinder(), mongoPhotoRepository());
     }
@@ -92,6 +97,11 @@ public class ResourceConfiguration {
     @Bean
     CategoryRepository mongoCategoryRepository() {
         CategoryDao categoryRepository = new CategoryDao(mongoTemplate);
-        return new MongoCategoryRepository(categoryRepository, new CategoryFactory());
+        return new MongoCategoryRepository(categoryRepository, categoryFactory(), new CategoryMetadataFactory());
+    }
+
+    @Bean
+    CategoryFactory categoryFactory() {
+        return new CategoryFactory();
     }
 }

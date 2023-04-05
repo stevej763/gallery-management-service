@@ -34,7 +34,7 @@ public class FindCategoryMongoIntegrationTest extends BaseMongoIntegrationTest {
 
         CategoryDao categoryDao = new CategoryDao(mongoTemplate);
         CategoryFactory categoryFactory = new CategoryFactory();
-        MongoCategoryRepository categoryRepository = new MongoCategoryRepository(categoryDao, categoryFactory);
+        MongoCategoryRepository categoryRepository = new MongoCategoryRepository(categoryDao, categoryFactory, new CategoryMetadataFactory());
         CategoryFinder categoryFinder = new CategoryFinder(categoryRepository);
 
         List<Category> allCategories = categoryFinder.findAll();

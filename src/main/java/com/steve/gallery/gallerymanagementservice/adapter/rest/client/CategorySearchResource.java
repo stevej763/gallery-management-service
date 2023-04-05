@@ -22,7 +22,7 @@ public class CategorySearchResource {
     private final Logger LOGGER = LoggerFactory.getLogger(CategorySearchResource.class);
 
     private final CategoryFinder categoryFinder;
-    private CategoryDtoFactory categoryDtoFactory;
+    private final CategoryDtoFactory categoryDtoFactory;
 
     public CategorySearchResource(CategoryFinder categoryFinder, CategoryDtoFactory categoryDtoFactory) {
         this.categoryFinder = categoryFinder;

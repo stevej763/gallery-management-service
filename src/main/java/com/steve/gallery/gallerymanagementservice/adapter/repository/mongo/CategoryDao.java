@@ -17,4 +17,8 @@ public class CategoryDao {
     public List<CategoryMetadata> findAllCategories() {
         return mongoTemplate.findAll(CategoryMetadata.class, CATEGORY_COLLECTION);
     }
+
+    public CategoryMetadata save(CategoryMetadata categoryMetadata) {
+        return mongoTemplate.save(categoryMetadata, CATEGORY_COLLECTION);
+    }
 }

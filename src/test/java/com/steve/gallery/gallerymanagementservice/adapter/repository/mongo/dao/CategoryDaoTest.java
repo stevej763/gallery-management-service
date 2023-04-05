@@ -51,6 +51,15 @@ public class CategoryDaoTest{
         assertThat(result, is(expected));
     }
 
+    @Test
+    public void canSaveCategoryToDatabase() {
+        CategoryMetadata categoryMetadata = createCategoryMetadata();
+
+        CategoryMetadata result = underTest.save(categoryMetadata);
+
+        assertThat(result, is(categoryMetadata));
+    }
+
     private CategoryMetadata createCategoryMetadata() {
         return new CategoryMetadataBuilder()
                 .withCreatedAt(LocalDateTime.now().truncatedTo(SECONDS))
