@@ -15,7 +15,7 @@ public class PhotoFactoryTest {
     private static final String TITLE = "title";
     private static final String DESCRIPTION = "description";
     private static final List<String> TAGS = List.of("tag1", "tag2");
-    private static final List<String> CATEGORIES = List.of("category1");
+    private static final List<UUID> CATEGORIES = List.of(UUID.randomUUID());
 
     @Test
     public void shouldConvertFromARequestToADomainPhotoObject() {

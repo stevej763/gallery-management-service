@@ -13,13 +13,13 @@ public class UploadedPhoto {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> category;
+    private final List<UUID> category;
     private final UUID uploadId;
 
     public UploadedPhoto(String title,
                          String description,
                          List<String> tags,
-                         List<String> category,
+                         List<UUID> category,
                          UUID uploadId) {
         this.title = title;
         this.description = description;
@@ -40,7 +40,7 @@ public class UploadedPhoto {
         return tags;
     }
 
-    public List<String> getCategories() {
+    public List<UUID> getCategories() {
         return category;
     }
 

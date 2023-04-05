@@ -1,12 +1,13 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import java.util.List;
+import java.util.UUID;
 
 public class PhotoUploadMetadataDtoBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> categories;
+    private List<UUID> categories;
 
     public static PhotoUploadMetadataDtoBuilder aPhotoUploadMetadataDtoBuilder() {
         return new PhotoUploadMetadataDtoBuilder();
@@ -27,7 +28,7 @@ public class PhotoUploadMetadataDtoBuilder {
         return this;
     }
 
-    public PhotoUploadMetadataDtoBuilder withCategories(List<String> categories) {
+    public PhotoUploadMetadataDtoBuilder withCategories(List<UUID> categories) {
         this.categories = categories;
         return this;
     }

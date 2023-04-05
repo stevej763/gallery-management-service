@@ -10,7 +10,7 @@ public class PhotoBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> categories;
+    private List<UUID> categories;
     private UUID uploadId;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime modifiedAt = LocalDateTime.now();
@@ -52,7 +52,7 @@ public class PhotoBuilder {
         return this;
     }
 
-    public PhotoBuilder withCategories(List<String> categories) {
+    public PhotoBuilder withCategories(List<UUID> categories) {
         this.categories = categories;
         return this;
     }

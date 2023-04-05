@@ -15,7 +15,7 @@ public class Photo {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> categories;
+    private final List<UUID> categories;
     private final UUID uploadId;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
@@ -24,7 +24,7 @@ public class Photo {
                   String title,
                  String description,
                  List<String> tags,
-                 List<String> categories,
+                 List<UUID> categories,
                  UUID uploadId,
                  LocalDateTime createdAt,
                  LocalDateTime modifiedAt) {
@@ -54,7 +54,7 @@ public class Photo {
         return tags;
     }
 
-    public List<String> getCategories() {
+    public List<UUID> getCategories() {
         return categories;
     }
 

@@ -10,7 +10,7 @@ public class PhotoMetadataBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> categories;
+    private List<UUID> categories;
     private UUID uploadId;
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime modifiedAt = LocalDateTime.now();
@@ -42,7 +42,7 @@ public class PhotoMetadataBuilder {
         return this;
     }
 
-    public PhotoMetadataBuilder withCategories(List<String> categories) {
+    public PhotoMetadataBuilder withCategories(List<UUID> categories) {
         this.categories = categories;
         return this;
     }

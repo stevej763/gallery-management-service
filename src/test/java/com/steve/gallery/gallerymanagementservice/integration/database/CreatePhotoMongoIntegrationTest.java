@@ -50,7 +50,7 @@ public class CreatePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
         String title = "title";
         String description = "description";
         List<String> tags = List.of(UUID.randomUUID().toString());
-        List<String> categories = List.of(UUID.randomUUID().toString());
+        List<UUID> categories = List.of(UUID.randomUUID());
         PhotoUploadRequest photoUploadRequest = new PhotoUploadRequestBuilder()
                 .withTitle(title)
                 .withDescription(description)

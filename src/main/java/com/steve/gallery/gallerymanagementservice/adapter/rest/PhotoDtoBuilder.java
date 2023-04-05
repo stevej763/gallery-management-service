@@ -10,7 +10,7 @@ public class PhotoDtoBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> categories;
+    private List<UUID> categories;
     private LocalDateTime createdAt = LocalDateTime.now();
     private UUID uploadId;
     private LocalDateTime modifiedAt = LocalDateTime.now();
@@ -40,7 +40,7 @@ public class PhotoDtoBuilder {
         return this;
     }
 
-    public PhotoDtoBuilder withCategories(List<String> categories) {
+    public PhotoDtoBuilder withCategories(List<UUID> categories) {
         this.categories = categories;
         return this;
     }

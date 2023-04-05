@@ -3,6 +3,7 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
@@ -14,13 +15,13 @@ public class PhotoUploadMetadataDto {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> categories;
+    private final List<UUID> categories;
 
     public PhotoUploadMetadataDto(
             @JsonProperty("title") String title,
             @JsonProperty("description") String description,
             @JsonProperty("tags") List<String> tags,
-            @JsonProperty("categories") List<String> categories) {
+            @JsonProperty("categories") List<UUID> categories) {
         this.title = title;
         this.description = description;
         this.tags = tags;
@@ -39,7 +40,7 @@ public class PhotoUploadMetadataDto {
         return tags;
     }
 
-    public List<String> getCategories() {
+    public List<UUID> getCategories() {
         return categories;
     }
 

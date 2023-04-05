@@ -12,6 +12,7 @@ import org.springframework.util.MultiValueMap;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -45,12 +46,16 @@ public class PhotoUploadIntegrationTest extends BaseWebIntegrationTest {
     }
 
     private MultiValueMap<String, Object> createRequestBody(File photo, String photoTitle) {
+        String categoryId1 = UUID.randomUUID().toString();
+        String categoryId2 = UUID.randomUUID().toString();
+        String categoryId3 = UUID.randomUUID().toString();
+        String categories = String.format(categoryId1, categoryId2, categoryId3);
         MultiValueMap<String, Object> body = new LinkedMultiValueMap<>();
         body.add("file", new FileSystemResource(photo));
         body.add("title", photoTitle);
         body.add("description", "description");
         body.add("tags", "tag1, tag2, tag3");
-        body.add("categories", "category1, category2");
+        body.add("categories", categories);
         return body;
     }
 }

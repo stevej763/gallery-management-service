@@ -7,7 +7,7 @@ public class UploadedPhotoBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> category;
+    private List<UUID> category;
     private UUID uploadId;
 
     public static UploadedPhotoBuilder anUploadedPhoto() {
@@ -29,7 +29,7 @@ public class UploadedPhotoBuilder {
         return this;
     }
 
-    public UploadedPhotoBuilder withCategories(List<String> category) {
+    public UploadedPhotoBuilder withCategories(List<UUID> category) {
         this.category = category;
         return this;
     }

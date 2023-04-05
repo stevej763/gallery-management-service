@@ -17,7 +17,7 @@ public class PhotoDto {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> category;
+    private final List<UUID> categories;
     private final UUID uploadId;
     private final String originalImageUrl;
     private final LocalDateTime createdAt;
@@ -27,7 +27,7 @@ public class PhotoDto {
                     @JsonProperty("title") String title,
                     @JsonProperty("description") String description,
                     @JsonProperty("tags") List<String> tags,
-                    @JsonProperty("categories") List<String> category,
+                    @JsonProperty("categories") List<UUID> categories,
                     @JsonProperty("uploadId") UUID uploadId,
                     @JsonProperty("originalImageUrl") String originalImageUrl,
                     @JsonProperty("createdAt") LocalDateTime createdAt,
@@ -36,7 +36,7 @@ public class PhotoDto {
         this.title = title;
         this.description = description;
         this.tags = tags;
-        this.category = category;
+        this.categories = categories;
         this.uploadId = uploadId;
         this.originalImageUrl = originalImageUrl;
         this.createdAt = createdAt;
@@ -59,8 +59,8 @@ public class PhotoDto {
         return tags;
     }
 
-    public List<String> getCategory() {
-        return category;
+    public List<UUID> getCategories() {
+        return categories;
     }
 
     public UUID getUploadId() {

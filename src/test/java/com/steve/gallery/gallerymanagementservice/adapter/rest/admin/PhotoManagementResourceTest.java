@@ -124,7 +124,7 @@ public class PhotoManagementResourceTest {
                 .withTitle("title")
                 .withDescription("description")
                 .withTags(List.of("tag"))
-                .withCategories(List.of("categories"))
+                .withCategories(List.of(UUID.randomUUID()))
                 .withOriginalImageUrl("url")
                 .withUploadId(UUID.randomUUID())
                 .withModifiedAt(LocalDateTime.now())
@@ -137,7 +137,7 @@ public class PhotoManagementResourceTest {
                 .withTitle("title")
                 .withDescription("description")
                 .withTags(List.of("tag"))
-                .withCategories(List.of("categories"))
+                .withCategories(List.of(UUID.randomUUID()))
                 .build();
     }
 

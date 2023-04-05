@@ -29,7 +29,7 @@ public class PhotoMetadata {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> categories;
+    private final List<UUID> categories;
     private final UUID uploadId;
     private final LocalDateTime createdAt;
     private final LocalDateTime modifiedAt;
@@ -38,7 +38,7 @@ public class PhotoMetadata {
                          @JsonProperty(TITLE) String title,
                          @JsonProperty(DESCRIPTION) String description,
                          @JsonProperty(TAGS) List<String> tags,
-                         @JsonProperty(CATEGORIES) List<String> categories,
+                         @JsonProperty(CATEGORIES) List<UUID> categories,
                          @JsonProperty(UPLOAD_ID) UUID uploadId,
                          @JsonProperty(CREATED_AT) LocalDateTime createdAt,
                          @JsonProperty(MODIFIED_AT) LocalDateTime modifiedAt) {
@@ -68,7 +68,7 @@ public class PhotoMetadata {
         return tags;
     }
 
-    public List<String> getCategories() {
+    public List<UUID> getCategories() {
         return categories;
     }
 

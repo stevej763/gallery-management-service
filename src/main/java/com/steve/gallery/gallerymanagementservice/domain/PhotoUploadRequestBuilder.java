@@ -2,12 +2,13 @@ package com.steve.gallery.gallerymanagementservice.domain;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 public class PhotoUploadRequestBuilder {
     private String title;
     private String description;
     private List<String> tags;
-    private List<String> categories;
+    private List<UUID> categories;
     private File photo;
 
     public static PhotoUploadRequestBuilder aPhotoUploadRequest() {
@@ -29,7 +30,7 @@ public class PhotoUploadRequestBuilder {
         return this;
     }
 
-    public PhotoUploadRequestBuilder withCategories(List<String> categories) {
+    public PhotoUploadRequestBuilder withCategories(List<UUID> categories) {
         this.categories = categories;
         return this;
     }

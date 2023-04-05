@@ -2,6 +2,7 @@ package com.steve.gallery.gallerymanagementservice.domain;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
@@ -13,10 +14,10 @@ public class PhotoUploadRequest {
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<String> categories;
+    private final List<UUID> categories;
     private final File photo;
 
-    public PhotoUploadRequest(String title, String description, List<String> tags, List<String> categories, File photo) {
+    public PhotoUploadRequest(String title, String description, List<String> tags, List<UUID> categories, File photo) {
         this.title = title;
         this.description = description;
         this.tags = tags;
@@ -36,7 +37,7 @@ public class PhotoUploadRequest {
         return tags;
     }
 
-    public List<String> getCategories() {
+    public List<UUID> getCategories() {
         return categories;
     }
 

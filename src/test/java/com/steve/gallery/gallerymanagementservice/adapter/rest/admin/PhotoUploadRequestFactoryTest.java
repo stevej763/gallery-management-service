@@ -7,6 +7,7 @@ import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.*;
 import java.util.List;
+import java.util.UUID;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.*;
@@ -14,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PhotoUploadRequestFactoryTest {
 
+    public static final UUID CATEGORY_ID = UUID.randomUUID();
     private final PhotoUploadRequestFactory underTest = new PhotoUploadRequestFactory();
 
     @Test
@@ -22,7 +24,7 @@ public class PhotoUploadRequestFactoryTest {
         String title = "test";
         String description = "description";
         List<String> tags = List.of("tag");
-        List<String> categories = List.of("category");
+        List<UUID> categories = List.of(CATEGORY_ID);
         PhotoUploadMetadataDto photoUploadMetadataDto = new PhotoUploadMetadataDto(title, description, tags, categories);
         PhotoUploadRequest result = underTest.createPhotoUploadRequest(uploadedFile, photoUploadMetadataDto);
 
@@ -43,7 +45,7 @@ public class PhotoUploadRequestFactoryTest {
         MockMultipartFile uploadedFile = new MockMultipartFile(title, title.getBytes());
         String description = "description";
         List<String> tags = List.of("tag");
-        List<String> categories = List.of("category");
+        List<UUID> categories = List.of(CATEGORY_ID);
         PhotoUploadMetadataDto photoUploadMetadataDto = new PhotoUploadMetadataDto(title, description, tags, categories);
 
         assertThrows(IOException.class, () -> underTest.createPhotoUploadRequest(uploadedFile, photoUploadMetadataDto));
