@@ -35,6 +35,6 @@ public class CategoryDeleter {
     }
 
     private boolean hasRemovedCategoryId(CategoryDeletionRequest categoryDeletionRequest, List<Photo> updatedPhotos) {
-        return updatedPhotos.stream().noneMatch(photo -> photo.getPhotoId().equals(categoryDeletionRequest.getCategoryId()));
+        return updatedPhotos.stream().noneMatch(photo -> photo.getCategories().contains(categoryDeletionRequest.getCategoryId()));
     }
 }
