@@ -1,8 +1,8 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.Category;
-import com.steve.gallery.gallerymanagementservice.domain.CategoryBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.CategoryRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.adater.CategoryRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

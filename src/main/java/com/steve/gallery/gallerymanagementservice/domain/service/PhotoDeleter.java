@@ -1,9 +1,9 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.DeletionResource;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.adater.DeletionResource;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.photo;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata;
 

@@ -1,12 +1,16 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.CategoryRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRecordDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;

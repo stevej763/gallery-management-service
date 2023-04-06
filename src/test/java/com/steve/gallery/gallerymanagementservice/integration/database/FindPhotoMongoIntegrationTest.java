@@ -1,9 +1,9 @@
 package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 

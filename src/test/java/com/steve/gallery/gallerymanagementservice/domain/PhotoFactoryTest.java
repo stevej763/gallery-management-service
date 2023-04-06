@@ -1,5 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
+import com.steve.gallery.gallerymanagementservice.domain.photo.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;

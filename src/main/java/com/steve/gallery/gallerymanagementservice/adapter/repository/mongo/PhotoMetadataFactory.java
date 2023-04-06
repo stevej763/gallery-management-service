@@ -1,6 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
 
 public class PhotoMetadataFactory {
 

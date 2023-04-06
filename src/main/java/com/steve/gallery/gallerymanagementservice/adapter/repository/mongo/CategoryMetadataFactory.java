@@ -1,6 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
 
 public class CategoryMetadataFactory {
     public CategoryMetadata convert(Category category) {

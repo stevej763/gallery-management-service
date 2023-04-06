@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.photo;
 
 import java.io.File;
 import java.util.List;

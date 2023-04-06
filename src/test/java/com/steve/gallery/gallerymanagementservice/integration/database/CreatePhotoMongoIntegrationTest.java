@@ -6,10 +6,10 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Photo
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.adapter.s3.S3UploadResource;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequestBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;

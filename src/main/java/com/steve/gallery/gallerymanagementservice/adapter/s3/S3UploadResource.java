@@ -3,10 +3,10 @@ package com.steve.gallery.gallerymanagementservice.adapter.s3;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.UploadResource;
-import com.steve.gallery.gallerymanagementservice.domain.UploadedPhoto;
-import com.steve.gallery.gallerymanagementservice.domain.UploadedPhotoBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.adater.UploadResource;
+import com.steve.gallery.gallerymanagementservice.domain.photo.UploadedPhoto;
+import com.steve.gallery.gallerymanagementservice.domain.photo.UploadedPhotoBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -2,9 +2,9 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.PhotoManagementResource;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequestBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeleter;
 import org.junit.jupiter.api.Test;

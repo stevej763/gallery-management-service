@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.photo;
 
 import java.util.UUID;
 
@@ -7,22 +7,32 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class DescriptionEditRequest {
+public class PhotoDeletionResponse {
 
     private final UUID photoId;
-    private final String descriptionChange;
+    private final boolean recordDeleted;
+    private final boolean fileDeleted;
 
-    public DescriptionEditRequest(UUID photoId, String descriptionChange) {
+    public PhotoDeletionResponse(UUID photoId, boolean recordDeleted, boolean fileDeleted) {
         this.photoId = photoId;
-        this.descriptionChange = descriptionChange;
+        this.recordDeleted = recordDeleted;
+        this.fileDeleted = fileDeleted;
     }
 
     public UUID getPhotoId() {
         return photoId;
     }
 
-    public String getDescriptionChange() {
-        return descriptionChange;
+    public boolean isRecordDeleted() {
+        return recordDeleted;
+    }
+
+    public boolean isFileDeleted() {
+        return fileDeleted;
+    }
+
+    public boolean isSuccess() {
+        return recordDeleted && fileDeleted;
     }
 
     @Override
@@ -38,5 +48,9 @@ public class DescriptionEditRequest {
     @Override
     public String toString() {
         return reflectionToString(this, SHORT_PREFIX_STYLE);
+    }
+
+    public boolean totalFailure() {
+        return !recordDeleted && !fileDeleted;
     }
 }

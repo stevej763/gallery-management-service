@@ -1,7 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest.admin;
 
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequestBuilder;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;

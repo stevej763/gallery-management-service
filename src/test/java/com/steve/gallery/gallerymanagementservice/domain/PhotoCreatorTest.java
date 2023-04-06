@@ -1,13 +1,17 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
+import com.steve.gallery.gallerymanagementservice.domain.adater.DtoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.adater.UploadResource;
+import com.steve.gallery.gallerymanagementservice.domain.photo.*;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder.aPhotoDto;
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

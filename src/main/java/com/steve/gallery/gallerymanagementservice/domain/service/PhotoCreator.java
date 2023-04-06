@@ -1,7 +1,13 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.DtoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.adater.UploadResource;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.UploadedPhoto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

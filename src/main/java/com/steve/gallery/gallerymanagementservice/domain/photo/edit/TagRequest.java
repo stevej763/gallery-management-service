@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.photo.edit;
 
 import java.util.UUID;
 
@@ -7,22 +7,22 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class CategoryRequest {
+public class TagRequest {
 
     private final UUID photoId;
-    private final UUID categoryId;
+    private final String tagName;
 
-    public CategoryRequest(UUID photoId, UUID categoryId) {
+    public TagRequest(UUID photoId, String tagName) {
         this.photoId = photoId;
-        this.categoryId = categoryId;
+        this.tagName = tagName;
     }
 
     public UUID getPhotoId() {
         return photoId;
     }
 
-    public UUID getCategoryId() {
-        return categoryId;
+    public String getTagName() {
+        return tagName;
     }
 
     @Override

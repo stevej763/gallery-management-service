@@ -1,6 +1,9 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.CategoryRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRecordDeletionResponse;
 
 import java.util.List;
 

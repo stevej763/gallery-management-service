@@ -1,22 +1,20 @@
-package com.steve.gallery.gallerymanagementservice.domain;
-
-import java.util.UUID;
+package com.steve.gallery.gallerymanagementservice.domain.category;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class CategoryDeletionRequest {
+public class CategoryRecordDeletionResponse {
 
-    private final UUID categoryId;
+    private final boolean successful;
 
-    public CategoryDeletionRequest(UUID categoryId) {
-        this.categoryId = categoryId;
+    public CategoryRecordDeletionResponse(boolean successful) {
+        this.successful = successful;
     }
 
-    public UUID getCategoryId() {
-        return categoryId;
+    public boolean isSuccessful() {
+        return successful;
     }
 
     @Override

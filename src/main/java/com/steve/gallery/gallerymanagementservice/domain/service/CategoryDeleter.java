@@ -1,6 +1,10 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.CategoryRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRecordDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

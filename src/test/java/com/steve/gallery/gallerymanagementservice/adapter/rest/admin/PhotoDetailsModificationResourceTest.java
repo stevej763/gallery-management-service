@@ -6,10 +6,10 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.Ph
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TagRequestDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.DescriptionEditRequestDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TitleEditRequestDto;
-import com.steve.gallery.gallerymanagementservice.domain.TagRequest;
-import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
-import com.steve.gallery.gallerymanagementservice.domain.TitleEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TagRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TitleEditRequest;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDetailsEditor;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDtoBuilder.aPhotoDto;
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;

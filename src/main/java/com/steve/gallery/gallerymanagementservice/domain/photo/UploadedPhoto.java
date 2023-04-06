@@ -1,6 +1,5 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.photo;
 
-import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
@@ -9,20 +8,24 @@ import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCod
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class PhotoUploadRequest {
+public class UploadedPhoto {
 
     private final String title;
     private final String description;
     private final List<String> tags;
-    private final List<UUID> categories;
-    private final File photo;
+    private final List<UUID> category;
+    private final UUID uploadId;
 
-    public PhotoUploadRequest(String title, String description, List<String> tags, List<UUID> categories, File photo) {
+    public UploadedPhoto(String title,
+                         String description,
+                         List<String> tags,
+                         List<UUID> category,
+                         UUID uploadId) {
         this.title = title;
         this.description = description;
         this.tags = tags;
-        this.categories = categories;
-        this.photo = photo;
+        this.category = category;
+        this.uploadId = uploadId;
     }
 
     public String getTitle() {
@@ -38,11 +41,11 @@ public class PhotoUploadRequest {
     }
 
     public List<UUID> getCategories() {
-        return categories;
+        return category;
     }
 
-    public File getPhoto() {
-        return photo;
+    public UUID getUploadId() {
+        return uploadId;
     }
 
     @Override

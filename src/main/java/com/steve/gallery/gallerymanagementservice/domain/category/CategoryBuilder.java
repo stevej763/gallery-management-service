@@ -1,4 +1,4 @@
-package com.steve.gallery.gallerymanagementservice.domain;
+package com.steve.gallery.gallerymanagementservice.domain.category;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

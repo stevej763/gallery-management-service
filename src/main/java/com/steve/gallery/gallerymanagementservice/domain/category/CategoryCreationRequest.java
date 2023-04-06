@@ -1,28 +1,26 @@
-package com.steve.gallery.gallerymanagementservice.domain;
-
-import java.util.UUID;
+package com.steve.gallery.gallerymanagementservice.domain.category;
 
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 import static org.apache.commons.lang3.builder.HashCodeBuilder.reflectionHashCode;
 import static org.apache.commons.lang3.builder.ToStringBuilder.reflectionToString;
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class TitleEditRequest {
+public class CategoryCreationRequest {
 
-    private final UUID photoId;
-    private final String titleChange;
+    private final String title;
+    private final String subtitle;
 
-    public TitleEditRequest(UUID photoId, String titleChange) {
-        this.photoId = photoId;
-        this.titleChange = titleChange;
+    public CategoryCreationRequest(String title, String subtitle) {
+        this.title = title;
+        this.subtitle = subtitle;
     }
 
-    public UUID getPhotoId() {
-        return photoId;
+    public String getTitle() {
+        return title;
     }
 
-    public String getTitleChange() {
-        return titleChange;
+    public String getSubtitle() {
+        return subtitle;
     }
 
     @Override

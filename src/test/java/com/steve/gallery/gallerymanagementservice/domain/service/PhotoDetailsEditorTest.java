@@ -1,12 +1,18 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TagRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TitleEditRequest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
 import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;

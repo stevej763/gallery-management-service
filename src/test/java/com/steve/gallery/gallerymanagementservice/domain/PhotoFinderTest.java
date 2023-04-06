@@ -1,5 +1,8 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 

@@ -3,8 +3,8 @@ package com.steve.gallery.gallerymanagementservice.adapter.s3;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.UploadedPhoto;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.UploadedPhoto;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,8 +13,8 @@ import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder.aPhotoUploadRequest;
-import static com.steve.gallery.gallerymanagementservice.domain.UploadedPhotoBuilder.anUploadedPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequestBuilder.aPhotoUploadRequest;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.UploadedPhotoBuilder.anUploadedPhoto;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertThrows;

@@ -1,6 +1,10 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.*;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TagRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TitleEditRequest;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -9,7 +13,7 @@ import java.util.UUID;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.CATEGORIES;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.TAGS;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder.aPhotoMetadata;
-import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
+import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;

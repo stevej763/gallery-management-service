@@ -1,15 +1,15 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.Category;
-import com.steve.gallery.gallerymanagementservice.domain.CategoryDeletionRequest;
-import com.steve.gallery.gallerymanagementservice.domain.CategoryRecordDeletionResponse;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRecordDeletionResponse;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadataBuilder.aCategoryMetadata;
-import static com.steve.gallery.gallerymanagementservice.domain.CategoryBuilder.aCategory;
+import static com.steve.gallery.gallerymanagementservice.domain.category.CategoryBuilder.aCategory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;

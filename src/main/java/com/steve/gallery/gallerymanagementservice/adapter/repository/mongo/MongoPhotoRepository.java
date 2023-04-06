@@ -1,6 +1,11 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.*;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TagRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TitleEditRequest;
 
 import java.util.List;
 import java.util.UUID;

@@ -2,7 +2,7 @@ package com.steve.gallery.gallerymanagementservice.adapter.s3;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.PhotoUploadRequest;
 
 import java.io.File;
 import java.io.FileInputStream;

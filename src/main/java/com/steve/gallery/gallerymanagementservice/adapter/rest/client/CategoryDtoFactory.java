@@ -2,7 +2,7 @@ package com.steve.gallery.gallerymanagementservice.adapter.rest.client;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDtoBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
 
 public class CategoryDtoFactory {
     public CategoryDto convert(Category category) {

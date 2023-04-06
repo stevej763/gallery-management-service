@@ -1,7 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.integration.database;
 
 import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.*;
-import com.steve.gallery.gallerymanagementservice.domain.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
 import com.steve.gallery.gallerymanagementservice.domain.service.CategoryFinder;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.domain.CategoryBuilder.aCategory;
+import static com.steve.gallery.gallerymanagementservice.domain.category.CategoryBuilder.aCategory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 

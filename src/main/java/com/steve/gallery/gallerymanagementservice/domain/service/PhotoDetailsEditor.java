@@ -1,6 +1,12 @@
 package com.steve.gallery.gallerymanagementservice.domain.service;
 
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.adater.PhotoRepository;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.*;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TagRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.TitleEditRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

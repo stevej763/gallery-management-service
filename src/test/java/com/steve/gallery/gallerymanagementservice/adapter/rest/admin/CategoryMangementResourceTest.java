@@ -4,7 +4,10 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.CategoryDtoBuilder;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.CategoryMangementResource;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.client.CategoryDtoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.*;
+import com.steve.gallery.gallerymanagementservice.domain.category.Category;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryCreationRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.category.CategoryDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.service.CategoryCreator;
 import com.steve.gallery.gallerymanagementservice.domain.service.CategoryDeleter;
 import org.junit.jupiter.api.Test;
@@ -12,7 +15,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.UUID;
 
-import static com.steve.gallery.gallerymanagementservice.domain.CategoryBuilder.aCategory;
+import static com.steve.gallery.gallerymanagementservice.domain.category.CategoryBuilder.aCategory;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;

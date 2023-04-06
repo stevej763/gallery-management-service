@@ -1,7 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.adapter.rest;
 
-import com.steve.gallery.gallerymanagementservice.domain.DtoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.Photo;
+import com.steve.gallery.gallerymanagementservice.domain.adater.DtoFactory;
+import com.steve.gallery.gallerymanagementservice.domain.photo.Photo;
 
 public class PhotoDtoFactory implements DtoFactory<PhotoDto> {
 

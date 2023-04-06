@@ -5,7 +5,7 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Photo
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TagRequestDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.update.TitleEditRequestDto;
-import com.steve.gallery.gallerymanagementservice.domain.DescriptionEditRequest;
+import com.steve.gallery.gallerymanagementservice.domain.photo.edit.DescriptionEditRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

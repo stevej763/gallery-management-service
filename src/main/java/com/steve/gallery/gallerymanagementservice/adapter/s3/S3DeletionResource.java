@@ -1,9 +1,8 @@
 package com.steve.gallery.gallerymanagementservice.adapter.s3;
 
-import com.amazonaws.AmazonServiceException;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.DeleteObjectRequest;
-import com.steve.gallery.gallerymanagementservice.domain.DeletionResource;
+import com.steve.gallery.gallerymanagementservice.domain.adater.DeletionResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
