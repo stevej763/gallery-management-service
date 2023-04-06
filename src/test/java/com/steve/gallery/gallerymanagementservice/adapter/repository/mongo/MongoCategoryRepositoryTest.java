@@ -1,9 +1,12 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
 import com.steve.gallery.gallerymanagementservice.domain.Category;
+import com.steve.gallery.gallerymanagementservice.domain.CategoryDeletionRequest;
+import com.steve.gallery.gallerymanagementservice.domain.CategoryRecordDeletionResponse;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryMetadataBuilder.aCategoryMetadata;
 import static com.steve.gallery.gallerymanagementservice.domain.CategoryBuilder.aCategory;
@@ -47,4 +50,14 @@ public class MongoCategoryRepositoryTest {
         assertThat(underTest.save(category), is(category));
     }
 
+    @Test
+    public void canDeleteCategory() {
+        UUID categoryId = UUID.randomUUID();
+        when(categoryDao.deleteCategory(categoryId)).thenReturn(true);
+
+        CategoryDeletionRequest request = new CategoryDeletionRequest(categoryId);
+
+        CategoryRecordDeletionResponse result = underTest.deleteCategory(request);
+        assertThat(result, is(new CategoryRecordDeletionResponse(true)));
+    }
 }

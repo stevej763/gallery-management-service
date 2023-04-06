@@ -11,13 +11,14 @@ import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.CATEGORIES;
 import static java.util.regex.Pattern.*;
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 
 public class PhotoDao {
-
     public static final String PHOTO_COLLECTION = "photoMetadata";
+
     private final MongoTemplate mongoTemplate;
 
     public PhotoDao(MongoTemplate mongoTemplate) {
@@ -26,6 +27,11 @@ public class PhotoDao {
 
     public List<PhotoMetadata> findAllPhotos() {
         return mongoTemplate.findAll(PhotoMetadata.class, PHOTO_COLLECTION);
+    }
+
+    public List<PhotoMetadata> findByCategoryId(UUID categoryId) {
+        Query query = query(where(CATEGORIES).is(categoryId));
+        return mongoTemplate.find(query, PhotoMetadata.class, PHOTO_COLLECTION);
     }
 
     public PhotoMetadata findPhotoById(UUID photoId) {
@@ -65,6 +71,15 @@ public class PhotoDao {
     }
 
     public boolean pull(UUID photoId, String field, String value) {
+        Update update = new Update()
+                .pull(field, value)
+                .set(PhotoMetadata.MODIFIED_AT, LocalDateTime.now());
+        Query query = findByPhotoId(photoId);
+        UpdateResult updateResult = mongoTemplate.updateFirst(query, update, PhotoMetadata.class, PHOTO_COLLECTION);
+        return updateResult.getModifiedCount() == 1;
+    }
+
+    public boolean removeCategory(UUID photoId, String field, UUID value) {
         Update update = new Update()
                 .pull(field, value)
                 .set(PhotoMetadata.MODIFIED_AT, LocalDateTime.now());

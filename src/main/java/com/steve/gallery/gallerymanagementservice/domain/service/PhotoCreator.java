@@ -5,16 +5,16 @@ import com.steve.gallery.gallerymanagementservice.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class PhotoCreationService {
+public class PhotoCreator {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PhotoCreationService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhotoCreator.class);
 
     private final PhotoRepository photoRepository;
     private final PhotoFactory photoFactory;
     private final DtoFactory<PhotoDto> photoDtoFactory;
     private final UploadResource uploadResource;
 
-    public PhotoCreationService(
+    public PhotoCreator(
             PhotoRepository photoRepository,
             PhotoFactory photoFactory,
             DtoFactory<PhotoDto> photoDtoFactory,

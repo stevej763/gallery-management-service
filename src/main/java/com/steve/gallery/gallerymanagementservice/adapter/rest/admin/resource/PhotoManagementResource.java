@@ -5,9 +5,9 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoDeleti
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadMetadataDto;
 import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.PhotoUploadRequestFactory;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeleter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -29,24 +29,24 @@ public class PhotoManagementResource {
 
     Logger LOGGER = LoggerFactory.getLogger(PhotoManagementResource.class);
 
-    private final PhotoCreationService photoCreationService;
+    private final PhotoCreator photoCreator;
     private final PhotoUploadRequestFactory photoUploadRequestFactory;
-    private final PhotoDeletionService photoDeletionService;
+    private final PhotoDeleter photoDeleter;
 
     public PhotoManagementResource(
-            PhotoCreationService photoCreationService,
+            PhotoCreator photoCreator,
             PhotoUploadRequestFactory photoUploadRequestFactory,
-            PhotoDeletionService photoDeletionService) {
-        this.photoCreationService = photoCreationService;
+            PhotoDeleter photoDeleter) {
+        this.photoCreator = photoCreator;
         this.photoUploadRequestFactory = photoUploadRequestFactory;
-        this.photoDeletionService = photoDeletionService;
+        this.photoDeleter = photoDeleter;
     }
 
     @PostMapping(value = "/upload", consumes = MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<PhotoDto> upload(@RequestParam("file") MultipartFile file, PhotoUploadMetadataDto photoUploadMetadataDto) {
         try {
             PhotoUploadRequest photoUploadRequest = photoUploadRequestFactory.createPhotoUploadRequest(file, photoUploadMetadataDto);
-            PhotoDto photoDto = photoCreationService.create(photoUploadRequest);
+            PhotoDto photoDto = photoCreator.create(photoUploadRequest);
             return ResponseEntity.ok(photoDto);
         } catch (IOException e) {
             LOGGER.error("error reading uploaded file", e);
@@ -56,7 +56,7 @@ public class PhotoManagementResource {
 
     @DeleteMapping(value = "/delete/{photoId}", consumes = MediaType.ALL_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<PhotoDeletionResponseDto> delete(@PathVariable("photoId") UUID photoId) {
-        PhotoDeletionResponse photoDeletionResponse = photoDeletionService.deletePhoto(photoId);
+        PhotoDeletionResponse photoDeletionResponse = photoDeleter.deletePhoto(photoId);
         if (photoDeletionResponse.totalFailure()) {
             return ResponseEntity.ok(new PhotoDeletionResponseDto(false, "failed to delete record and file"));
         }

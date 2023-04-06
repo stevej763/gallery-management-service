@@ -5,8 +5,8 @@ import com.steve.gallery.gallerymanagementservice.adapter.rest.admin.resource.Ph
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeleter;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mock.web.MockMultipartFile;
@@ -27,9 +27,9 @@ public class PhotoManagementResourceTest {
 
     private static final MockMultipartFile UPLOADED_FILE = new MockMultipartFile("name", "test".getBytes());
     private final PhotoUploadRequestFactory photoUploadRequestFactory = mock(PhotoUploadRequestFactory.class);
-    private final PhotoCreationService photoCreationService = mock(PhotoCreationService.class);
-    private final PhotoDeletionService photoDeletionService = mock(PhotoDeletionService.class);
-    private final PhotoManagementResource underTest = new PhotoManagementResource(photoCreationService, photoUploadRequestFactory, photoDeletionService);
+    private final PhotoCreator photoCreator = mock(PhotoCreator.class);
+    private final PhotoDeleter photoDeleter = mock(PhotoDeleter.class);
+    private final PhotoManagementResource underTest = new PhotoManagementResource(photoCreator, photoUploadRequestFactory, photoDeleter);
 
     @Test
     public void shouldHandlePhotoUploadRequest() throws IOException {
@@ -38,7 +38,7 @@ public class PhotoManagementResourceTest {
         PhotoDto photoDto = createPhotoDto();
 
         PhotoUploadRequest photoUploadRequest = createPhotoUploadRequest(photoUploadMetadataDto);
-        when(photoCreationService.create(photoUploadRequest)).thenReturn(photoDto);
+        when(photoCreator.create(photoUploadRequest)).thenReturn(photoDto);
         when(photoUploadRequestFactory.createPhotoUploadRequest(UPLOADED_FILE, photoUploadMetadataDto)).thenReturn(photoUploadRequest);
 
         ResponseEntity<PhotoDto> result = underTest.upload(UPLOADED_FILE, photoUploadMetadataDto);
@@ -51,7 +51,7 @@ public class PhotoManagementResourceTest {
         UUID photoId = UUID.randomUUID();
 
         PhotoDeletionResponse photoDeletionResponse = new PhotoDeletionResponse(photoId, true, true);
-        when(photoDeletionService.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
+        when(photoDeleter.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
 
         ResponseEntity<PhotoDeletionResponseDto> result = underTest.delete(photoId);
 
@@ -63,7 +63,7 @@ public class PhotoManagementResourceTest {
         UUID photoId = UUID.randomUUID();
 
         PhotoDeletionResponse photoDeletionResponse = new PhotoDeletionResponse(photoId, false, true);
-        when(photoDeletionService.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
+        when(photoDeleter.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
 
         ResponseEntity<PhotoDeletionResponseDto> result = underTest.delete(photoId);
 
@@ -75,7 +75,7 @@ public class PhotoManagementResourceTest {
         UUID photoId = UUID.randomUUID();
 
         PhotoDeletionResponse photoDeletionResponse = new PhotoDeletionResponse(photoId, true, false);
-        when(photoDeletionService.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
+        when(photoDeleter.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
 
         ResponseEntity<PhotoDeletionResponseDto> result = underTest.delete(photoId);
 
@@ -87,7 +87,7 @@ public class PhotoManagementResourceTest {
         UUID photoId = UUID.randomUUID();
 
         PhotoDeletionResponse photoDeletionResponse = new PhotoDeletionResponse(photoId, false, false);
-        when(photoDeletionService.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
+        when(photoDeleter.deletePhoto(photoId)).thenReturn(photoDeletionResponse);
 
         ResponseEntity<PhotoDeletionResponseDto> result = underTest.delete(photoId);
 
@@ -101,7 +101,7 @@ public class PhotoManagementResourceTest {
         PhotoDto photoDto = createPhotoDto();
 
         PhotoUploadRequest photoUploadRequest = createPhotoUploadRequest(photoUploadMetadataDto);
-        when(photoCreationService.create(photoUploadRequest)).thenReturn(photoDto);
+        when(photoCreator.create(photoUploadRequest)).thenReturn(photoDto);
         when(photoUploadRequestFactory.createPhotoUploadRequest(UPLOADED_FILE, photoUploadMetadataDto)).thenThrow(new IOException("test"));
 
         ResponseEntity<PhotoDto> result = underTest.upload(UPLOADED_FILE, photoUploadMetadataDto);

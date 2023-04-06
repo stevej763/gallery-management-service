@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 import java.util.UUID;
 
+import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.CATEGORIES;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadata.TAGS;
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.PhotoMetadataBuilder.aPhotoMetadata;
 import static com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder.aPhoto;
@@ -152,6 +153,40 @@ public class MongoPhotoRepositoryTest {
         when(photoFactory.convert(photoMetadata)).thenReturn(photo);
 
         Photo result = underTest.removeTag(new TagRequest(photoId, tagToRemove));
+
+        assertThat(result, is(photo));
+    }
+
+    @Test
+    public void canFindAllByCategory() {
+        UUID photoId = UUID.randomUUID();
+        PhotoMetadata photoMetadata = createPhotoMetadata(photoId);
+        Photo photo = aPhoto().build();
+
+        UUID categoryId = UUID.randomUUID();
+
+        when(photoDao.removeCategory(photo.getPhotoId(), CATEGORIES, categoryId)).thenReturn(true);
+        when(photoDao.findByCategoryId(categoryId)).thenReturn(List.of(photoMetadata));
+        when(photoFactory.convert(photoMetadata)).thenReturn(photo);
+
+        List<Photo> result = underTest.findAllByCategory(categoryId);
+
+        assertThat(result, is(List.of(photo)));
+    }
+
+    @Test
+    public void shouldRemoveCategory() {
+        UUID photoId = UUID.randomUUID();
+        PhotoMetadata photoMetadata = createPhotoMetadata(photoId);
+        Photo photo = aPhoto().build();
+
+        UUID categoryId = UUID.randomUUID();
+
+        when(photoDao.removeCategory(photo.getPhotoId(), CATEGORIES, categoryId)).thenReturn(true);
+        when(photoDao.findPhotoById(photoId)).thenReturn(photoMetadata);
+        when(photoFactory.convert(photoMetadata)).thenReturn(photo);
+
+        Photo result = underTest.removeCategory(new CategoryRequest(photoId, categoryId));
 
         assertThat(result, is(photo));
     }

@@ -10,7 +10,7 @@ import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequest;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoUploadRequestBuilder;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import com.steve.gallery.gallerymanagementservice.domain.service.PhotoFinder;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
@@ -41,7 +41,7 @@ public class CreatePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
         photo.deleteOnExit();
 
         S3UploadRequestFactory s3UploadRequestFactory = new S3UploadRequestFactory();
-        PhotoCreationService photoCreationService = new PhotoCreationService(
+        PhotoCreator photoCreator = new PhotoCreator(
                 photoRepository,
                 new PhotoFactory(),
                 new PhotoDtoFactory("baseUrl"),
@@ -58,7 +58,7 @@ public class CreatePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
                 .withCategories(categories)
                 .withPhoto(photo)
                 .build();
-        photoCreationService.create(photoUploadRequest);
+        photoCreator.create(photoUploadRequest);
 
         List<Photo> results = photoFinder.findAll();
 

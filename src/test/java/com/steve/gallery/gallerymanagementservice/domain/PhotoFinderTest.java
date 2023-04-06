@@ -41,6 +41,19 @@ public class PhotoFinderTest {
     }
 
     @Test
+    public void shouldReturnPhotosByCategoryId() {
+        UUID categoryId = UUID.randomUUID();
+        Photo photo = new PhotoBuilder()
+                .withPhotoId(UUID.randomUUID())
+                .build();
+        when(photoRepository.findAllByCategory(categoryId)).thenReturn(List.of(photo));
+
+        List<Photo> result = underTest.findAllByCategory(categoryId);
+
+        assertThat(result, is(List.of(photo)));
+    }
+
+    @Test
     public void shouldReturnPhotosByTitleSearch() {
         UUID photoId = UUID.randomUUID();
         String photoTitle = "photoTitle";

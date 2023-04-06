@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.CategoryDao.CATEGORY_COLLECTION;
 import static java.time.temporal.ChronoUnit.SECONDS;
@@ -38,9 +39,9 @@ public class CategoryDaoTest{
 
     @Test
     public void retrievesAllPhotosFromPhotosCollection() {
-        CategoryMetadata category1 = createCategoryMetadata();
-        CategoryMetadata category2 = createCategoryMetadata();
-        CategoryMetadata category3 = createCategoryMetadata();
+        CategoryMetadata category1 = createCategoryMetadata(UUID.randomUUID());
+        CategoryMetadata category2 = createCategoryMetadata(UUID.randomUUID());
+        CategoryMetadata category3 = createCategoryMetadata(UUID.randomUUID());
         mongoTemplate.save(category1, CATEGORY_COLLECTION);
         mongoTemplate.save(category2, CATEGORY_COLLECTION);
         mongoTemplate.save(category3, CATEGORY_COLLECTION);
@@ -53,15 +54,27 @@ public class CategoryDaoTest{
 
     @Test
     public void canSaveCategoryToDatabase() {
-        CategoryMetadata categoryMetadata = createCategoryMetadata();
+        CategoryMetadata categoryMetadata = createCategoryMetadata(UUID.randomUUID());
 
         CategoryMetadata result = underTest.save(categoryMetadata);
 
         assertThat(result, is(categoryMetadata));
     }
 
-    private CategoryMetadata createCategoryMetadata() {
+    @Test
+    public void canDeleteCategory() {
+        UUID categoryId = UUID.randomUUID();
+        CategoryMetadata category1 = createCategoryMetadata(categoryId);
+        mongoTemplate.save(category1, CATEGORY_COLLECTION);
+
+        boolean result = underTest.deleteCategory(categoryId);
+
+        assertThat(result, is(true));
+    }
+
+    private CategoryMetadata createCategoryMetadata(UUID categoryId) {
         return new CategoryMetadataBuilder()
+                .withCategoryId(categoryId)
                 .withCreatedAt(LocalDateTime.now().truncatedTo(SECONDS))
                 .withModifiedAt(LocalDateTime.now().truncatedTo(SECONDS))
                 .build();

@@ -10,11 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.*;
 
-public class PhotoDeletionServiceTest {
+public class PhotoDeleterTest {
 
     private final PhotoRepository photoRepository = mock(PhotoRepository.class);
     private final DeletionResource deletionResource = mock(DeletionResource.class);
-    private final PhotoDeletionService underTest = new PhotoDeletionService(photoRepository, deletionResource);
+    private final PhotoDeleter underTest = new PhotoDeleter(photoRepository, deletionResource);
 
     @Test
     public void shouldDeletePhoto() {

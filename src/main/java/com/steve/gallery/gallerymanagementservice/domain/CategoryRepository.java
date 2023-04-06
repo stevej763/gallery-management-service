@@ -6,4 +6,6 @@ public interface CategoryRepository {
     List<Category> findAll();
 
     Category save(Category category);
+
+    CategoryRecordDeletionResponse deleteCategory(CategoryDeletionRequest categoryDeletionRequest);
 }

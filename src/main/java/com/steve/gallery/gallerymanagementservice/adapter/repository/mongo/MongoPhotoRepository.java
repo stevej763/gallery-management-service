@@ -38,6 +38,12 @@ public class MongoPhotoRepository implements PhotoRepository {
     }
 
     @Override
+    public List<Photo> findAllByCategory(UUID categoryId) {
+        List<PhotoMetadata> photoMetadata = photoDao.findByCategoryId(categoryId);
+        return photoMetadata.stream().map(photoFactory::convert).toList();
+    }
+
+    @Override
     public Photo save(Photo photo) {
         PhotoMetadata photoMetadata = photoMetadataFactory.convert(photo);
         PhotoMetadata savedPhoto = photoDao.save(photoMetadata);
@@ -60,6 +66,13 @@ public class MongoPhotoRepository implements PhotoRepository {
     public Photo updateDescription(DescriptionEditRequest request) {
         photoDao.updateFieldForId(request.getPhotoId(), DESCRIPTION, request.getDescriptionChange());
         PhotoMetadata photoMetadata = photoDao.findPhotoById(request.getPhotoId());
+        return photoFactory.convert(photoMetadata);
+    }
+
+    @Override
+    public Photo removeCategory(CategoryRequest categoryRequest) {
+        photoDao.removeCategory(categoryRequest.getPhotoId(), CATEGORIES, categoryRequest.getCategoryId());
+        PhotoMetadata photoMetadata = photoDao.findPhotoById(categoryRequest.getPhotoId());
         return photoFactory.convert(photoMetadata);
     }
 

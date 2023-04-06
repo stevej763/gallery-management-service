@@ -9,14 +9,14 @@ import org.slf4j.LoggerFactory;
 
 import java.util.UUID;
 
-public class PhotoDeletionService {
+public class PhotoDeleter {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PhotoDeletionService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PhotoDeleter.class);
 
     private final PhotoRepository photoRepository;
     private final DeletionResource deletionResource;
 
-    public PhotoDeletionService(PhotoRepository photoRepository, DeletionResource deletionResource) {
+    public PhotoDeleter(PhotoRepository photoRepository, DeletionResource deletionResource) {
         this.photoRepository = photoRepository;
         this.deletionResource = deletionResource;
     }

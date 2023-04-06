@@ -4,6 +4,8 @@ import com.steve.gallery.gallerymanagementservice.domain.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.List;
+
 public class PhotoDetailsEditor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PhotoDetailsEditor.class);
@@ -66,5 +68,17 @@ public class PhotoDetailsEditor {
         return new PhotoBuilder(originalPhoto)
                 .withTitle(modifiedTitle)
                 .build();
+    }
+
+    public List<Photo> removeCategoryFromAllPhotos(CategoryDeletionRequest categoryDeletionRequest) {
+        List<Photo> photos = photoFinder.findAllByCategory(categoryDeletionRequest.getCategoryId());
+        return photos.stream()
+                     .map(photo -> removeCategoryFromPhoto(categoryDeletionRequest, photo))
+                     .toList();
+    }
+
+    private Photo removeCategoryFromPhoto(CategoryDeletionRequest categoryDeletionRequest, Photo photo) {
+        CategoryRequest categoryRequest = new CategoryRequest(photo.getPhotoId(), categoryDeletionRequest.getCategoryId());
+        return photoRepository.removeCategory(categoryRequest);
     }
 }

@@ -11,6 +11,8 @@ public interface PhotoRepository {
 
     List<Photo> findByTitle(String title);
 
+    List<Photo> findAllByCategory(UUID categoryId);
+
     Photo save(Photo photo);
 
     boolean delete(UUID photoId);
@@ -18,6 +20,8 @@ public interface PhotoRepository {
     Photo updateTitle(TitleEditRequest result);
 
     Photo updateDescription(DescriptionEditRequest photo);
+
+    Photo removeCategory(CategoryRequest categoryRequest);
 
     Photo addTag(TagRequest tagRequest);
 

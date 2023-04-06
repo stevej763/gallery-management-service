@@ -8,7 +8,7 @@ import com.steve.gallery.gallerymanagementservice.domain.Photo;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoBuilder;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoDeletionResponse;
 import com.steve.gallery.gallerymanagementservice.domain.PhotoFactory;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeletionService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoDeleter;
 import org.junit.jupiter.api.Test;
 import org.springframework.mock.web.MockMultipartFile;
 
@@ -45,10 +45,10 @@ public class DeletePhotoMongoIntegrationTest extends BaseMongoIntegrationTest {
         prepareTestPhoto();
         MongoPhotoRepository mongoPhotoRepository = new MongoPhotoRepository(new PhotoDao(mongoTemplate), new PhotoFactory(), new PhotoMetadataFactory());
         S3DeletionResource deletionResource = new S3DeletionResource(s3Client, BUCKET_NAME);
-        PhotoDeletionService photoDeletionService = new PhotoDeletionService(mongoPhotoRepository, deletionResource);
+        PhotoDeleter photoDeleter = new PhotoDeleter(mongoPhotoRepository, deletionResource);
 
         PhotoDeletionResponse expected = new PhotoDeletionResponse(PHOTO_ID, true, true);
-        assertThat(photoDeletionService.deletePhoto(PHOTO_ID), is(expected));
+        assertThat(photoDeleter.deletePhoto(PHOTO_ID), is(expected));
     }
 
     private void prepareTestPhoto() throws IOException {

@@ -67,14 +67,19 @@ public class ResourceConfiguration {
     }
 
     @Bean
+    CategoryDeleter categoryDeleter() {
+        return new CategoryDeleter(mongoCategoryRepository(), photoDetailsEditor());
+    }
+
+    @Bean
     PhotoDetailsEditor photoDetailsEditor() {
         return new PhotoDetailsEditor(photoFinder(), mongoPhotoRepository());
     }
 
     @Bean
-    PhotoCreationService photoCreationService() {
+    PhotoCreator photoCreationService() {
         S3UploadResource uploadResource = new S3UploadResource(s3Client, s3Configuration.getBucketName(), new S3UploadRequestFactory());
-        return new PhotoCreationService(mongoPhotoRepository(), photoFactory(), photoDtoFactory(), uploadResource);
+        return new PhotoCreator(mongoPhotoRepository(), photoFactory(), photoDtoFactory(), uploadResource);
     }
 
     @Bean
@@ -83,9 +88,9 @@ public class ResourceConfiguration {
     }
 
     @Bean
-    PhotoDeletionService photoDeletionService() {
+    PhotoDeleter photoDeletionService() {
         DeletionResource deletionResource = new S3DeletionResource(s3Client, s3Configuration.getBucketName());
-        return new PhotoDeletionService(mongoPhotoRepository(), deletionResource);
+        return new PhotoDeleter(mongoPhotoRepository(), deletionResource);
     }
 
     @Bean

@@ -1,7 +1,6 @@
 package com.steve.gallery.gallerymanagementservice.adapter.repository.mongo;
 
-import com.steve.gallery.gallerymanagementservice.domain.Category;
-import com.steve.gallery.gallerymanagementservice.domain.CategoryRepository;
+import com.steve.gallery.gallerymanagementservice.domain.*;
 
 import java.util.List;
 
@@ -31,5 +30,12 @@ public class MongoCategoryRepository implements CategoryRepository {
         CategoryMetadata categoryMetadata = categoryMetadataFactory.convert(category);
         CategoryMetadata savedCategory = categoryDao.save(categoryMetadata);
         return categoryFactory.convert(savedCategory);
+    }
+
+    @Override
+    public CategoryRecordDeletionResponse deleteCategory(CategoryDeletionRequest categoryDeletionRequest) {
+        boolean deleteCategory = categoryDao.deleteCategory(categoryDeletionRequest.getCategoryId());
+        return new CategoryRecordDeletionResponse(deleteCategory);
+
     }
 }

@@ -24,6 +24,10 @@ public class PhotoFinder {
         return photos;
     }
 
+    public List<Photo> findAllByCategory(UUID categoryId) {
+        return photoRepository.findAllByCategory(categoryId);
+    }
+
     public Photo findPhotoById(UUID photoId) {
         Photo photo = photoRepository.findById(photoId);
         LOGGER.info("search made for photoId={}", photo.getPhotoId());

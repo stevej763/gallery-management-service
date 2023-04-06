@@ -1,7 +1,7 @@
 package com.steve.gallery.gallerymanagementservice.domain;
 
 import com.steve.gallery.gallerymanagementservice.adapter.rest.PhotoDto;
-import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreationService;
+import com.steve.gallery.gallerymanagementservice.domain.service.PhotoCreator;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -13,14 +13,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.*;
 
-public class PhotoCreationServiceTest {
+public class PhotoCreatorTest {
 
     private final PhotoRepository photoRepository = mock(PhotoRepository.class);
     private final PhotoFactory photoFactory = mock(PhotoFactory.class);
     private final DtoFactory photoDtoFactory = mock(DtoFactory.class);
     private final UploadResource uploadResource = mock(UploadResource.class);
 
-    private final PhotoCreationService underTest = new PhotoCreationService(photoRepository, photoFactory, photoDtoFactory, uploadResource);
+    private final PhotoCreator underTest = new PhotoCreator(photoRepository, photoFactory, photoDtoFactory, uploadResource);
 
     @Test
     public void processesPhotoUpload() {
