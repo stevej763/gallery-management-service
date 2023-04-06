@@ -13,3 +13,7 @@ spring:
       enabled: true
   config:
     import: vault://
+
+  data:
+    mongodb:
+      database: gallery-management-docker
