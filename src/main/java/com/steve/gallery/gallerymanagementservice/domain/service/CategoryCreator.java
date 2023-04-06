@@ -4,8 +4,12 @@ import com.steve.gallery.gallerymanagementservice.adapter.repository.mongo.Categ
 import com.steve.gallery.gallerymanagementservice.domain.Category;
 import com.steve.gallery.gallerymanagementservice.domain.CategoryCreationRequest;
 import com.steve.gallery.gallerymanagementservice.domain.CategoryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CategoryCreator {
+
+    private final Logger LOGGER = LoggerFactory.getLogger(CategoryCreator.class);
 
     private final CategoryRepository categoryRepository;
     private final CategoryFactory categoryFactory;
@@ -17,6 +21,8 @@ public class CategoryCreator {
 
     public Category save(CategoryCreationRequest categoryCreationRequest) {
         Category category = categoryFactory.convert(categoryCreationRequest);
-        return categoryRepository.save(category);
+        Category savedCategory = categoryRepository.save(category);
+        LOGGER.info("category creation request successful categoryId={} title={}", savedCategory.getCategoryId(), savedCategory.getTitle());
+        return savedCategory;
     }
 }

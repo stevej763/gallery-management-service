@@ -79,6 +79,9 @@ public class PhotoDetailsEditor {
 
     private Photo removeCategoryFromPhoto(CategoryDeletionRequest categoryDeletionRequest, Photo photo) {
         CategoryRequest categoryRequest = new CategoryRequest(photo.getPhotoId(), categoryDeletionRequest.getCategoryId());
-        return photoRepository.removeCategory(categoryRequest);
+        Photo updatedPhoto = photoRepository.removeCategory(categoryRequest);
+        LOGGER.info("photo categories updated photoId={} from={} to={}",
+                    photo.getPhotoId(), photo.getCategories(), updatedPhoto.getCategories());
+        return updatedPhoto;
     }
 }
