@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.steve.gallery.gallerymanagementservice.domain.photo.PhotoBuilder.aPhoto;
+import static java.util.Collections.emptyList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.mockito.Mockito.mock;
@@ -27,9 +28,10 @@ public class CategoryDeleterTest {
         UUID categoryId = UUID.randomUUID();
         CategoryDeletionRequest categoryDeletionRequest = new CategoryDeletionRequest(categoryId);
 
-        Photo photo = aPhoto().build();
+        Photo photo = aPhoto().withCategories(List.of(categoryId)).build();
+        Photo photoWithNoCategory = aPhoto().withCategories(emptyList()).build();
         when(categoryRepository.deleteCategory(categoryDeletionRequest)).thenReturn(new CategoryRecordDeletionResponse(true));
-        when(photoDetailsEditor.removeCategoryFromAllPhotos(categoryDeletionRequest)).thenReturn(List.of(photo));
+        when(photoDetailsEditor.removeCategoryFromAllPhotos(categoryDeletionRequest)).thenReturn(List.of(photoWithNoCategory));
         CategoryDeletionResponse result = underTest.deleteCategory(categoryDeletionRequest);
 
         CategoryDeletionResponse expected = new CategoryDeletionResponse(categoryId, true, true);
